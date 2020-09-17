@@ -9,8 +9,8 @@
 import Foundation
 
  struct Stack<Element>{
-    
-    var items = [Element]()
+  
+     var items = [Element]()
     mutating func push(_ item: Element) {
         items.append(item)
     }
