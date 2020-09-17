@@ -2,5 +2,16 @@
 <Timeline
    version = "3.0">
    <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/savinov/Desktop/Calculator!/Calculator!/MyPlayground.playground#CharacterRangeLen=54&amp;CharacterRangeLoc=7382&amp;EndingColumnNumber=17&amp;EndingLineNumber=244&amp;StartingColumnNumber=13&amp;StartingLineNumber=242&amp;Timestamp=621985986.705951"
+         lockedSize = "{338, 351}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/savinov/Desktop/Calculator!/Calculator!/MyPlayground.playground#CharacterRangeLen=50&amp;CharacterRangeLoc=7369&amp;EndingColumnNumber=0&amp;EndingLineNumber=244&amp;StartingColumnNumber=0&amp;StartingLineNumber=242&amp;Timestamp=621985986.706074"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
    </TimelineItems>
 </Timeline>
