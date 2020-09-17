@@ -204,14 +204,7 @@ func test(_ expression: String) -> Double{
 }
 
 test("-4.2-5.2")
-extension String {
-private func changeChar() -> String{
-      self
-      .replacingOccurrences(of: "*", with:"×")
-      .replacingOccurrences(of: "/", with:"÷")
-      .replacingOccurrences(of: ".", with:",")
-  }
- func separatedNumber(_ number: Any) -> String {
+func separatedNumber(_ number: Any) -> String {
 guard let itIsANumber = number as? NSNumber else { return "Not a number" }
 let formatter = NumberFormatter()
 formatter.numberStyle = .decimal
@@ -219,25 +212,37 @@ formatter.groupingSeparator = " "
 formatter.decimalSeparator = "."
 return formatter.string(from: itIsANumber)!
 }
+extension String {
+private func changeChar() -> String{
+      self
+      .replacingOccurrences(of: "*", with:"×")
+      .replacingOccurrences(of: "/", with:"÷")
+      .replacingOccurrences(of: ".", with:",")
+  }
+ 
 private func tokinize() -> [String] {
       self.components(separatedBy: "#")
   }
 private func formateNum(_ input: [String] ) -> String {
-      var result = ""
-      for element in input {
-          if Int(element) != nil {
-              result += separatedNumber(Double(element))
-          }else {result += element }
-      }
-      return result
-  }
+         var result = ""
+         var point = false
+         for element in input {
+           if Int(element) != nil && !point{
+               result += separatedNumber(Int(element))
+           } else { result += element }
+           if element == "."{
+               point = true
+           } else { point = false }
+         }
+         return result
+     }
   func createOutput() -> String{
     self.formateNum(self.tokinize()).changeChar()
   }
 }
-  var tester = "2222.2222#*#4444#/#1.1111"
+  var tester = "2222#.#2222#*#4444#/#1#.#1111"
+separatedNumber(222222.2222)
 tester.createOutput()
-
 // выводит "1 234 567,89"
 //var result = notation(parse("-(15.11-6/2*-(1+2))/-1*(2-6*2)"))
 //calculate(&result)

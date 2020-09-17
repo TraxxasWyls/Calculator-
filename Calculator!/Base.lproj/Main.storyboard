@@ -393,10 +393,13 @@
                                     <constraint firstItem="Dki-xF-zUu" firstAttribute="top" secondItem="IsB-Do-XyE" secondAttribute="bottom" constant="12.67" id="rBO-ef-WAD"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 222" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf">
-                                <rect key="frame" x="25" y="158.66666666666666" width="325" height="60"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 222" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="50" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf">
+                                <rect key="frame" x="25" y="123" width="325" height="95.666666666666686"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" selected="YES" adjustable="YES" allowsDirectInteraction="YES"/>
+                                </accessibility>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <connections>

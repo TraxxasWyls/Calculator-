@@ -8,19 +8,8 @@
 
 import UIKit
 
-func lastIsOperation(_ input: String) -> Bool{
-    switch input.last{
-        case "+": return true
-        case "*": return true
-        case "/": return true
-    default: return false
-    }
-}
-
 var compute = Notation()
-var i = 0 , n = 0
-var dotisPressed = false
-var countofNum = 0
+//var left = 0 , right = 0
 
 class ViewController: UIViewController {
     
@@ -29,8 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     var expression = ""
-    var result = ""
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         outputLabel.text = "0"
@@ -46,76 +34,65 @@ class ViewController: UIViewController {
     @IBAction func numberPressed(_ sender: RoundButton) {
         expression += "\(sender.tag)"
         outputLabel.text = expression.createOutput()
-        if i-n == 0{
-        resultLabel.text = String(compute.calculate(expression)).createOutput()
-//        resultLabel.text = "="+separatedNumber(compute.calculate(expression))
-        }
+//        if left-right == 0{
+        resultLabel.text = "="+String(compute.calculate(expression)).createOutput()
+//        }
        
     }
     
     @IBAction func allclearPressed(_ sender: RoundButton) {
         expression = ""
-        result = ""
-        dotisPressed = false
         outputLabel.text = "0"
         resultLabel.text = ""
     }
     
     @IBAction func dottPressed(_ sender: RoundButton) {
-        dotisPressed = true
-        expression += "#.#"
+        expression += "."
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func equalPressed(_ sender: RoundButton) {
-       dotisPressed = false
-        outputLabel.text = String(compute.calculate(expression)).createOutput()
-//       outputLabel.text = separatedNumber(compute.calculate(expression))
+       outputLabel.text = String(compute.calculate(expression)).createOutput()
        resultLabel.text = ""
+       expression = String(compute.calculate(expression))
+        .replacingOccurrences(of: " ", with: "")
        
     }
     
     @IBAction func plusPressed(_ sender: RoundButton) {
-       dotisPressed = false
-       expression += "#+#"
+       expression += "+"
        outputLabel.text = expression.createOutput()
     }
     
     @IBAction func minusPressed(_ sender: RoundButton) {
-        dotisPressed = false
-        expression += "#-#"
+        expression += "-"
         outputLabel.text = expression.createOutput()
-        
     }
     
     @IBAction func multiplyPressed(_ sender: RoundButton) {
-       dotisPressed = false
-       expression += "#*#"
+       expression += "*"
        outputLabel.text = expression.createOutput()
     }
     
     @IBAction func dividePressed(_ sender: RoundButton) {
-        dotisPressed = false
-        expression += "#/#"
+        expression += "/"
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func openPressed(_ sender: RoundButton) {
-        dotisPressed = false
-        expression += "#(#"
+        expression += "("
         outputLabel.text = expression.createOutput()
-        i+=1
+        resultLabel.text = "="+String(compute.calculate(expression)).createOutput()
+//        left+=1
     }
     
     @IBAction func closePressed(_ sender: RoundButton) {
-        dotisPressed = false
-        expression += "#)#"
+        expression += ")"
         outputLabel.text = expression.createOutput()
-        n+=1
-        if i-n == 0{
-        resultLabel.text = String(compute.calculate(expression)).createOutput()
-//        resultLabel.text = "="+separatedNumber(compute.calculate(expression))
-        }
+//        right+=1
+//        if left-right == 0{
+            resultLabel.text = "="+String(compute.calculate(expression)).createOutput()
+//        }
     }
     
 }

@@ -20,7 +20,7 @@ final class Notation{
     private func deleteBrackets (_ input: [String]) -> [String]{
         var expression = input
         var n = 1
-        while  n < expression.count{
+        while  (n + 1) < expression.count && expression.count > 3 {
         if  expression[n-1] == "(" && Double(expression[n]) != nil
             && expression[n+1] == ")"{
             expression.remove(at: n-1)
@@ -149,7 +149,7 @@ final class Notation{
     return output
     }
     func calculate(_ expression : String) -> Double{
-        var expression = notation(parse(expression))
+        var expression = notation(parse(expression.replacingOccurrences(of: "#", with:"")))
         var result : Double
         var n = 2
         while n < expression.count{
@@ -170,7 +170,9 @@ final class Notation{
             }
         n+=1
         }
+        if Double(expression[0]) != nil {
         result = Double(expression[0])!
+        } else { result = 0 }
         return result
     }
 
