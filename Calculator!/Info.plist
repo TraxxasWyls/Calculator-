@@ -47,11 +47,19 @@
 	<array>
 		<string>armv7</string>
 	</array>
+<<<<<<< HEAD
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+=======
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+>>>>>>> calculator
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

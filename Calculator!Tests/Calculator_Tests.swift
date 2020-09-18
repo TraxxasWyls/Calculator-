@@ -32,7 +32,12 @@ class Calculator_Tests: XCTestCase {
             ("-1+3*(2-(1-(1))))", 5),
             ("-(2+2)*(2-4)", 8),
             ("1+3", 4),
+<<<<<<< HEAD
             ("-4.2-5", -9.2)
+=======
+            ("-4.2-5", -9.2),
+            ("(5-",5)
+>>>>>>> calculator
         ]
         for (expression,result) in expressions{
             XCTAssertEqual (notation.calculate(expression), result, accuracy: 0.00000001, expression )

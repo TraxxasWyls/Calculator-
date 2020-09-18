@@ -20,7 +20,11 @@ final class Notation{
     private func deleteBrackets (_ input: [String]) -> [String]{
         var expression = input
         var n = 1
+<<<<<<< HEAD
         while  n < expression.count{
+=======
+        while  (n + 1) < expression.count && expression.count > 3 {
+>>>>>>> calculator
         if  expression[n-1] == "(" && Double(expression[n]) != nil
             && expression[n+1] == ")"{
             expression.remove(at: n-1)
@@ -53,9 +57,15 @@ final class Notation{
     expression.remove(at: 0)
     var n = 1
     while  n < expression.count{
+<<<<<<< HEAD
         
         if expression[n-1].last == "." && Int(expression[n]) != nil{
             expression[n-1]=expression[n-1]+expression[n]
+=======
+
+        if expression[n-1].last == "." && Int(expression[n]) != nil{
+            expression[n-1] = expression[n-1]+expression[n]
+>>>>>>> calculator
             expression.remove(at: n)
         }
         if n != expression.count-1 && isOperation(expression[n-1])
@@ -68,21 +78,37 @@ final class Notation{
             expression[n-1]="-1"
             expression.insert("*", at: n)
         }
+<<<<<<< HEAD
         if  (expression[n-1] == "*" || expression[n-1] == "/")
+=======
+        if  n != expression.count-1 && (expression[n-1] == "*" || expression[n-1] == "/")
+>>>>>>> calculator
             && expression[n] == "-" && expression[n+1] == "("{
             expression.remove(at: n)
             expression.insert("-1", at: n-1)
             expression.insert("*", at: n-1)
         }
+<<<<<<< HEAD
         if  expression[n-1] == "+" && expression[n] == "-" && expression[n+1] == "("{
             expression[n-1]="-"
             expression.remove(at: n)
         }
         if  expression[n-1] == "(" && expression[n] == "-" && expression[n+1] == "("{
+=======
+        if  n != expression.count-1 && expression[n-1] == "+" && expression[n] == "-" && expression[n+1] == "("{
+            expression[n-1]="-"
+            expression.remove(at: n)
+        }
+        if  n != expression.count-1 && expression[n-1] == "(" && expression[n] == "-" && expression[n+1] == "("{
+>>>>>>> calculator
             expression.remove(at: n)
             expression.insert("-1", at: n)
             expression.insert("*", at: n+1)
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> calculator
         if n == 1 && expression[n-1] == "-" && Double(expression[n]) != nil {
             expression[n-1]="-"+expression[n]
             expression.remove(at: n)
@@ -149,7 +175,11 @@ final class Notation{
     return output
     }
     func calculate(_ expression : String) -> Double{
+<<<<<<< HEAD
         var expression = notation(parse(expression))
+=======
+        var expression = notation(parse(expression.replacingOccurrences(of: "#", with:"")))
+>>>>>>> calculator
         var result : Double
         var n = 2
         while n < expression.count{
@@ -170,7 +200,13 @@ final class Notation{
             }
         n+=1
         }
+<<<<<<< HEAD
         result = Double(expression[0])!
+=======
+        if Double(expression[0]) != nil {
+        result = Double(expression[0])!
+        } else { result = 0 }
+>>>>>>> calculator
         return result
     }
 

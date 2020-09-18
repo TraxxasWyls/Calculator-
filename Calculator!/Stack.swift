@@ -9,8 +9,13 @@
 import Foundation
 
  struct Stack<Element>{
+<<<<<<< HEAD
 
     var items = [Element]()
+=======
+  
+     var items = [Element]()
+>>>>>>> calculator
     mutating func push(_ item: Element) {
         items.append(item)
     }
