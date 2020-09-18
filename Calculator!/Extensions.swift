@@ -26,7 +26,12 @@ private func changeChar() -> String{
 private func tokinize() -> [String] {
       self.replacingOccurrences(of: "*", with:"#*#")
       .replacingOccurrences(of: "/", with:"#/#")
+      .replacingOccurrences(of: "-", with:"#-#")
+      .replacingOccurrences(of: "+", with:"#+#")
       .replacingOccurrences(of: ".", with:"#.#")
+      .replacingOccurrences(of: ")", with:"#)#")
+      .replacingOccurrences(of: "(", with:"#(#")
+        
       .components(separatedBy: "#")
   }
     private func formateNum(_ input: [String] ) -> String {
@@ -34,7 +39,7 @@ private func tokinize() -> [String] {
           var point = false
           for element in input {
             if Int(element) != nil && !point{
-                result += separatedNumber(Int(element))
+                result += separatedNumber(Double(element))
             } else { result += element }
             if element == "."{
                 point = true
@@ -45,18 +50,12 @@ private func tokinize() -> [String] {
       func createOutput() -> String{
         self.formateNum(self.tokinize()).changeChar()
       }
+    func createResult() -> String{
+        let result = self
+        let preLast = result.dropLast(1)
+            if self.last == "0" && preLast.last == "." {
+                return separatedNumber(Double(self))
+            }
+        return self.createOutput()
     }
-//    private func formateNum(_ input: [String] ) -> String {
-//        var result = ""
-//        for element in input {
-//            if Int(element) != nil {
-//                result += separatedNumber(Double(element))
-//            }else { result += element }
-//        }
-//        return result
-//    }
-//    func createOutput() -> String{
-//      self.formateNum(self.tokinize()).changeChar()
-//    }
-//}
-//
+}

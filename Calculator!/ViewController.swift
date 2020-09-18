@@ -9,7 +9,6 @@
 import UIKit
 
 var compute = Notation()
-//var left = 0 , right = 0
 
 class ViewController: UIViewController {
     
@@ -17,8 +16,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     
-    var expression = ""
-    
+    var expression = "0"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         outputLabel.text = "0"
@@ -26,22 +25,28 @@ class ViewController: UIViewController {
     }
 
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
-        expression.removeLast()
-        outputLabel.text = expression.createOutput()
-        resultLabel.text =  "="+String(compute.calculate(expression)).createOutput()
+        if !expression.isEmpty{
+            expression.removeLast()
+            outputLabel.text = expression.createOutput()
+            resultLabel.text = "= " + String(compute.calculate(expression))
+                .createResult()
+        }
+        if expression.isEmpty{
+            expression = "0"
+            outputLabel.text = "0"
+            resultLabel.text = ""
+        }
     }
     
     @IBAction func numberPressed(_ sender: RoundButton) {
-        expression += "\(sender.tag)"
+        if expression == "0" { expression = "\(sender.tag)" }
+        else { expression += "\(sender.tag)" }
         outputLabel.text = expression.createOutput()
-//        if left-right == 0{
-        resultLabel.text = "="+String(compute.calculate(expression)).createOutput()
-//        }
-       
+        resultLabel.text = "= " + String(compute.calculate(expression)).createResult()
     }
     
     @IBAction func allclearPressed(_ sender: RoundButton) {
-        expression = ""
+        expression = "0"
         outputLabel.text = "0"
         resultLabel.text = ""
     }
@@ -52,11 +57,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func equalPressed(_ sender: RoundButton) {
-       outputLabel.text = String(compute.calculate(expression)).createOutput()
+       outputLabel.text = String(compute.calculate(expression)).createResult()
        resultLabel.text = ""
        expression = String(compute.calculate(expression))
-        .replacingOccurrences(of: " ", with: "")
-       
+        .replacingOccurrences(of: " ", with: "").createResult()
     }
     
     @IBAction func plusPressed(_ sender: RoundButton) {
@@ -65,7 +69,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func minusPressed(_ sender: RoundButton) {
-        expression += "-"
+        if expression == "0"{
+        expression = "-"
+        } else { expression += "-" }
         outputLabel.text = expression.createOutput()
     }
     
@@ -80,19 +86,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func openPressed(_ sender: RoundButton) {
-        expression += "("
+        if expression == "0"{
+        expression = "("
+        } else { expression += "(" }
         outputLabel.text = expression.createOutput()
-        resultLabel.text = "="+String(compute.calculate(expression)).createOutput()
-//        left+=1
+        resultLabel.text = "= " + String(compute.calculate(expression)).createResult()
     }
     
     @IBAction func closePressed(_ sender: RoundButton) {
+        if expression != "0"{
         expression += ")"
+        resultLabel.text = "= " + String(compute.calculate(expression)).createResult()
+        }
         outputLabel.text = expression.createOutput()
-//        right+=1
-//        if left-right == 0{
-            resultLabel.text = "="+String(compute.calculate(expression)).createOutput()
-//        }
     }
     
 }

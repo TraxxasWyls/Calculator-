@@ -53,9 +53,9 @@ final class Notation{
     expression.remove(at: 0)
     var n = 1
     while  n < expression.count{
-        
+
         if expression[n-1].last == "." && Int(expression[n]) != nil{
-            expression[n-1]=expression[n-1]+expression[n]
+            expression[n-1] = expression[n-1]+expression[n]
             expression.remove(at: n)
         }
         if n != expression.count-1 && isOperation(expression[n-1])
@@ -68,21 +68,22 @@ final class Notation{
             expression[n-1]="-1"
             expression.insert("*", at: n)
         }
-        if  (expression[n-1] == "*" || expression[n-1] == "/")
+        if  n != expression.count-1 && (expression[n-1] == "*" || expression[n-1] == "/")
             && expression[n] == "-" && expression[n+1] == "("{
             expression.remove(at: n)
             expression.insert("-1", at: n-1)
             expression.insert("*", at: n-1)
         }
-        if  expression[n-1] == "+" && expression[n] == "-" && expression[n+1] == "("{
+        if  n != expression.count-1 && expression[n-1] == "+" && expression[n] == "-" && expression[n+1] == "("{
             expression[n-1]="-"
             expression.remove(at: n)
         }
-        if  expression[n-1] == "(" && expression[n] == "-" && expression[n+1] == "("{
+        if  n != expression.count-1 && expression[n-1] == "(" && expression[n] == "-" && expression[n+1] == "("{
             expression.remove(at: n)
             expression.insert("-1", at: n)
             expression.insert("*", at: n+1)
         }
+        
         if n == 1 && expression[n-1] == "-" && Double(expression[n]) != nil {
             expression[n-1]="-"+expression[n]
             expression.remove(at: n)

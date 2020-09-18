@@ -243,6 +243,7 @@ private func formateNum(_ input: [String] ) -> String {
   var tester = "2222#.#2222#*#4444#/#1#.#1111"
 separatedNumber(222222.2222)
 tester.createOutput()
+Int(1.0)
 // выводит "1 234 567,89"
 //var result = notation(parse("-(15.11-6/2*-(1+2))/-1*(2-6*2)"))
 //calculate(&result)
