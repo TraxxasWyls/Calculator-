@@ -15,6 +15,7 @@ final class Insert{
         case "-": return insertMinus(expression)
         case "(": return insertOpen(expression)
         case ")": return insertClose(expression)
+        case ".": return insertDott(expression)
         default: return ""
         }
     }
@@ -94,5 +95,11 @@ final class Insert{
         }
         return expression + ")"
     }
-    
+    private func insertDott(_ expression: String) -> String{
+        if Int(String(expression.last!)) != nil{
+            return expression + "."
+        }
+        return expression
+    }
+
 }

@@ -53,7 +53,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func dottPressed(_ sender: RoundButton) {
-        expression += "."
+        expression = inseration.insertOperation(expression, ".")
+//        expression += "."
         outputLabel.text = expression.createOutput()
     }
     
