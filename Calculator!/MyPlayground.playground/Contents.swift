@@ -244,6 +244,19 @@ private func formateNum(_ input: [String] ) -> String {
 separatedNumber(222222.2222)
 tester.createOutput()
 Int(1.0)
+
+
+var numbers = "aswd123/"
+var operation = "*"
+print(numbers.dropLast(1))
+// Prints "[1, 2, 3]"
+print(numbers.dropLast(10))
+// Prints "[]"
+print(numbers)
+var expression1 = "sda1"
+if Int(String(expression1.last!)) != nil{
+    print("\(numbers.dropLast()+operation)")
+}
 // выводит "1 234 567,89"
 //var result = notation(parse("-(15.11-6/2*-(1+2))/-1*(2-6*2)"))
 //calculate(&result)

@@ -9,6 +9,7 @@
 import UIKit
 
 var compute = Notation()
+var inseration = Insert()
 
 class ViewController: UIViewController {
     
@@ -64,24 +65,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func plusPressed(_ sender: RoundButton) {
-       expression += "+"
+       expression = inseration.insertOperation(expression, "+")
+//       expression += "+"
        outputLabel.text = expression.createOutput()
     }
     
     @IBAction func minusPressed(_ sender: RoundButton) {
-        if expression == "0"{
-        expression = "-"
-        } else { expression += "-" }
+        expression = inseration.insertOperation(expression, "-")
+//        if expression == "0"{
+//        expression = "-"
+//        } else { expression += "-" }
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func multiplyPressed(_ sender: RoundButton) {
-       expression += "*"
+       expression = inseration.insertOperation(expression, "*")
+//       expression += "*"
        outputLabel.text = expression.createOutput()
     }
     
     @IBAction func dividePressed(_ sender: RoundButton) {
-        expression += "/"
+        expression = inseration.insertOperation(expression, "/")
+//        expression += "/"
         outputLabel.text = expression.createOutput()
     }
     
