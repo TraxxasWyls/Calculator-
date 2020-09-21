@@ -30,9 +30,12 @@ final class Insert{
         }
         if String(expression.last!) == operation
             || expression.last == "("
-            || (expression.last == "-" && (preLast.last == "*"
-            || preLast.last == "/" || preLast.last == "(")){
+            || (expression.last == "-" && preLast.last == "("){
             return expression
+        }
+        if (expression.last == "-" && (preLast.last == "*"
+            || preLast.last == "/")){
+            return "\(expression.dropLast(2) + operation)"
         }
         if expression.last == "*" && operation == "/"
             || expression.last == "/" && operation == "*"
@@ -53,9 +56,12 @@ final class Insert{
             return expression + "+"
         }
         if expression.last == "(" || expression.last == "+"
-            || expression.last == "-" && (preLast.last == "*"
-            || preLast.last == "/" || preLast.last == "("){
+            || expression.last == "-" && preLast.last == "("{
             return expression
+        }
+        if (expression.last == "-" && (preLast.last == "*"
+            || preLast.last == "/")){
+            return "\(expression.dropLast(2) + "+")"
         }
         if expression.last == "*" || expression.last == "/"
             || (expression.last == "-" && (preLast.last != nil)){
