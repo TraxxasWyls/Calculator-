@@ -18,13 +18,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     var expression = "0"
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        outputLabel.text = "0"
-        resultLabel.text = "Ну рискни"
+    
+    func saveData(){
+        UserDefaults.standard.set(expression, forKey: "expressionKey")
+        UserDefaults.standard.synchronize()
     }
-
+    func loadData(){
+        if let temp = UserDefaults.standard.string(forKey: "expressionKey"){
+            expression = temp
+        }
+    }
+    
+    override func viewDidLoad() {
+        loadData()
+        super.viewDidLoad()
+        outputLabel.text = expression.createOutput()
+        if expression != "0"{
+        resultLabel.text = String(compute.calculate(expression)).createResult()
+        } else {
+            resultLabel.text = "Поехали"
+          }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        saveData()
+    }
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
         if !expression.isEmpty{
             expression.removeLast()
@@ -54,7 +71,6 @@ class ViewController: UIViewController {
     
     @IBAction func dottPressed(_ sender: RoundButton) {
         expression = inseration.insertOperation(expression, ".")
-//        expression += "."
         outputLabel.text = expression.createOutput()
     }
     
@@ -68,43 +84,32 @@ class ViewController: UIViewController {
     
     @IBAction func plusPressed(_ sender: RoundButton) {
        expression = inseration.insertOperation(expression, "+")
-//       expression += "+"
        outputLabel.text = expression.createOutput()
     }
     
     @IBAction func minusPressed(_ sender: RoundButton) {
         expression = inseration.insertOperation(expression, "-")
-//        if expression == "0"{
-//        expression = "-"
-//        } else { expression += "-" }
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func multiplyPressed(_ sender: RoundButton) {
        expression = inseration.insertOperation(expression, "*")
-//       expression += "*"
        outputLabel.text = expression.createOutput()
     }
     
     @IBAction func dividePressed(_ sender: RoundButton) {
         expression = inseration.insertOperation(expression, "/")
-//        expression += "/"
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func openPressed(_ sender: RoundButton) {
         expression = inseration.insertOperation(expression, "(")
-//        if expression == "0"{
-//        expression = "("
-//        } else { expression += "(" }
         outputLabel.text = expression.createOutput()
         resultLabel.text = String(compute.calculate(expression)).createResult()
     }
     
     @IBAction func closePressed(_ sender: RoundButton) {
         expression = inseration.insertOperation(expression, ")")
-//        if expression != "0"{
-//        expression += ")"
         resultLabel.text = String(compute.calculate(expression)).createResult()
         outputLabel.text = expression.createOutput()
     }
