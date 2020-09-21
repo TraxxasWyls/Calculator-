@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         if !expression.isEmpty{
             expression.removeLast()
             outputLabel.text = expression.createOutput()
-            resultLabel.text = "= " + String(compute.calculate(expression))
+            resultLabel.text = String(compute.calculate(expression))
                 .createResult()
         }
         if expression.isEmpty{
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         if expression == "0" { expression = "\(sender.tag)" }
         else { expression += "\(sender.tag)" }
         outputLabel.text = expression.createOutput()
-        resultLabel.text = "= " + String(compute.calculate(expression)).createResult()
+        resultLabel.text = String(compute.calculate(expression)).createResult()
     }
     
     @IBAction func allclearPressed(_ sender: RoundButton) {
@@ -63,6 +63,7 @@ class ViewController: UIViewController {
        resultLabel.text = ""
        expression = String(compute.calculate(expression))
         .replacingOccurrences(of: " ", with: "").createResult()
+        .replacingOccurrences(of: ",", with: ".")
     }
     
     @IBAction func plusPressed(_ sender: RoundButton) {
@@ -92,18 +93,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func openPressed(_ sender: RoundButton) {
-        if expression == "0"{
-        expression = "("
-        } else { expression += "(" }
+        expression = inseration.insertOperation(expression, "(")
+//        if expression == "0"{
+//        expression = "("
+//        } else { expression += "(" }
         outputLabel.text = expression.createOutput()
-        resultLabel.text = "= " + String(compute.calculate(expression)).createResult()
+        resultLabel.text = String(compute.calculate(expression)).createResult()
     }
     
     @IBAction func closePressed(_ sender: RoundButton) {
-        if expression != "0"{
-        expression += ")"
-        resultLabel.text = "= " + String(compute.calculate(expression)).createResult()
-        }
+        expression = inseration.insertOperation(expression, ")")
+//        if expression != "0"{
+//        expression += ")"
+        resultLabel.text = String(compute.calculate(expression)).createResult()
         outputLabel.text = expression.createOutput()
     }
     

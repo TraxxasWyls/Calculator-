@@ -10,7 +10,7 @@ import Foundation
 
 final class Notation{
     
-    private func isOperation(_ input: String)->Bool{
+     func isOperation(_ input: String)->Bool{
         if input == "+" || input == "*" || input == "-" || input == "/"
             || input == "(" || input == ")"{
             return true
@@ -30,7 +30,7 @@ final class Notation{
         }
         return expression
     }
-   private func parse(_ input: String)->[String]{
+    func parse(_ input: String)->[String]{
             var expression : [String] = [""]
             var i = 0
             if Int(input.prefix(1)) != nil

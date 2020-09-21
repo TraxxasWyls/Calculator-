@@ -93,17 +93,46 @@ final class Insert{
         if expression == "0"{
             return "("
         }
+        if Int(String(expression.last!)) != nil{
+            return expression + "*("
+        }
+        if expression.last == "."{
+            return expression
+        }
         return expression + "("
     }
     private func insertClose(_ expression: String) -> String{
         if expression == "0"{
             return "0"
         }
-        return expression + ")"
+        if expression.filter({$0 == "("}).count
+            > expression.filter({$0 == ")"}).count{
+            return expression + ")"
+        }
+        return expression
     }
     private func insertDott(_ expression: String) -> String{
-        if Int(String(expression.last!)) != nil{
-            return expression + "."
+        func amountOfDotts() -> Int{
+            var count = 0
+            for char in expression {
+                if compute.isOperation(String(char)){
+                    count = 0
+                }
+                if char == "."{
+                    count += 1
+                }
+            }
+            return count
+        }
+        if expression.last == "." || amountOfDotts() > 0 {
+            return expression
+        }
+        if Double(compute.parse(expression).last!) != nil {
+            let number = String(Double(compute.parse(expression).last!)!)
+            let preLast = number.dropLast(1)
+            if number.last == "0" && preLast.last == "." {
+                    return expression + "."
+            }
         }
         return expression
     }
