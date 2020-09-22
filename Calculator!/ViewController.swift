@@ -11,10 +11,11 @@ import UIKit
 var compute = Notation()
 var inseration = Insert()
 
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
-    
+  
     @IBOutlet weak var resultLabel: UILabel!
     
     var expression = "0"
@@ -43,13 +44,15 @@ class ViewController: UIViewController {
         saveData()
     }
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
-        if !expression.isEmpty{
+        if !expression.isEmpty && expression != "nan" && expression != "inf"
+            && expression != "-inf"{
             expression.removeLast()
             outputLabel.text = expression.createOutput()
             resultLabel.text = String(compute.calculate(expression))
                 .createResult()
         }
-        if expression.isEmpty{
+        if expression.isEmpty || expression == "nan" || expression == "inf"
+            || expression == "-inf"{
             expression = "0"
             outputLabel.text = "0"
             resultLabel.text = ""
@@ -57,10 +60,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func numberPressed(_ sender: RoundButton) {
-        if expression == "0" { expression = "\(sender.tag)" }
-        else { expression += "\(sender.tag)" }
+        expression = inseration.insertOperation(expression, String(sender.tag))
         outputLabel.text = expression.createOutput()
+        if expression != "0"{
         resultLabel.text = String(compute.calculate(expression)).createResult()
+        }
     }
     
     @IBAction func allclearPressed(_ sender: RoundButton) {
@@ -105,12 +109,15 @@ class ViewController: UIViewController {
     @IBAction func openPressed(_ sender: RoundButton) {
         expression = inseration.insertOperation(expression, "(")
         outputLabel.text = expression.createOutput()
-        resultLabel.text = String(compute.calculate(expression)).createResult()
     }
     
     @IBAction func closePressed(_ sender: RoundButton) {
         expression = inseration.insertOperation(expression, ")")
-        resultLabel.text = String(compute.calculate(expression)).createResult()
+        if expression.filter({$0 == "("}).count
+            == expression.filter({$0 == ")"}).count
+            && expression.filter({$0 == ")"}).count != 0{
+            resultLabel.text = String(compute.calculate(expression)).createResult()
+        }
         outputLabel.text = expression.createOutput()
     }
     

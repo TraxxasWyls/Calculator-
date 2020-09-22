@@ -8,7 +8,11 @@
 
 import Foundation
 final class Insert{
-    public func insertOperation(_ expression: String,_ operation: String) -> String{
+    public func insertOperation(_ input: String,_ operation: String) -> String{
+        var expression = input
+        if expression == "nan" || expression == "-inf" || expression == "inf"{
+              expression = "0"
+        }
         switch operation {
         case "*","/": return insertMultOrDiv(expression,operation)
         case "+": return insertPlus(expression)
@@ -16,13 +20,13 @@ final class Insert{
         case "(": return insertOpen(expression)
         case ")": return insertClose(expression)
         case ".": return insertDott(expression)
-        default: return ""
+        default: return insertNumber(expression,operation)
         }
     }
     private func insertMultOrDiv(_ expression: String,_ operation: String) -> String{
         let preLast = expression.dropLast(1)
         if expression == "0"{
-            return "0"
+            return "0" + operation
         }
         if Int(String(expression.last!)) != nil
         || expression.last == ")"{
@@ -99,14 +103,25 @@ final class Insert{
         if expression.last == "."{
             return expression
         }
+        if expression.last == ")"{
+            return expression + "*("
+        }
         return expression + "("
+        
     }
     private func insertClose(_ expression: String) -> String{
         if expression == "0"{
             return "0"
         }
+        if compute.isOperation(String(expression.last!))
+            && expression.last != ")"{
+            return expression
+        }
         if expression.filter({$0 == "("}).count
             > expression.filter({$0 == ")"}).count{
+            if expression.last == "."{
+                return expression.dropLast() + ")"
+            }
             return expression + ")"
         }
         return expression
@@ -136,5 +151,10 @@ final class Insert{
         }
         return expression
     }
-
+    private func insertNumber(_ expression: String, _ operation: String) -> String{
+        if expression == "0" {
+            return operation
+        }
+        return expression + operation 
+    }
 }

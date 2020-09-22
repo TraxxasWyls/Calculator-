@@ -25,14 +25,26 @@ final class Notation{
             && expression[n+1] == ")"{
             expression.remove(at: n-1)
             expression.remove(at: n)
+            n = 0
         }
         n+=1
         }
         return expression
     }
+    private func addBrackets(_ input: String) -> String{
+        var expression = input
+        var difference = expression.filter({$0 == "("}).count
+            - expression.filter({$0 == ")"}).count
+                while (difference != 0){
+                    expression.append(")")
+                    difference -= 1
+                }
+        return expression
+    }
     func parse(_ input: String)->[String]{
             var expression : [String] = [""]
             var i = 0
+            
             if Int(input.prefix(1)) != nil
                 || input.prefix(1) == "("
                 || input.prefix(1) == "-"{
@@ -150,7 +162,8 @@ final class Notation{
     return output
     }
     func calculate(_ expression : String) -> Double{
-        var expression = notation(parse(expression.replacingOccurrences(of: "#", with:"")))
+        var expression = notation(parse(addBrackets(expression
+                        .replacingOccurrences(of: "#", with:""))))
         var result : Double
         var n = 2
         while n < expression.count{
