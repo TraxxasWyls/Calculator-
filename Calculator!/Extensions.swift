@@ -47,7 +47,7 @@ private func tokinize() -> [String] {
           }
           return result
       }
-      func createOutput() -> String{
+    func createOutput() -> String{
         self.formateNum(self.tokinize()).changeChar()
       }
     func createResult() -> String{

@@ -82,7 +82,8 @@ class ViewController: UIViewController {
        outputLabel.text = String(compute.calculate(expression)).createResult()
        resultLabel.text = ""
        expression = String(compute.calculate(expression))
-        .replacingOccurrences(of: " ", with: "").createResult()
+        .createResult()
+        .replacingOccurrences(of: " ", with: "")
         .replacingOccurrences(of: ",", with: ".")
     }
     
