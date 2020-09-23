@@ -41,24 +41,18 @@ class RoundButton: UIButton {
     @IBInspectable var roundButton: Bool = false {
         didSet{
             if roundButton {
-                
                 clipsToBounds = true
                 layer.cornerRadius = frame.height/2
                 addTarget(self, action: #selector(touchDown), for: [.touchDown, .touchDragEnter])
                 addTarget(self, action: #selector(touchUp), for: [.touchUpInside, .touchDragExit, .touchCancel])
             }
-            
         }
-        
     }
     
     override func prepareForInterfaceBuilder() {
         if roundButton{
             clipsToBounds = true
             layer.cornerRadius = frame.height/2
-            addTarget(self, action: #selector(touchDown), for: [.touchDown, .touchDragEnter])
-            addTarget(self, action: #selector(touchUp), for: [.touchUpInside, .touchDragExit, .touchCancel])
-            
         }
     }
 
