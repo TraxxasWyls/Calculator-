@@ -8,6 +8,7 @@
 
 import Foundation
 final class Insert{
+    var compute = Notation()
     public func insertOperation(_ input: String,_ operation: String) -> String{
         var expression = input
         if expression == "nan" || expression == "-inf" || expression == "inf"{

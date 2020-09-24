@@ -8,17 +8,14 @@
 
 import UIKit
 
-var compute = Notation()
-var inseration = Insert()
-
-
 class ViewController: UIViewController {
     
-    @IBOutlet weak var outputLabel: UILabel!
-  
-    @IBOutlet weak var resultLabel: UILabel!
-    
+    var compute = Notation()
+    var inseration = Insert()
     var expression = "0"
+    
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var outputLabel: SelectableLabel!
     
     func saveData(){
         UserDefaults.standard.set(expression, forKey: "expressionKey")
@@ -29,7 +26,6 @@ class ViewController: UIViewController {
             expression = temp
         }
     }
-    
     override func viewDidLoad() {
         loadData()
         super.viewDidLoad()
@@ -39,10 +35,17 @@ class ViewController: UIViewController {
         } else {
             resultLabel.text = "Поехали"
           }
+        outputLabel.pasteAction = { [weak self] text in
+            guard let self = self else { return }
+            self.expression = text
+                .prepareForCreate()
+            self.resultLabel.text = String((self.compute.calculate(self.expression))).createResult()
+        }
     }
     override func viewDidDisappear(_ animated: Bool) {
         saveData()
     }
+    
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
         if !expression.isEmpty && expression != "nan" && expression != "inf"
             && expression != "-inf"{
@@ -121,6 +124,6 @@ class ViewController: UIViewController {
         }
         outputLabel.text = expression.createOutput()
     }
-    
+
 }
 

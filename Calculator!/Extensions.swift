@@ -31,6 +31,7 @@ private func tokinize() -> [String] {
       .replacingOccurrences(of: ".", with:"#.#")
       .replacingOccurrences(of: ")", with:"#)#")
       .replacingOccurrences(of: "(", with:"#(#")
+      .replacingOccurrences(of: " ", with:"")
         
       .components(separatedBy: "#")
   }
@@ -57,5 +58,11 @@ private func tokinize() -> [String] {
                 return separatedNumber(Double(self))
             }
         return self.createOutput()
+    }
+    func prepareForCreate() -> String{
+        self.replacingOccurrences(of: "×", with:"*")
+            .replacingOccurrences(of: "÷", with:"/")
+            .replacingOccurrences(of: ",", with:".")
+            .replacingOccurrences(of: " ", with:"")
     }
 }
