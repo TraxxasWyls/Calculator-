@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 
 final class SelectableLabel: UILabel {
+
     var pasteAction: ((String) -> ())?
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,7 +61,7 @@ final class SelectableLabel: UILabel {
     
     private func textRect() -> CGRect {
         let inset: CGFloat = -4
-        return textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines).insetBy(dx: inset, dy: inset)
+        return textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines).insetBy(dx: 3*inset, dy: -0.5*inset)
     }
     
     private func menuForSelection() -> UIMenuController {

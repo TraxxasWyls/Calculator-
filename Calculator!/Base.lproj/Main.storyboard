@@ -394,10 +394,11 @@
                                     <constraint firstItem="Dki-xF-zUu" firstAttribute="top" secondItem="IsB-Do-XyE" secondAttribute="bottom" constant="12.67" id="rBO-ef-WAD"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="95.666666666666686" text="7777777777777" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="50" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
+                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="95.666666666666686" text="33 333" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="40" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
                                 <rect key="frame" x="25" y="123" width="325" height="95.666666666666686"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" selected="YES" adjustable="YES" allowsDirectInteraction="YES"/>
+                                    <bool key="isElement" value="YES"/>
                                 </accessibility>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="80"/>

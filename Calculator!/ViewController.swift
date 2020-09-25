@@ -63,11 +63,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func numberPressed(_ sender: RoundButton) {
+        outputLabel.sizeToFit()
         expression = inseration.insertOperation(expression, String(sender.tag))
         outputLabel.text = expression.createOutput()
         if expression != "0"{
         resultLabel.text = String(compute.calculate(expression)).createResult()
         }
+        
+        print(outputLabel.text)
+        print(outputLabel.intrinsicContentSize)
+        print(outputLabel.constraints)
+        print(resultLabel.superview!.constraints)
+        print("-----------------------------------")
+//       outputLabel.font = UIFont.systemFont(ofSize: 25)
     }
     
     @IBAction func allclearPressed(_ sender: RoundButton) {
