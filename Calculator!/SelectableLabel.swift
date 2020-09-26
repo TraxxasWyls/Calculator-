@@ -11,7 +11,7 @@ import AVFoundation
 
 // MARK: - SelectableLabel
 
-final class SelectableLabel: UILabel {
+final class SelectableLabel: FittableFontLabel {
 
     // MARK: - Properties
 

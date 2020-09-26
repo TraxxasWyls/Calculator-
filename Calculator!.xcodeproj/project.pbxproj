@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3329862A251E76F800CB249C /* CalculationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33298629251E76F800CB249C /* CalculationAlgorithm.swift */; };
+		CB450292251FCAF000244ECF /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB450291251FCAF000244ECF /* UILabel.swift */; };
+		CB450299251FCB1F00244ECF /* FittableFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB450298251FCB1F00244ECF /* FittableFontLabel.swift */; };
 		CB5BADB02508323800AD4E0A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BADAF2508323800AD4E0A /* Stack.swift */; };
 		CB5BADB22508368100AD4E0A /* Notation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BADB12508368100AD4E0A /* Notation.swift */; };
 		CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB966DE02517CA460095D15C /* InsertOperation.swift */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		33298629251E76F800CB249C /* CalculationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationAlgorithm.swift; sourceTree = "<group>"; };
+		CB450291251FCAF000244ECF /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabel.swift; path = ../../../../../Downloads/UILabel.swift; sourceTree = "<group>"; };
+		CB450298251FCB1F00244ECF /* FittableFontLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FittableFontLabel.swift; path = ../../../../../../Downloads/FittableFontLabel.swift; sourceTree = "<group>"; };
 		CB5BADAF2508323800AD4E0A /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		CB5BADB12508368100AD4E0A /* Notation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notation.swift; sourceTree = "<group>"; };
 		CB5BADB62508D38D00AD4E0A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -114,6 +118,39 @@
 			path = Concrete;
 			sourceTree = "<group>";
 		};
+		CB45028F251FCAC200244ECF /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CB450290251FCADD00244ECF /* Extensions */,
+				CB450296251FCAFE00244ECF /* Views */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		CB450290251FCADD00244ECF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CB450291251FCAF000244ECF /* UILabel.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CB450296251FCAFE00244ECF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CB450297251FCB0A00244ECF /* FittableFontLabel */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CB450297251FCB0A00244ECF /* FittableFontLabel */ = {
+			isa = PBXGroup;
+			children = (
+				CB450298251FCB1F00244ECF /* FittableFontLabel.swift */,
+			);
+			path = FittableFontLabel;
+			sourceTree = "<group>";
+		};
 		CBA99E982503B58A008048F1 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +174,7 @@
 		CBA99EA32503B58A008048F1 /* Calculator! */ = {
 			isa = PBXGroup;
 			children = (
+				CB45028F251FCAC200244ECF /* PresentationLayer */,
 				33298627251E76E400CB249C /* CalculationAlgorithm */,
 				CBA99EA42503B58A008048F1 /* AppDelegate.swift */,
 				CBA99EA62503B58A008048F1 /* SceneDelegate.swift */,
@@ -302,9 +340,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB450299251FCB1F00244ECF /* FittableFontLabel.swift in Sources */,
 				CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */,
 				CBA99EA92503B58A008048F1 /* ViewController.swift in Sources */,
 				CBFEEA3F251CF2120007E6FD /* SelectableLabel.swift in Sources */,
+				CB450292251FCAF000244ECF /* UILabel.swift in Sources */,
 				3329862A251E76F800CB249C /* CalculationAlgorithm.swift in Sources */,
 				CBA99EA52503B58A008048F1 /* AppDelegate.swift in Sources */,
 				CB5BADB22508368100AD4E0A /* Notation.swift in Sources */,

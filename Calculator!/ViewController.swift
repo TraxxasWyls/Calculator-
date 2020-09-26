@@ -36,6 +36,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         loadData()
         super.viewDidLoad()
+        outputLabel.autoAdjustFontSize = true
         outputLabel.text = expression.createOutput()
         if expression != "0" {
             resultLabel.text = String(algorithm.calculate(expression)).createResult()
