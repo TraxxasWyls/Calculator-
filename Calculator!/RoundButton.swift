@@ -8,22 +8,50 @@
 
 import UIKit
 
+// MARK: - RoundButton
+
 @IBDesignable
-class RoundButton: UIButton {
+final class RoundButton: UIButton {
+
+    // MARK: - Properties
 
     private var animator = UIViewPropertyAnimator()
-    @objc private func touchDown() {
-        animator.stopAnimation(true)
-        if tag < 11{
-        backgroundColor = #colorLiteral(red: 0.4517944455, green: 0.4469253421, blue: 0.4469245672, alpha: 1)
-        }
-        if tag >= 11 && tag < 16{
-        backgroundColor = #colorLiteral(red: 0.9839183688, green: 0.7829335332, blue: 0.5527208447, alpha: 1)
-        }
-        if tag >= 16{
-        backgroundColor = #colorLiteral(red: 0.8367859125, green: 0.8406593204, blue: 0.8501242399, alpha: 1)
+
+    @IBInspectable var roundButton: Bool = false {
+        didSet {
+            if roundButton {
+                clipsToBounds = true
+                layer.cornerRadius = frame.height / 2
+                addTarget(self, action: #selector(touchDown), for: [.touchDown, .touchDragEnter])
+                addTarget(self, action: #selector(touchUp), for: [.touchUpInside, .touchDragExit, .touchCancel])
+            }
         }
     }
+
+    // MARK: - UIButton
+
+    override func prepareForInterfaceBuilder() {
+        if roundButton {
+            clipsToBounds = true
+            layer.cornerRadius = frame.height/2
+        }
+    }
+
+    // MARK: - Actions
+
+    @objc private func touchDown() {
+        animator.stopAnimation(true)
+        if tag < 11 {
+            backgroundColor = #colorLiteral(red: 0.4517944455, green: 0.4469253421, blue: 0.4469245672, alpha: 1)
+        }
+        if tag >= 11 && tag < 16{
+            backgroundColor = #colorLiteral(red: 0.9839183688, green: 0.7829335332, blue: 0.5527208447, alpha: 1)
+        }
+        if tag >= 16{
+            backgroundColor = #colorLiteral(red: 0.8367859125, green: 0.8406593204, blue: 0.8501242399, alpha: 1)
+        }
+    }
+
     @objc private func touchUp() {
         animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeOut, animations: {
             if self.tag < 11{
@@ -38,22 +66,4 @@ class RoundButton: UIButton {
         })
         animator.startAnimation()
     }
-    @IBInspectable var roundButton: Bool = false {
-        didSet{
-            if roundButton {
-                clipsToBounds = true
-                layer.cornerRadius = frame.height/2
-                addTarget(self, action: #selector(touchDown), for: [.touchDown, .touchDragEnter])
-                addTarget(self, action: #selector(touchUp), for: [.touchUpInside, .touchDragExit, .touchCancel])
-            }
-        }
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        if roundButton{
-            clipsToBounds = true
-            layer.cornerRadius = frame.height/2
-        }
-    }
-
 }

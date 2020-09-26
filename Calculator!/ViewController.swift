@@ -8,54 +8,60 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
-    var compute = Notation()
-    var inseration = Insert()
-    var expression = "0"
+// MARK: - ViewController
+
+final class ViewController: UIViewController {
+
+    // MARK: - Properties
+
+    /// UserDefaults instance
+    private let defaults: UserDefaults = .standard
+
+    /// CalculationAlgorithm instance
+    private let algorithm: CalculationAlgorithm = Notation()
+
+    /// Insert instance
+    private let inseration = Insert()
+
+    /// Current expression
+    private var expression = "0"
+
+    // MARK: - IBOutlets
     
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var outputLabel: SelectableLabel!
-    
-    func saveData(){
-        UserDefaults.standard.set(expression, forKey: "expressionKey")
-        UserDefaults.standard.synchronize()
-    }
-    func loadData(){
-        if let temp = UserDefaults.standard.string(forKey: "expressionKey"){
-            expression = temp
-        }
-    }
+
+    // MARK: - UIViewController
+
     override func viewDidLoad() {
         loadData()
         super.viewDidLoad()
         outputLabel.text = expression.createOutput()
-        if expression != "0"{
-        resultLabel.text = String(compute.calculate(expression)).createResult()
+        if expression != "0" {
+            resultLabel.text = String(algorithm.calculate(expression)).createResult()
         } else {
             resultLabel.text = "Поехали"
-          }
+        }
         outputLabel.pasteAction = { [weak self] text in
             guard let self = self else { return }
-            self.expression = text
-                .prepareForCreate()
-            self.resultLabel.text = String((self.compute.calculate(self.expression))).createResult()
+            self.expression = text.prepareForCreate()
+            self.resultLabel.text = String((self.algorithm.calculate(self.expression))).createResult()
         }
     }
+
     override func viewDidDisappear(_ animated: Bool) {
         saveData()
     }
-    
+
+    // MARK: - Actions
+
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
-        if !expression.isEmpty && expression != "nan" && expression != "inf"
-            && expression != "-inf"{
+        if !expression.isEmpty && expression != "nan" && expression != "inf" && expression != "-inf" {
             expression.removeLast()
             outputLabel.text = expression.createOutput()
-            resultLabel.text = String(compute.calculate(expression))
-                .createResult()
+            resultLabel.text = String(algorithm.calculate(expression)).createResult()
         }
-        if expression.isEmpty || expression == "nan" || expression == "inf"
-            || expression == "-inf"{
+        if expression.isEmpty || expression == "nan" || expression == "inf" || expression == "-inf" {
             expression = "0"
             outputLabel.text = "0"
             resultLabel.text = ""
@@ -64,18 +70,11 @@ class ViewController: UIViewController {
     
     @IBAction func numberPressed(_ sender: RoundButton) {
         outputLabel.sizeToFit()
-        expression = inseration.insertOperation(expression, String(sender.tag))
+        expression = inseration.insertOperation(String(sender.tag), into: expression, basedOn: algorithm)
         outputLabel.text = expression.createOutput()
         if expression != "0"{
-        resultLabel.text = String(compute.calculate(expression)).createResult()
+            resultLabel.text = String(algorithm.calculate(expression)).createResult()
         }
-        
-        print(outputLabel.text)
-        print(outputLabel.intrinsicContentSize)
-        print(outputLabel.constraints)
-        print(resultLabel.superview!.constraints)
-        print("-----------------------------------")
-//       outputLabel.font = UIFont.systemFont(ofSize: 25)
     }
     
     @IBAction func allclearPressed(_ sender: RoundButton) {
@@ -85,53 +84,66 @@ class ViewController: UIViewController {
     }
     
     @IBAction func dottPressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation(expression, ".")
+        expression = inseration.insertOperation(".", into: expression, basedOn: algorithm)
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func equalPressed(_ sender: RoundButton) {
-       outputLabel.text = String(compute.calculate(expression)).createResult()
-       resultLabel.text = ""
-       expression = String(compute.calculate(expression))
-        .createResult()
-        .replacingOccurrences(of: " ", with: "")
-        .replacingOccurrences(of: ",", with: ".")
+        outputLabel.text = String(algorithm.calculate(expression)).createResult()
+        resultLabel.text = ""
+        expression = String(algorithm.calculate(expression))
+            .createResult()
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: ",", with: ".")
     }
     
     @IBAction func plusPressed(_ sender: RoundButton) {
-       expression = inseration.insertOperation(expression, "+")
-       outputLabel.text = expression.createOutput()
+        expression = inseration.insertOperation("+", into: expression, basedOn: algorithm)
+        outputLabel.text = expression.createOutput()
     }
     
     @IBAction func minusPressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation(expression, "-")
+        expression = inseration.insertOperation("-", into: expression, basedOn: algorithm)
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func multiplyPressed(_ sender: RoundButton) {
-       expression = inseration.insertOperation(expression, "*")
-       outputLabel.text = expression.createOutput()
+        expression = inseration.insertOperation("*", into: expression, basedOn: algorithm)
+        outputLabel.text = expression.createOutput()
     }
     
     @IBAction func dividePressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation(expression, "/")
+        expression = inseration.insertOperation("/", into: expression, basedOn: algorithm)
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func openPressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation(expression, "(")
+        expression = inseration.insertOperation("(", into: expression, basedOn: algorithm)
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func closePressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation(expression, ")")
-        if expression.filter({$0 == "("}).count
-            == expression.filter({$0 == ")"}).count
-            && expression.filter({$0 == ")"}).count != 0{
-            resultLabel.text = String(compute.calculate(expression)).createResult()
+        expression = inseration.insertOperation(")", into: expression, basedOn: algorithm)
+        let isExpressionHasClosingBrackets = expression.filter({ $0 == ")" }).count != 0
+        let openingBracketsCount = expression.filter({ $0 == "(" }).count
+        let closingBracketsCount = expression.filter({ $0 == ")" }).count
+        let isExpressionBracketsAreExclusive = openingBracketsCount == closingBracketsCount
+        if isExpressionBracketsAreExclusive && isExpressionHasClosingBrackets {
+            resultLabel.text = String(algorithm.calculate(expression)).createResult()
         }
         outputLabel.text = expression.createOutput()
     }
 
-}
+    // MARK: - Private
 
+    private func saveData() {
+        defaults.set(expression, forKey: "expressionKey")
+        defaults.synchronize()
+    }
+
+    private func loadData() {
+        if let temp = defaults.string(forKey: "expressionKey"){
+            expression = temp
+        }
+    }
+}

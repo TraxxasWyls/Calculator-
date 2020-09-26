@@ -9,56 +9,63 @@
 import Foundation
 
 func separatedNumber(_ number: Any) -> String {
-guard let itIsANumber = number as? NSNumber else { return "Not a number" }
-let formatter = NumberFormatter()
-formatter.numberStyle = .decimal
-formatter.groupingSeparator = " "
-formatter.decimalSeparator = "."
-return formatter.string(from: itIsANumber)!
+    guard let itIsANumber = number as? NSNumber else { return "Not a number" }
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.groupingSeparator = " "
+    formatter.decimalSeparator = "."
+    return formatter.string(from: itIsANumber)!
 }
+
 extension String {
-private func changeChar() -> String{
-      self
-      .replacingOccurrences(of: "*", with:"×")
-      .replacingOccurrences(of: "/", with:"÷")
-      .replacingOccurrences(of: ".", with:",")
-  }
-private func tokinize() -> [String] {
-      self.replacingOccurrences(of: "*", with:"#*#")
-      .replacingOccurrences(of: "/", with:"#/#")
-      .replacingOccurrences(of: "-", with:"#-#")
-      .replacingOccurrences(of: "+", with:"#+#")
-      .replacingOccurrences(of: ".", with:"#.#")
-      .replacingOccurrences(of: ")", with:"#)#")
-      .replacingOccurrences(of: "(", with:"#(#")
-      .replacingOccurrences(of: " ", with:"")
-        
-      .components(separatedBy: "#")
-  }
+
+    private func changeChar() -> String{
+        self.replacingOccurrences(of: "*", with:"×")
+            .replacingOccurrences(of: "/", with:"÷")
+            .replacingOccurrences(of: ".", with:",")
+    }
+
+    private func tokinize() -> [String] {
+        self.replacingOccurrences(of: "*", with:"#*#")
+            .replacingOccurrences(of: "/", with:"#/#")
+            .replacingOccurrences(of: "-", with:"#-#")
+            .replacingOccurrences(of: "+", with:"#+#")
+            .replacingOccurrences(of: ".", with:"#.#")
+            .replacingOccurrences(of: ")", with:"#)#")
+            .replacingOccurrences(of: "(", with:"#(#")
+            .replacingOccurrences(of: " ", with:"")
+            .components(separatedBy: "#")
+    }
+
     private func formateNum(_ input: [String] ) -> String {
-          var result = ""
-          var point = false
-          for element in input {
-            if Int(element) != nil && !point{
-                result += separatedNumber(Double(element))
+        var result = ""
+        var point = false
+        for element in input {
+            if Int(element) != nil && !point,
+               let doubleElement = Double(element){
+                result += separatedNumber(doubleElement)
             } else { result += element }
             if element == "."{
                 point = true
             } else { point = false }
-          }
-          return result
-      }
+        }
+        return result
+    }
+
     func createOutput() -> String{
-        self.formateNum(self.tokinize()).changeChar()
-      }
+        formateNum(tokinize()).changeChar()
+    }
+
     func createResult() -> String{
         let result = self
-        let preLast = result.dropLast(1)
-            if self.last == "0" && preLast.last == "." {
-                return separatedNumber(Double(self))
-            }
-        return self.createOutput()
+        let preLast = result.dropLast(1).last
+        if last == "0" && preLast == ".",
+           let doubleElement = Double(self){
+            return separatedNumber(doubleElement)
+        }
+        return createOutput()
     }
+
     func prepareForCreate() -> String{
         self.replacingOccurrences(of: "×", with:"*")
             .replacingOccurrences(of: "÷", with:"/")

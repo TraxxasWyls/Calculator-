@@ -7,82 +7,107 @@
 //
 
 import Foundation
-final class Insert{
-    var compute = Notation()
-    public func insertOperation(_ input: String,_ operation: String) -> String{
+
+// MARK: - Insert
+
+final class Insert {
+
+    // MARK: - Public
+
+    public func insertOperation(
+        _ operation: String,
+        into input: String,
+        basedOn algorithm: CalculationAlgorithm
+    ) -> String {
         var expression = input
         if expression == "nan" || expression == "-inf" || expression == "inf"{
-              expression = "0"
+            expression = "0"
         }
         switch operation {
-        case "*","/": return insertMultOrDiv(expression,operation)
-        case "+": return insertPlus(expression)
-        case "-": return insertMinus(expression)
-        case "(": return insertOpen(expression)
-        case ")": return insertClose(expression)
-        case ".": return insertDott(expression)
-        default: return insertNumber(expression,operation)
+        case "*", "/":
+            return insertMultOrDiv(expression,operation)
+        case "+":
+            return insertPlus(expression)
+        case "-":
+            return insertMinus(expression)
+        case "(":
+            return insertOpen(expression)
+        case ")":
+            return insertClose(expression, using: algorithm)
+        case ".":
+            return insertDott(expression, using: algorithm)
+        default:
+            return insertNumber(expression,operation)
         }
     }
-    private func insertMultOrDiv(_ expression: String,_ operation: String) -> String{
-        let preLast = expression.dropLast(1)
-        if expression == "0"{
+
+    // MARK: - Private
+
+    private func insertMultOrDiv(_ expression: String, _ operation: String) -> String {
+        let preLast = expression.dropLast(1).last
+        if expression == "0" {
             return "0" + operation
         }
-        if Int(String(expression.last!)) != nil
-        || expression.last == ")"{
+        guard let expressionLast = expression.last else {
+            return "error"
+        }
+        if Int(String(expressionLast)) != nil || expressionLast == ")" {
             return expression + operation
         }
-        if String(expression.last!) == operation
-            || expression.last == "("
-            || (expression.last == "-" && preLast.last == "("){
+        if String(expressionLast) == operation
+            || expressionLast == "("
+            || (expressionLast == "-" && preLast == "(") {
             return expression
         }
-        if (expression.last == "-" && (preLast.last == "*"
-            || preLast.last == "/")){
+        if (expressionLast == "-" && (preLast == "*" || preLast == "/")) {
             return "\(expression.dropLast(2) + operation)"
         }
-        if expression.last == "*" && operation == "/"
-            || expression.last == "/" && operation == "*"
-            || expression.last == "-" && (preLast.last != nil) 
-            || expression.last == "+"{
+        if expressionLast == "*" && operation == "/"
+            || expressionLast == "/" && operation == "*"
+            || expressionLast == "-" && (preLast != nil)
+            || expressionLast == "+" {
             return "\(expression.dropLast() + operation)"
             
         }
         return expression
     }
-    private func insertPlus(_ expression: String) -> String{
-        let preLast = expression.dropLast(1)
-        if expression == "0"{
+
+    private func insertPlus(_ expression: String) -> String {
+        let preLast = expression.dropLast(1).last
+        if expression == "0" {
             return "0"
         }
-        if Int(String(expression.last!)) != nil
-        || expression.last == ")"{
+        guard let expressionLast = expression.last else {
+            return "error"
+        }
+        if Int(String(expressionLast)) != nil || expressionLast == ")"{
             return expression + "+"
         }
-        if expression.last == "(" || expression.last == "+"
-            || expression.last == "-" && preLast.last == "("{
+        if expressionLast == "(" || expressionLast == "+" || expressionLast == "-" && preLast == "(" {
             return expression
         }
-        if (expression.last == "-" && (preLast.last == "*"
-            || preLast.last == "/")){
+        if (expressionLast == "-" && (preLast == "*" || preLast == "/")){
             return "\(expression.dropLast(2) + "+")"
         }
-        if expression.last == "*" || expression.last == "/"
-            || (expression.last == "-" && (preLast.last != nil)){
+        if expressionLast == "*" || expressionLast == "/" || (expressionLast == "-" && (preLast != nil)) {
             return "\(expression.dropLast() + "+")"
             
         }
         return expression
     }
+
     private func insertMinus(_ expression: String) -> String{
         if expression == "0"{
             return "-"
         }
-        if Int(String(expression.last!)) != nil
-        || expression.last == ")"
-        || expression.last == "("
-        || expression.last == "*" || expression.last == "/"{
+        guard let expressionLast = expression.last else {
+            return "error"
+        }
+        if Int(String(expressionLast)) != nil
+            || expressionLast == ")"
+            || expressionLast == "("
+            || expressionLast == "*"
+            || expressionLast == "/" {
             return expression + "-"
         }
         if expression.last == "-"{
@@ -94,32 +119,41 @@ final class Insert{
         }
         return expression
     }
+
     private func insertOpen(_ expression: String) -> String{
         if expression == "0"{
             return "("
         }
-        if Int(String(expression.last!)) != nil{
+        guard let expressionLast = expression.last else {
+            return "error"
+        }
+        if Int(String(expressionLast)) != nil{
             return expression + "*("
         }
-        if expression.last == "."{
+        if expressionLast == "."{
             return expression
         }
-        if expression.last == ")"{
+        if expressionLast == ")"{
             return expression + "*("
         }
         return expression + "("
         
     }
-    private func insertClose(_ expression: String) -> String{
+
+    private func insertClose(
+        _ expression: String,
+        using algorithm: CalculationAlgorithm
+    ) -> String {
         if expression == "0"{
             return "0"
         }
-        if compute.isOperation(String(expression.last!))
-            && expression.last != ")"{
+        guard let expressionLast = expression.last else {
+            return "error"
+        }
+        if algorithm.isOperation(String(expressionLast)) && expressionLast != ")" {
             return expression
         }
-        if expression.filter({$0 == "("}).count
-            > expression.filter({$0 == ")"}).count{
+        if expression.filter({ $0 == "(" }).count > expression.filter({ $0 == ")" }).count {
             if expression.last == "."{
                 return expression.dropLast() + ")"
             }
@@ -127,11 +161,15 @@ final class Insert{
         }
         return expression
     }
-    private func insertDott(_ expression: String) -> String{
-        func amountOfDotts() -> Int{
+
+    private func insertDott(
+        _ expression: String,
+        using algorithm: CalculationAlgorithm
+    ) -> String{
+        func amountOfDotts() -> Int {
             var count = 0
             for char in expression {
-                if compute.isOperation(String(char)){
+                if algorithm.isOperation(String(char)) {
                     count = 0
                 }
                 if char == "."{
@@ -143,19 +181,17 @@ final class Insert{
         if expression.last == "." || amountOfDotts() > 0 {
             return expression
         }
-        if Double(compute.parse(expression).last!) != nil {
-            let number = String(Double(compute.parse(expression).last!)!)
-            let preLast = number.dropLast(1)
-            if number.last == "0" && preLast.last == "." {
-                    return expression + "."
+        if let parsedLastString = algorithm.parse(expression).last, let parsedLast = Double(parsedLastString) {
+            let number = String(parsedLast) 
+            let preLast = number.dropLast(1).last
+            if number.last == "0" && preLast == "." {
+                return expression + "."
             }
         }
         return expression
     }
+
     private func insertNumber(_ expression: String, _ operation: String) -> String{
-        if expression == "0" {
-            return operation
-        }
-        return expression + operation 
+        expression == "0" ? operation : expression + operation
     }
 }
