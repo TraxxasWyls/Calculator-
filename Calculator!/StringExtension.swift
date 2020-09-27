@@ -8,18 +8,18 @@
 
 import Foundation
 
-func separatedNumber(_ number: Any) -> String {
-    guard let itIsANumber = number as? NSNumber else { return "Not a number" }
-    let formatter = NumberFormatter()
-    formatter.numberStyle = .decimal
-    formatter.groupingSeparator = " "
-    formatter.decimalSeparator = "."
-    return formatter.string(from: itIsANumber)!
-}
-
 extension String {
 
-    private func changeChar() -> String{
+   private func separatedNumber() -> String {
+        guard let itIsANumber = Double(self) as NSNumber? else { return "error" }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = " "
+        formatter.decimalSeparator = "."
+        return formatter.string(from: itIsANumber)!
+    }
+    
+    private func formateOperationSymbols() -> String{
         self.replacingOccurrences(of: "*", with:"×")
             .replacingOccurrences(of: "/", with:"÷")
             .replacingOccurrences(of: ".", with:",")
@@ -41,9 +41,8 @@ extension String {
         var result = ""
         var point = false
         for element in input {
-            if Int(element) != nil && !point,
-               let doubleElement = Double(element){
-                result += separatedNumber(doubleElement)
+            if Int(element) != nil && !point{
+                result += element.separatedNumber()
             } else { result += element }
             if element == "."{
                 point = true
@@ -53,15 +52,14 @@ extension String {
     }
 
     func createOutput() -> String{
-        formateNum(tokinize()).changeChar()
+        formateNum(tokinize()).formateOperationSymbols()
     }
 
     func createResult() -> String{
         let result = self
         let preLast = result.dropLast(1).last
-        if last == "0" && preLast == ".",
-           let doubleElement = Double(self){
-            return separatedNumber(doubleElement)
+        if last == "0" && preLast == "."{
+            return separatedNumber()
         }
         return createOutput()
     }
@@ -71,5 +69,18 @@ extension String {
             .replacingOccurrences(of: "÷", with:"/")
             .replacingOccurrences(of: ",", with:".")
             .replacingOccurrences(of: " ", with:"")
+    }
+    
+    func amountOfDottsInLastNum() -> Int {
+        var count = 0
+        for char in self {
+            if ["+", "-", "*", "/", "(", ")"].contains(char){
+                count = 0
+            }
+            if char == "."{
+                count += 1
+            }
+        }
+        return count
     }
 }

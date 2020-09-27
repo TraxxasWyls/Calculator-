@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3329862A251E76F800CB249C /* CalculationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33298629251E76F800CB249C /* CalculationAlgorithm.swift */; };
+		CB028BDE252117DC00A70A51 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB028BDD252117DC00A70A51 /* Parser.swift */; };
 		CB450292251FCAF000244ECF /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB450291251FCAF000244ECF /* UILabel.swift */; };
 		CB450299251FCB1F00244ECF /* FittableFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB450298251FCB1F00244ECF /* FittableFontLabel.swift */; };
 		CB5BADB02508323800AD4E0A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BADAF2508323800AD4E0A /* Stack.swift */; };
@@ -21,7 +22,7 @@
 		CBA99EBC2503B58B008048F1 /* Calculator_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EBB2503B58B008048F1 /* Calculator_Tests.swift */; };
 		CBA99EC72503B58B008048F1 /* Calculator_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EC62503B58B008048F1 /* Calculator_UITests.swift */; };
 		CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99ED42503C98F008048F1 /* RoundButton.swift */; };
-		CBB8A77B250EB859005C4E9C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8A77A250EB859005C4E9C /* Extensions.swift */; };
+		CBB8A77B250EB859005C4E9C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8A77A250EB859005C4E9C /* StringExtension.swift */; };
 		CBFEEA3F251CF2120007E6FD /* SelectableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFEEA3E251CF2120007E6FD /* SelectableLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		33298629251E76F800CB249C /* CalculationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationAlgorithm.swift; sourceTree = "<group>"; };
+		CB028BDD252117DC00A70A51 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		CB450291251FCAF000244ECF /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabel.swift; path = ../../../../../Downloads/UILabel.swift; sourceTree = "<group>"; };
 		CB450298251FCB1F00244ECF /* FittableFontLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FittableFontLabel.swift; path = ../../../../../../Downloads/FittableFontLabel.swift; sourceTree = "<group>"; };
 		CB5BADAF2508323800AD4E0A /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
@@ -64,7 +66,7 @@
 		CBA99EC62503B58B008048F1 /* Calculator_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator_UITests.swift; sourceTree = "<group>"; };
 		CBA99EC82503B58B008048F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA99ED42503C98F008048F1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		CBB8A77A250EB859005C4E9C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CBB8A77A250EB859005C4E9C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		CBFEEA3E251CF2120007E6FD /* SelectableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				33298629251E76F800CB249C /* CalculationAlgorithm.swift */,
+				CB028BDD252117DC00A70A51 /* Parser.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -183,7 +186,7 @@
 				CBA99EAD2503B58B008048F1 /* Assets.xcassets */,
 				CB5BADAF2508323800AD4E0A /* Stack.swift */,
 				CB966DE02517CA460095D15C /* InsertOperation.swift */,
-				CBB8A77A250EB859005C4E9C /* Extensions.swift */,
+				CBB8A77A250EB859005C4E9C /* StringExtension.swift */,
 				CB5BADB62508D38D00AD4E0A /* MyPlayground.playground */,
 				CBA99EB22503B58B008048F1 /* Info.plist */,
 				CBFEEA3E251CF2120007E6FD /* SelectableLabel.swift */,
@@ -344,6 +347,7 @@
 				CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */,
 				CBA99EA92503B58A008048F1 /* ViewController.swift in Sources */,
 				CBFEEA3F251CF2120007E6FD /* SelectableLabel.swift in Sources */,
+				CB028BDE252117DC00A70A51 /* Parser.swift in Sources */,
 				CB450292251FCAF000244ECF /* UILabel.swift in Sources */,
 				3329862A251E76F800CB249C /* CalculationAlgorithm.swift in Sources */,
 				CBA99EA52503B58A008048F1 /* AppDelegate.swift in Sources */,
@@ -351,7 +355,7 @@
 				CB5BADB02508323800AD4E0A /* Stack.swift in Sources */,
 				CBA99EA72503B58A008048F1 /* SceneDelegate.swift in Sources */,
 				CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */,
-				CBB8A77B250EB859005C4E9C /* Extensions.swift in Sources */,
+				CBB8A77B250EB859005C4E9C /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

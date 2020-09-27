@@ -17,10 +17,11 @@ final class Insert {
     public func insertOperation(
         _ operation: String,
         into input: String,
-        basedOn algorithm: CalculationAlgorithm
+        basedOn algorithm: Parser
     ) -> String {
         var expression = input
-        if expression == "nan" || expression == "-inf" || expression == "inf"{
+        let error = expression == "nan" || expression == "-inf" || expression == "inf"
+        if error {
             expression = "0"
         }
         switch operation {
@@ -110,10 +111,10 @@ final class Insert {
             || expressionLast == "/" {
             return expression + "-"
         }
-        if expression.last == "-"{
+        if expressionLast == "-"{
             return expression
         }
-        if expression.last == "+"{
+        if expressionLast == "+"{
             return "\(expression.dropLast() + "-")"
             
         }
@@ -142,7 +143,7 @@ final class Insert {
 
     private func insertClose(
         _ expression: String,
-        using algorithm: CalculationAlgorithm
+        using algorithm: Parser
     ) -> String {
         if expression == "0"{
             return "0"
@@ -154,7 +155,7 @@ final class Insert {
             return expression
         }
         if expression.filter({ $0 == "(" }).count > expression.filter({ $0 == ")" }).count {
-            if expression.last == "."{
+            if expressionLast == "."{
                 return expression.dropLast() + ")"
             }
             return expression + ")"
@@ -164,21 +165,10 @@ final class Insert {
 
     private func insertDott(
         _ expression: String,
-        using algorithm: CalculationAlgorithm
+        using algorithm: Parser
     ) -> String{
-        func amountOfDotts() -> Int {
-            var count = 0
-            for char in expression {
-                if algorithm.isOperation(String(char)) {
-                    count = 0
-                }
-                if char == "."{
-                    count += 1
-                }
-            }
-            return count
-        }
-        if expression.last == "." || amountOfDotts() > 0 {
+        
+        if expression.last == "." || expression.amountOfDottsInLastNum() > 0 {
             return expression
         }
         if let parsedLastString = algorithm.parse(expression).last, let parsedLast = Double(parsedLastString) {

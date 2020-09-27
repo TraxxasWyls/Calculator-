@@ -10,17 +10,10 @@ import Foundation
 
 // MARK: - CalculationAlgorithm
 
-protocol CalculationAlgorithm {
+protocol CalculationAlgorithm: Parser {
 
     /// Calculates some math expression
     /// - Parameter expression: target expression
     func calculate(_ expression: String) -> Double
 
-    /// Checks if the given string is an operation
-    /// - Parameter input: target string
-    func isOperation(_ input: String) -> Bool
-
-    /// Parses the given expression into array
-    /// - Parameter input: target expression
-    func parse(_ input: String) -> [String]
 }

@@ -19,7 +19,7 @@ final class ViewController: UIViewController {
 
     /// CalculationAlgorithm instance
     private let algorithm: CalculationAlgorithm = Notation()
-
+    
     /// Insert instance
     private let inseration = Insert()
 
@@ -57,12 +57,14 @@ final class ViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
-        if !expression.isEmpty && expression != "nan" && expression != "inf" && expression != "-inf" {
+        let notError = expression != "nan" && expression != "inf" && expression != "-inf"
+        if !expression.isEmpty && notError {
             expression.removeLast()
             outputLabel.text = expression.createOutput()
             resultLabel.text = String(algorithm.calculate(expression)).createResult()
         }
-        if expression.isEmpty || expression == "nan" || expression == "inf" || expression == "-inf" {
+        let error = expression == "nan" || expression == "-inf" || expression == "inf"
+        if expression.isEmpty || error {
             expression = "0"
             outputLabel.text = "0"
             resultLabel.text = ""
