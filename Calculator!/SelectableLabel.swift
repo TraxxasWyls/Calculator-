@@ -73,7 +73,7 @@ final class SelectableLabel: FittableFontLabel {
 
     private func cancelSelection() {
         let menu = UIMenuController.shared
-        menu.setMenuVisible(false, animated: true)
+        menu.hideMenu()
     }
 
     private func textRect() -> CGRect {
@@ -110,8 +110,7 @@ final class SelectableLabel: FittableFontLabel {
         let menu = menuForSelection()
         if !menu.isMenuVisible {
             selectionOverlay.isHidden = false
-            menu.setTargetRect(textRect(), in: self)
-            menu.setMenuVisible(true, animated: true)
+            menu.showMenu(from: self, rect: textRect())
         }
     }
 

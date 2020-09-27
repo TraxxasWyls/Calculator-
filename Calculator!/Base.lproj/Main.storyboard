@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" interfaceStyle="light" id="BYZ-38-t0r" customClass="ViewController" customModule="Calculator_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" interfaceStyle="dark" id="BYZ-38-t0r" customClass="ViewController" customModule="Calculator_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <subviews>
@@ -394,7 +394,7 @@
                                     <constraint firstItem="Dki-xF-zUu" firstAttribute="top" secondItem="IsB-Do-XyE" secondAttribute="bottom" constant="12.67" id="rBO-ef-WAD"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="95.666666666666686" text="33 333" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="40" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
+                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="95.666666666666686" text="33 333" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
                                 <rect key="frame" x="25" y="123" width="325" height="95.666666666666686"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" selected="YES" adjustable="YES" allowsDirectInteraction="YES"/>
