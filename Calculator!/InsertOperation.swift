@@ -17,7 +17,7 @@ final class Insert {
     public func insertOperation(
         _ operation: String,
         into input: String,
-        basedOn algorithm: Parser
+        basedOn algorithm: ParserAlgorithm
     ) -> String {
         var expression = input
         let error = expression == "nan" || expression == "-inf" || expression == "inf"
@@ -143,7 +143,7 @@ final class Insert {
 
     private func insertClose(
         _ expression: String,
-        using algorithm: Parser
+        using algorithm: ParserAlgorithm
     ) -> String {
         if expression == "0"{
             return "0"
@@ -165,7 +165,7 @@ final class Insert {
 
     private func insertDott(
         _ expression: String,
-        using algorithm: Parser
+        using algorithm: ParserAlgorithm
     ) -> String{
         
         if expression.last == "." || expression.amountOfDottsInLastNum() > 0 {

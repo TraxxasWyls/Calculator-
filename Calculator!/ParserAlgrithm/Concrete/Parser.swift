@@ -2,7 +2,7 @@
 //  Parser.swift
 //  Calculator!
 //
-//  Created by Дмитрий Савинов on 27.09.2020.
+//  Created by Дмитрий Савинов on 28.09.2020.
 //  Copyright © 2020 Дмитрий Савинов. All rights reserved.
 //
 
@@ -10,20 +10,7 @@ import Foundation
 
 // MARK: - Parser
 
-protocol Parser {
-    
-    /// Checks if the given string is an operation
-    /// - Parameter input: target string
-    func isOperation(_ input: String) -> Bool
-
-    /// Parses the given expression into array
-    /// - Parameter input: target expression
-    func parse(_ input: String) -> [String]
-}
-
-//Default Parser Implementation
-
-extension Parser {
+final class Parser: ParserAlgorithm{
     
     // MARK: - Private
     
@@ -50,13 +37,9 @@ extension Parser {
         }
         return expression
     }
-    
-    // MARK: - Useful
-    
-    func isOperation(_ input: String) -> Bool {
-        ["+", "-", "*", "/", "(", ")"].contains(input)
-    }
 
+    // Useful
+    
     func parse(_ input: String) -> [String] {
         var expression: [String] = [""]
         var i = 0
@@ -123,8 +106,8 @@ extension Parser {
                     // ( - ( -> ((-1)*(
                 }
                 if  isOperation(expression[n - 1]) && expression[n] == "-",
-                        Double(expression[n + 1]) != nil,
-                        expression[n - 1] != ")" {
+                    Double(expression[n + 1]) != nil,
+                    expression[n - 1] != ")" {
                     expression[n + 1] = "-" + expression[n + 1]
                     expression.remove(at: n)
                 }

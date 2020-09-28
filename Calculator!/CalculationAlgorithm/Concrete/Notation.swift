@@ -10,9 +10,20 @@ import Foundation
 
 // MARK: - Notation
 
-final class Notation {
-
+class Notation {
+    
+    // MARK: - Initializers
+    
+    init(basedOn: ParserAlgorithm) {
+        self.basedOn = basedOn
+    }
+    
+    // MARK: - Properties
+    
+    let basedOn: ParserAlgorithm
+    
     // MARK: - Private
+    
     private func operationPriority(_ element: String) -> Int {
         switch element {
         case ")":
@@ -72,21 +83,22 @@ final class Notation {
         }
         return output
     }
-
+    
+    
 }
 
 // MARK: - CalculationAlgorithm
 
 extension Notation: CalculationAlgorithm {
-
+    
     func calculate(_ expression: String) -> Double {
-        var expression = notation(parse(expression))
+        var expression = notation(basedOn.parse(expression))
         var n = 2
         while n < expression.count {
             if
                 let preLast = Double(expression[n - 2]),
                 let last = Double(expression[n - 1]),
-                isOperation(expression[n]) {
+                basedOn.isOperation(expression[n]) {
                 switch expression[n] {
                 case "+":
                     expression[n] = String(preLast + last)

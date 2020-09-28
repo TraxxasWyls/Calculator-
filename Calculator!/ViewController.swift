@@ -16,9 +16,12 @@ final class ViewController: UIViewController {
 
     /// UserDefaults instance
     private let defaults: UserDefaults = .standard
-
+    
+    /// ParserAlgrithm  instance
+    private let parser: ParserAlgorithm = Parser()
+    
     /// CalculationAlgorithm instance
-    private let algorithm: CalculationAlgorithm = Notation()
+    private lazy var algorithm: CalculationAlgorithm = Notation(basedOn: parser)
     
     /// Insert instance
     private let inseration = Insert()
@@ -73,7 +76,7 @@ final class ViewController: UIViewController {
     
     @IBAction func numberPressed(_ sender: RoundButton) {
         outputLabel.sizeToFit()
-        expression = inseration.insertOperation(String(sender.tag), into: expression, basedOn: algorithm)
+        expression = inseration.insertOperation(String(sender.tag), into: expression, basedOn: parser)
         outputLabel.text = expression.createOutput()
         if expression != "0"{
             resultLabel.text = String(algorithm.calculate(expression)).createResult()
@@ -87,7 +90,7 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func dottPressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation(".", into: expression, basedOn: algorithm)
+        expression = inseration.insertOperation(".", into: expression, basedOn: parser)
         outputLabel.text = expression.createOutput()
     }
     
@@ -101,32 +104,32 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func plusPressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation("+", into: expression, basedOn: algorithm)
+        expression = inseration.insertOperation("+", into: expression, basedOn: parser)
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func minusPressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation("-", into: expression, basedOn: algorithm)
+        expression = inseration.insertOperation("-", into: expression, basedOn: parser)
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func multiplyPressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation("*", into: expression, basedOn: algorithm)
+        expression = inseration.insertOperation("*", into: expression, basedOn: parser)
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func dividePressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation("/", into: expression, basedOn: algorithm)
+        expression = inseration.insertOperation("/", into: expression, basedOn: parser)
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func openPressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation("(", into: expression, basedOn: algorithm)
+        expression = inseration.insertOperation("(", into: expression, basedOn: parser)
         outputLabel.text = expression.createOutput()
     }
     
     @IBAction func closePressed(_ sender: RoundButton) {
-        expression = inseration.insertOperation(")", into: expression, basedOn: algorithm)
+        expression = inseration.insertOperation(")", into: expression, basedOn: parser)
         let isExpressionHasClosingBrackets = expression.filter({ $0 == ")" }).count != 0
         let openingBracketsCount = expression.filter({ $0 == "(" }).count
         let closingBracketsCount = expression.filter({ $0 == ")" }).count

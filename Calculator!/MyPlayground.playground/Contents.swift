@@ -430,4 +430,4 @@ func calculate(_ expression : String) -> Double{
     return result
 }
 
-parse("0.00.01")
+parse("0.00.01+1-1*(2+1)")

@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3329862A251E76F800CB249C /* CalculationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33298629251E76F800CB249C /* CalculationAlgorithm.swift */; };
-		CB028BDE252117DC00A70A51 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB028BDD252117DC00A70A51 /* Parser.swift */; };
-		CB450292251FCAF000244ECF /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB450291251FCAF000244ECF /* UILabel.swift */; };
-		CB450299251FCB1F00244ECF /* FittableFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB450298251FCB1F00244ECF /* FittableFontLabel.swift */; };
+		CB028BDE252117DC00A70A51 /* ParserAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB028BDD252117DC00A70A51 /* ParserAlgorithm.swift */; };
 		CB5BADB02508323800AD4E0A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BADAF2508323800AD4E0A /* Stack.swift */; };
 		CB5BADB22508368100AD4E0A /* Notation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BADB12508368100AD4E0A /* Notation.swift */; };
 		CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB966DE02517CA460095D15C /* InsertOperation.swift */; };
@@ -22,7 +20,10 @@
 		CBA99EBC2503B58B008048F1 /* Calculator_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EBB2503B58B008048F1 /* Calculator_Tests.swift */; };
 		CBA99EC72503B58B008048F1 /* Calculator_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EC62503B58B008048F1 /* Calculator_UITests.swift */; };
 		CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99ED42503C98F008048F1 /* RoundButton.swift */; };
-		CBB8A77B250EB859005C4E9C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8A77A250EB859005C4E9C /* StringExtension.swift */; };
+		CBB8A77B250EB859005C4E9C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8A77A250EB859005C4E9C /* String.swift */; };
+		CBE47DB12522261800BECDBE /* FittableFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DB02522261800BECDBE /* FittableFontLabel.swift */; };
+		CBE47DBC2522269000BECDBE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DBB2522269000BECDBE /* UILabel.swift */; };
+		CBE47DC725222DCC00BECDBE /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DC625222DCC00BECDBE /* Parser.swift */; };
 		CBFEEA3F251CF2120007E6FD /* SelectableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFEEA3E251CF2120007E6FD /* SelectableLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,9 +46,7 @@
 
 /* Begin PBXFileReference section */
 		33298629251E76F800CB249C /* CalculationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationAlgorithm.swift; sourceTree = "<group>"; };
-		CB028BDD252117DC00A70A51 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		CB450291251FCAF000244ECF /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabel.swift; path = ../../../../../Downloads/UILabel.swift; sourceTree = "<group>"; };
-		CB450298251FCB1F00244ECF /* FittableFontLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FittableFontLabel.swift; path = ../../../../../../Downloads/FittableFontLabel.swift; sourceTree = "<group>"; };
+		CB028BDD252117DC00A70A51 /* ParserAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserAlgorithm.swift; sourceTree = "<group>"; };
 		CB5BADAF2508323800AD4E0A /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		CB5BADB12508368100AD4E0A /* Notation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notation.swift; sourceTree = "<group>"; };
 		CB5BADB62508D38D00AD4E0A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -66,7 +65,10 @@
 		CBA99EC62503B58B008048F1 /* Calculator_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator_UITests.swift; sourceTree = "<group>"; };
 		CBA99EC82503B58B008048F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA99ED42503C98F008048F1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		CBB8A77A250EB859005C4E9C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		CBB8A77A250EB859005C4E9C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		CBE47DB02522261800BECDBE /* FittableFontLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittableFontLabel.swift; sourceTree = "<group>"; };
+		CBE47DBB2522269000BECDBE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		CBE47DC625222DCC00BECDBE /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		CBFEEA3E251CF2120007E6FD /* SelectableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				33298629251E76F800CB249C /* CalculationAlgorithm.swift */,
-				CB028BDD252117DC00A70A51 /* Parser.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -133,7 +134,7 @@
 		CB450290251FCADD00244ECF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CB450291251FCAF000244ECF /* UILabel.swift */,
+				CBE47DBB2522269000BECDBE /* UILabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -149,7 +150,7 @@
 		CB450297251FCB0A00244ECF /* FittableFontLabel */ = {
 			isa = PBXGroup;
 			children = (
-				CB450298251FCB1F00244ECF /* FittableFontLabel.swift */,
+				CBE47DB02522261800BECDBE /* FittableFontLabel.swift */,
 			);
 			path = FittableFontLabel;
 			sourceTree = "<group>";
@@ -177,16 +178,17 @@
 		CBA99EA32503B58A008048F1 /* Calculator! */ = {
 			isa = PBXGroup;
 			children = (
+				CBE47DA22522230400BECDBE /* CoreLayer */,
 				CB45028F251FCAC200244ECF /* PresentationLayer */,
 				33298627251E76E400CB249C /* CalculationAlgorithm */,
-				CBA99EA42503B58A008048F1 /* AppDelegate.swift */,
+				CBE47DC025222D4500BECDBE /* ParserAlgrithm */,
 				CBA99EA62503B58A008048F1 /* SceneDelegate.swift */,
+				CBA99EA42503B58A008048F1 /* AppDelegate.swift */,
 				CBA99EA82503B58A008048F1 /* ViewController.swift */,
 				CBA99EAA2503B58A008048F1 /* Main.storyboard */,
 				CBA99EAD2503B58B008048F1 /* Assets.xcassets */,
 				CB5BADAF2508323800AD4E0A /* Stack.swift */,
 				CB966DE02517CA460095D15C /* InsertOperation.swift */,
-				CBB8A77A250EB859005C4E9C /* StringExtension.swift */,
 				CB5BADB62508D38D00AD4E0A /* MyPlayground.playground */,
 				CBA99EB22503B58B008048F1 /* Info.plist */,
 				CBFEEA3E251CF2120007E6FD /* SelectableLabel.swift */,
@@ -211,6 +213,47 @@
 				CBA99EC82503B58B008048F1 /* Info.plist */,
 			);
 			path = "Calculator!UITests";
+			sourceTree = "<group>";
+		};
+		CBE47DA22522230400BECDBE /* CoreLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CBE47DA32522231E00BECDBE /* Extrnsions */,
+			);
+			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		CBE47DA32522231E00BECDBE /* Extrnsions */ = {
+			isa = PBXGroup;
+			children = (
+				CBB8A77A250EB859005C4E9C /* String.swift */,
+			);
+			path = Extrnsions;
+			sourceTree = "<group>";
+		};
+		CBE47DC025222D4500BECDBE /* ParserAlgrithm */ = {
+			isa = PBXGroup;
+			children = (
+				CBE47DC225222D7A00BECDBE /* Concrete */,
+				CBE47DC125222D6600BECDBE /* Protocols */,
+			);
+			path = ParserAlgrithm;
+			sourceTree = "<group>";
+		};
+		CBE47DC125222D6600BECDBE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CB028BDD252117DC00A70A51 /* ParserAlgorithm.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CBE47DC225222D7A00BECDBE /* Concrete */ = {
+			isa = PBXGroup;
+			children = (
+				CBE47DC625222DCC00BECDBE /* Parser.swift */,
+			);
+			path = Concrete;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,19 +386,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB450299251FCB1F00244ECF /* FittableFontLabel.swift in Sources */,
 				CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */,
+				CBE47DBC2522269000BECDBE /* UILabel.swift in Sources */,
 				CBA99EA92503B58A008048F1 /* ViewController.swift in Sources */,
 				CBFEEA3F251CF2120007E6FD /* SelectableLabel.swift in Sources */,
-				CB028BDE252117DC00A70A51 /* Parser.swift in Sources */,
-				CB450292251FCAF000244ECF /* UILabel.swift in Sources */,
+				CB028BDE252117DC00A70A51 /* ParserAlgorithm.swift in Sources */,
 				3329862A251E76F800CB249C /* CalculationAlgorithm.swift in Sources */,
+				CBE47DC725222DCC00BECDBE /* Parser.swift in Sources */,
 				CBA99EA52503B58A008048F1 /* AppDelegate.swift in Sources */,
 				CB5BADB22508368100AD4E0A /* Notation.swift in Sources */,
 				CB5BADB02508323800AD4E0A /* Stack.swift in Sources */,
 				CBA99EA72503B58A008048F1 /* SceneDelegate.swift in Sources */,
 				CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */,
-				CBB8A77B250EB859005C4E9C /* StringExtension.swift in Sources */,
+				CBE47DB12522261800BECDBE /* FittableFontLabel.swift in Sources */,
+				CBB8A77B250EB859005C4E9C /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

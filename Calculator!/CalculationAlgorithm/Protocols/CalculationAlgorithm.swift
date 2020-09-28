@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - CalculationAlgorithm
 
-protocol CalculationAlgorithm: Parser {
+protocol CalculationAlgorithm {
 
     /// Calculates some math expression
     /// - Parameter expression: target expression
