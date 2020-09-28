@@ -17,7 +17,7 @@ final class ViewController: UIViewController {
     /// UserDefaults instance
     private let defaults: UserDefaults = .standard
     
-    /// ParserAlgrithm  instance
+    /// ParserAlgorithm  instance
     private let parser: ParserAlgorithm = Parser()
     
     /// CalculationAlgorithm instance
