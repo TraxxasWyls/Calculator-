@@ -393,26 +393,39 @@
                                     <constraint firstItem="Dki-xF-zUu" firstAttribute="top" secondItem="IsB-Do-XyE" secondAttribute="bottom" constant="12.67" id="rBO-ef-WAD"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="95.666666666666686" text="33 333" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
-                                <rect key="frame" x="25" y="123" width="325" height="95.666666666666686"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" selected="YES" adjustable="YES" allowsDirectInteraction="YES"/>
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="80"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="oIt-SU-vqq" appends="YES" id="4Tz-Zv-2xZ"/>
-                                </connections>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 222" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMU-Uz-dN7">
-                                <rect key="frame" x="25" y="243.66666666666663" width="325" height="42"/>
+                                <rect key="frame" x="25" y="243.99999999999997" width="325" height="41.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
                                 <color key="textColor" red="0.6666602492" green="0.66666227580000004" blue="0.66666692500000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="forceRightToLeft" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" id="LPa-r7-OP1">
+                                <rect key="frame" x="16" y="123" width="343" height="96"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456789012345" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="0.0" width="669.33333333333337" height="96"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" selected="YES" adjustable="YES" allowsDirectInteraction="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="80"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="oIt-SU-vqq" appends="YES" id="4Tz-Zv-2xZ"/>
+                                        </connections>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="top" secondItem="LPa-r7-OP1" secondAttribute="top" id="YZ9-ur-EFx"/>
+                                    <constraint firstAttribute="trailing" secondItem="C5N-Dg-YFf" secondAttribute="trailing" constant="15" id="but-VJ-Jw8"/>
+                                    <constraint firstAttribute="bottom" secondItem="C5N-Dg-YFf" secondAttribute="bottom" id="eaR-bc-MxH"/>
+                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="height" secondItem="LPa-r7-OP1" secondAttribute="height" id="g6V-jW-qfr"/>
+                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="leading" secondItem="LPa-r7-OP1" secondAttribute="leading" constant="15" id="xq4-MF-YMM"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -420,22 +433,23 @@
                             <constraint firstItem="pt0-5M-E8z" firstAttribute="top" secondItem="vMU-Uz-dN7" secondAttribute="bottom" constant="25" id="0AJ-1h-eSs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pt0-5M-E8z" secondAttribute="bottom" constant="20" id="4Gq-sU-aOI"/>
                             <constraint firstItem="vMU-Uz-dN7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="9Pz-hv-Q5K"/>
-                            <constraint firstItem="vMU-Uz-dN7" firstAttribute="top" secondItem="C5N-Dg-YFf" secondAttribute="bottom" constant="25" id="CVf-Yh-Xy8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pt0-5M-E8z" secondAttribute="trailing" constant="14" id="G9j-1C-C17"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vMU-Uz-dN7" secondAttribute="trailing" constant="25" id="GY6-lJ-FmC"/>
                             <constraint firstItem="pt0-5M-E8z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="Iwl-QA-ted"/>
-                            <constraint firstItem="C5N-Dg-YFf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="MsJ-J0-PGo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C5N-Dg-YFf" secondAttribute="trailing" constant="25" id="S7Q-z4-ith"/>
+                            <constraint firstItem="vMU-Uz-dN7" firstAttribute="top" secondItem="LPa-r7-OP1" secondAttribute="bottom" constant="25" id="Q9l-0S-16b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LPa-r7-OP1" secondAttribute="trailing" id="cPK-cz-ZAA"/>
+                            <constraint firstItem="LPa-r7-OP1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dYF-rr-2gI"/>
                             <constraint firstItem="pt0-5M-E8z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iuw-f7-dc4"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ScrollOutput" destination="LPa-r7-OP1" id="8AV-Tv-QAr"/>
                         <outlet property="outputLabel" destination="C5N-Dg-YFf" id="PSd-io-5Px"/>
                         <outlet property="resultLabel" destination="vMU-Uz-dN7" id="iGC-n4-QvG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer delaysTouchesBegan="YES" direction="left" id="oIt-SU-vqq">
+                <swipeGestureRecognizer delaysTouchesBegan="YES" direction="down" id="oIt-SU-vqq">
                     <connections>
                         <action selector="swipeLeft:" destination="BYZ-38-t0r" id="TVU-nM-tFC"/>
                     </connections>

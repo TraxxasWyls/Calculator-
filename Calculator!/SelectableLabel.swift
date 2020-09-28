@@ -16,6 +16,7 @@ final class SelectableLabel: FittableFontLabel {
     // MARK: - Properties
 
     var pasteAction: ((String) -> ())?
+    
 
     private let selectionOverlay: CALayer = {
         let layer = CALayer()

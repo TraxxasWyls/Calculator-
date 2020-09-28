@@ -33,13 +33,15 @@ final class ViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var outputLabel: SelectableLabel!
-
+    @IBOutlet weak var ScrollOutput: UIScrollView!
+    
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         loadData()
         super.viewDidLoad()
         outputLabel.autoAdjustFontSize = true
+        outputLabel.minFontScale = 1
         outputLabel.text = expression.createOutput()
         if expression != "0" {
             resultLabel.text = String(algorithm.calculate(expression)).createResult()
