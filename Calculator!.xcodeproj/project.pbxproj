@@ -21,6 +21,9 @@
 		CBA99EC72503B58B008048F1 /* Calculator_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EC62503B58B008048F1 /* Calculator_UITests.swift */; };
 		CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99ED42503C98F008048F1 /* RoundButton.swift */; };
 		CBB8A77B250EB859005C4E9C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8A77A250EB859005C4E9C /* String.swift */; };
+		CBBA368825265B7D00148473 /* HistoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBA368725265B7D00148473 /* HistoryScreen.swift */; };
+		CBBA368F25265F1E00148473 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBA368E25265F1E00148473 /* UIView.swift */; };
+		CBBA36A625267DA800148473 /* CalcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBA36A525267DA800148473 /* CalcCell.swift */; };
 		CBE47DB12522261800BECDBE /* FittableFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DB02522261800BECDBE /* FittableFontLabel.swift */; };
 		CBE47DBC2522269000BECDBE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DBB2522269000BECDBE /* UILabel.swift */; };
 		CBE47DC725222DCC00BECDBE /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DC625222DCC00BECDBE /* Parser.swift */; };
@@ -66,6 +69,10 @@
 		CBA99EC82503B58B008048F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA99ED42503C98F008048F1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		CBB8A77A250EB859005C4E9C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		CBBA368725265B7D00148473 /* HistoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryScreen.swift; sourceTree = "<group>"; };
+		CBBA368E25265F1E00148473 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		CBBA36A525267DA800148473 /* CalcCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcCell.swift; sourceTree = "<group>"; };
+		CBC079922524C52300BD25E1 /* GoodbyeStoryboard.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GoodbyeStoryboard.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CBE47DB02522261800BECDBE /* FittableFontLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittableFontLabel.swift; sourceTree = "<group>"; };
 		CBE47DBB2522269000BECDBE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		CBE47DC625222DCC00BECDBE /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
@@ -178,6 +185,7 @@
 		CBA99EA32503B58A008048F1 /* Calculator! */ = {
 			isa = PBXGroup;
 			children = (
+				CBBA368C25265EB900148473 /* UIView */,
 				CBE47DA22522230400BECDBE /* CoreLayer */,
 				CB45028F251FCAC200244ECF /* PresentationLayer */,
 				33298627251E76E400CB249C /* CalculationAlgorithm */,
@@ -185,10 +193,13 @@
 				CBA99EA62503B58A008048F1 /* SceneDelegate.swift */,
 				CBA99EA42503B58A008048F1 /* AppDelegate.swift */,
 				CBA99EA82503B58A008048F1 /* ViewController.swift */,
+				CBBA368725265B7D00148473 /* HistoryScreen.swift */,
+				CBBA36A525267DA800148473 /* CalcCell.swift */,
 				CBA99EAA2503B58A008048F1 /* Main.storyboard */,
 				CBA99EAD2503B58B008048F1 /* Assets.xcassets */,
 				CB5BADAF2508323800AD4E0A /* Stack.swift */,
 				CB966DE02517CA460095D15C /* InsertOperation.swift */,
+				CBC079922524C52300BD25E1 /* GoodbyeStoryboard.playground */,
 				CB5BADB62508D38D00AD4E0A /* MyPlayground.playground */,
 				CBA99EB22503B58B008048F1 /* Info.plist */,
 				CBFEEA3E251CF2120007E6FD /* SelectableLabel.swift */,
@@ -213,6 +224,22 @@
 				CBA99EC82503B58B008048F1 /* Info.plist */,
 			);
 			path = "Calculator!UITests";
+			sourceTree = "<group>";
+		};
+		CBBA368C25265EB900148473 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				CBBA368D25265EE400148473 /* Extensions */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		CBBA368D25265EE400148473 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CBBA368E25265F1E00148473 /* UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CBE47DA22522230400BECDBE /* CoreLayer */ = {
@@ -386,6 +413,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBBA36A625267DA800148473 /* CalcCell.swift in Sources */,
+				CBBA368F25265F1E00148473 /* UIView.swift in Sources */,
 				CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */,
 				CBE47DBC2522269000BECDBE /* UILabel.swift in Sources */,
 				CBA99EA92503B58A008048F1 /* ViewController.swift in Sources */,
@@ -399,6 +428,7 @@
 				CBA99EA72503B58A008048F1 /* SceneDelegate.swift in Sources */,
 				CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */,
 				CBE47DB12522261800BECDBE /* FittableFontLabel.swift in Sources */,
+				CBBA368825265B7D00148473 /* HistoryScreen.swift in Sources */,
 				CBB8A77B250EB859005C4E9C /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

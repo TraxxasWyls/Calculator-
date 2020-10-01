@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -394,23 +395,22 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 222" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMU-Uz-dN7">
-                                <rect key="frame" x="25" y="243.99999999999997" width="325" height="41.666666666666657"/>
+                                <rect key="frame" x="25" y="243.66666666666663" width="325" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
                                 <color key="textColor" red="0.6666602492" green="0.66666227580000004" blue="0.66666692500000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="forceRightToLeft" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" id="LPa-r7-OP1">
-                                <rect key="frame" x="16" y="123" width="343" height="96"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="forceRightToLeft" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-r7-OP1">
+                                <rect key="frame" x="16" y="122.66666666666669" width="343" height="96"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456789012345" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="0.0" width="669.33333333333337" height="96"/>
+                                    <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="40" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="89.666666666666671"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" selected="YES" adjustable="YES" allowsDirectInteraction="YES"/>
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
                                         <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="80"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="75"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
@@ -419,27 +419,44 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="top" secondItem="LPa-r7-OP1" secondAttribute="top" id="YZ9-ur-EFx"/>
-                                    <constraint firstAttribute="trailing" secondItem="C5N-Dg-YFf" secondAttribute="trailing" constant="15" id="but-VJ-Jw8"/>
-                                    <constraint firstAttribute="bottom" secondItem="C5N-Dg-YFf" secondAttribute="bottom" id="eaR-bc-MxH"/>
-                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="height" secondItem="LPa-r7-OP1" secondAttribute="height" id="g6V-jW-qfr"/>
-                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="leading" secondItem="LPa-r7-OP1" secondAttribute="leading" constant="15" id="xq4-MF-YMM"/>
+                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="top" secondItem="LPa-r7-OP1" secondAttribute="top" id="Fm2-SX-OS4"/>
+                                    <constraint firstAttribute="trailing" secondItem="C5N-Dg-YFf" secondAttribute="trailing" id="UfJ-6c-j0L"/>
+                                    <constraint firstAttribute="bottom" secondItem="C5N-Dg-YFf" secondAttribute="bottom" id="eWf-bq-CH9"/>
+                                    <constraint firstAttribute="height" constant="96" id="jgm-K4-y5F"/>
+                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="leading" secondItem="LPa-r7-OP1" secondAttribute="leading" id="msQ-JP-Qzd"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ykq-1M-FDi">
+                                <rect key="frame" x="309" y="44" width="50" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="History">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="historyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pae-n1-bmz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstItem="pt0-5M-E8z" firstAttribute="top" secondItem="vMU-Uz-dN7" secondAttribute="bottom" constant="25" id="0AJ-1h-eSs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pt0-5M-E8z" secondAttribute="bottom" constant="20" id="4Gq-sU-aOI"/>
                             <constraint firstItem="vMU-Uz-dN7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="9Pz-hv-Q5K"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ykq-1M-FDi" secondAttribute="trailing" constant="16" id="Dca-Cp-gmF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pt0-5M-E8z" secondAttribute="trailing" constant="14" id="G9j-1C-C17"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vMU-Uz-dN7" secondAttribute="trailing" constant="25" id="GY6-lJ-FmC"/>
                             <constraint firstItem="pt0-5M-E8z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="Iwl-QA-ted"/>
+                            <constraint firstItem="LPa-r7-OP1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NRu-9A-ATH"/>
                             <constraint firstItem="vMU-Uz-dN7" firstAttribute="top" secondItem="LPa-r7-OP1" secondAttribute="bottom" constant="25" id="Q9l-0S-16b"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LPa-r7-OP1" secondAttribute="trailing" constant="16" id="bWQ-pD-Two"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LPa-r7-OP1" secondAttribute="trailing" id="cPK-cz-ZAA"/>
                             <constraint firstItem="LPa-r7-OP1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dYF-rr-2gI"/>
                             <constraint firstItem="pt0-5M-E8z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iuw-f7-dc4"/>
+                            <constraint firstItem="Ykq-1M-FDi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uOe-PX-NUt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -517,4 +534,9 @@
             <size key="intrinsicContentSize" width="30" height="54"/>
         </designable>
     </designables>
+    <resources>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

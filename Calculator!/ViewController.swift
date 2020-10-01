@@ -34,15 +34,26 @@ final class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var outputLabel: SelectableLabel!
     @IBOutlet weak var ScrollOutput: UIScrollView!
-    
+   
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         loadData()
         super.viewDidLoad()
+        view.backgroundColor = .green
         outputLabel.autoAdjustFontSize = true
         outputLabel.minFontScale = 1
+        outputLabel.maxFontSize = 75
         outputLabel.text = expression.createOutput()
+        ScrollOutput.addSubview(outputLabel)
+        outputLabel.sizeToFit()
+        
+//        if let currentFont = outputLabel.font,
+//           let currenWidth = outputLabel.text?
+//            .width(withConstrainedHeight: 96, font: currentFont) {
+//            ScrollOutput.contentSize = CGSize(width: currenWidth, height: 96)
+//        }
+        
         if expression != "0" {
             resultLabel.text = String(algorithm.calculate(expression)).createResult()
         } else {
@@ -61,6 +72,11 @@ final class ViewController: UIViewController {
 
     // MARK: - Actions
 
+    @IBAction func historyPressed(_ sender: UIButton) {
+        let nextScreen = HistoryScreen()
+        navigationController?.pushViewController(nextScreen, animated: true)
+    }
+    
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
         let notError = expression != "nan" && expression != "inf" && expression != "-inf"
         if !expression.isEmpty && notError {
@@ -77,7 +93,6 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func numberPressed(_ sender: RoundButton) {
-        outputLabel.sizeToFit()
         expression = inseration.insertOperation(String(sender.tag), into: expression, basedOn: parser)
         outputLabel.text = expression.createOutput()
         if expression != "0"{
