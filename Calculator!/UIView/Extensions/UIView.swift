@@ -10,13 +10,13 @@ import UIKit
 
 extension UIView {
     
-    func pin(to superView: UIView) {
+    func pin(to superView: UIView, x: CGFloat, y: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: superView.topAnchor),
-            leadingAnchor.constraint(equalTo: superView.leadingAnchor),
-            trailingAnchor.constraint(equalTo: superView.trailingAnchor),
-            bottomAnchor.constraint(equalTo: superView.bottomAnchor)
+            topAnchor.constraint(equalTo: superView.topAnchor,constant: y),
+            leadingAnchor.constraint(equalTo: superView.leadingAnchor,constant: x),
+            trailingAnchor.constraint(equalTo: superView.trailingAnchor,constant: x),
+            bottomAnchor.constraint(equalTo: superView.bottomAnchor,constant: y)
         ])
     }
 }
