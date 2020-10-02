@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -394,23 +393,23 @@
                                     <constraint firstItem="Dki-xF-zUu" firstAttribute="top" secondItem="IsB-Do-XyE" secondAttribute="bottom" constant="12.67" id="rBO-ef-WAD"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 222" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMU-Uz-dN7">
+                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 222" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMU-Uz-dN7">
                                 <rect key="frame" x="25" y="243.66666666666663" width="325" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
                                 <color key="textColor" red="0.6666602492" green="0.66666227580000004" blue="0.66666692500000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="forceRightToLeft" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-r7-OP1">
-                                <rect key="frame" x="16" y="122.66666666666669" width="343" height="96"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="forceRightToLeft" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-r7-OP1">
+                                <rect key="frame" x="10" y="116.66666666666669" width="355" height="102"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="40" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="89.666666666666671"/>
+                                    <label autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-Dg-YFf" customClass="SelectableLabel" customModule="Calculator_" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="0.0" width="48" height="95.666666666666671"/>
                                         <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" selected="YES" adjustable="YES" allowsDirectInteraction="YES"/>
+                                            <accessibilityTraits key="traits" adjustable="YES" allowsDirectInteraction="YES"/>
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
                                         <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="75"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="80"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
@@ -419,11 +418,11 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="top" secondItem="LPa-r7-OP1" secondAttribute="top" id="Fm2-SX-OS4"/>
-                                    <constraint firstAttribute="trailing" secondItem="C5N-Dg-YFf" secondAttribute="trailing" id="UfJ-6c-j0L"/>
-                                    <constraint firstAttribute="bottom" secondItem="C5N-Dg-YFf" secondAttribute="bottom" id="eWf-bq-CH9"/>
-                                    <constraint firstAttribute="height" constant="96" id="jgm-K4-y5F"/>
-                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="leading" secondItem="LPa-r7-OP1" secondAttribute="leading" id="msQ-JP-Qzd"/>
+                                    <constraint firstAttribute="trailing" secondItem="C5N-Dg-YFf" secondAttribute="trailing" constant="15" id="IOF-No-fqV"/>
+                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="height" secondItem="LPa-r7-OP1" secondAttribute="height" multiplier="0.9375" id="QhT-dU-0Aj"/>
+                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="leading" secondItem="LPa-r7-OP1" secondAttribute="leading" constant="15" id="cdQ-FR-XWC"/>
+                                    <constraint firstAttribute="bottom" secondItem="C5N-Dg-YFf" secondAttribute="bottom" id="cqG-aj-BDq"/>
+                                    <constraint firstItem="C5N-Dg-YFf" firstAttribute="top" secondItem="LPa-r7-OP1" secondAttribute="top" id="vTy-fm-rpB"/>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ykq-1M-FDi">
@@ -441,22 +440,20 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pt0-5M-E8z" firstAttribute="top" secondItem="vMU-Uz-dN7" secondAttribute="bottom" constant="25" id="0AJ-1h-eSs"/>
+                            <constraint firstItem="Ykq-1M-FDi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2TD-hF-sIC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pt0-5M-E8z" secondAttribute="bottom" constant="20" id="4Gq-sU-aOI"/>
                             <constraint firstItem="vMU-Uz-dN7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="9Pz-hv-Q5K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ykq-1M-FDi" secondAttribute="trailing" constant="16" id="Dca-Cp-gmF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pt0-5M-E8z" secondAttribute="trailing" constant="14" id="G9j-1C-C17"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vMU-Uz-dN7" secondAttribute="trailing" constant="25" id="GY6-lJ-FmC"/>
                             <constraint firstItem="pt0-5M-E8z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="Iwl-QA-ted"/>
-                            <constraint firstItem="LPa-r7-OP1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NRu-9A-ATH"/>
-                            <constraint firstItem="vMU-Uz-dN7" firstAttribute="top" secondItem="LPa-r7-OP1" secondAttribute="bottom" constant="25" id="Q9l-0S-16b"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LPa-r7-OP1" secondAttribute="trailing" constant="16" id="bWQ-pD-Two"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LPa-r7-OP1" secondAttribute="trailing" id="cPK-cz-ZAA"/>
-                            <constraint firstItem="LPa-r7-OP1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dYF-rr-2gI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LPa-r7-OP1" secondAttribute="trailing" constant="10" id="QE9-yC-Bto"/>
+                            <constraint firstItem="LPa-r7-OP1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="VkO-M2-phf"/>
+                            <constraint firstItem="vMU-Uz-dN7" firstAttribute="top" secondItem="LPa-r7-OP1" secondAttribute="bottom" constant="25" id="Y93-rb-Mc9"/>
                             <constraint firstItem="pt0-5M-E8z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iuw-f7-dc4"/>
-                            <constraint firstItem="Ykq-1M-FDi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uOe-PX-NUt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -472,7 +469,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="132" y="137.4384236453202"/>
+            <point key="canvasLocation" x="130.40000000000001" y="136.69950738916256"/>
         </scene>
     </scenes>
     <designables>
@@ -534,9 +531,4 @@
             <size key="intrinsicContentSize" width="30" height="54"/>
         </designable>
     </designables>
-    <resources>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

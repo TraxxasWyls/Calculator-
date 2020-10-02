@@ -14,7 +14,11 @@ class HistoryScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.separatorColor = .gray
         configureTableView()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func configureTableView(){

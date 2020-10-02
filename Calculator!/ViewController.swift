@@ -40,13 +40,12 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         loadData()
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .black
         outputLabel.autoAdjustFontSize = true
         outputLabel.minFontScale = 1
         outputLabel.maxFontSize = 75
         outputLabel.text = expression.createOutput()
         ScrollOutput.addSubview(outputLabel)
-        outputLabel.sizeToFit()
         
 //        if let currentFont = outputLabel.font,
 //           let currenWidth = outputLabel.text?
@@ -64,6 +63,9 @@ final class ViewController: UIViewController {
             self.expression = text.prepareForCreate()
             self.resultLabel.text = String((self.algorithm.calculate(self.expression))).createResult()
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func viewDidDisappear(_ animated: Bool) {

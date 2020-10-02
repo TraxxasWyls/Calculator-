@@ -17,7 +17,6 @@ final class SelectableLabel: FittableFontLabel {
 
     var pasteAction: ((String) -> ())?
     
-
     private let selectionOverlay: CALayer = {
         let layer = CALayer()
         layer.cornerRadius = 8
@@ -83,8 +82,8 @@ final class SelectableLabel: FittableFontLabel {
             forBounds: bounds,
             limitedToNumberOfLines: numberOfLines
         ).insetBy(
-            dx: 3 * inset,
-            dy: -0.5 * inset
+            dx: 2 * inset,
+            dy: -0.7 * inset
         )
     }
 
@@ -167,7 +166,7 @@ extension SelectableLabel: AVSpeechSynthesizerDelegate {
 }
 
 extension String {
-    
+
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)

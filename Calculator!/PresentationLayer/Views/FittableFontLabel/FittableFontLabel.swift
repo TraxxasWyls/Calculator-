@@ -81,6 +81,4 @@ open class FittableFontLabel: UILabel {
         }
     }
 }
-extension FittableFontLabel{
-    
-}
+

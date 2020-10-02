@@ -162,6 +162,3 @@ extension UILabel {
         }
     }
 }
-extension UILabel{
-    
-}
