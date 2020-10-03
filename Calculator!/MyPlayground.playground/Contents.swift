@@ -431,3 +431,9 @@ func calculate(_ expression : String) -> Double{
 }
 
 parse("0.00.01+1-1*(2+1)")
+
+var time = NSDate()
+var out: String
+var formatter = DateFormatter()
+formatter.dateFormat = "dd.MM.YYYY"
+var formatteddate = formatter.string(from: time as Date)

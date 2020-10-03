@@ -3,13 +3,18 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/savinov/Desktop/Calculator!/Calculator!/MyPlayground.playground#CharacterRangeLen=54&amp;CharacterRangeLoc=8248&amp;EndingColumnNumber=17&amp;EndingLineNumber=263&amp;StartingColumnNumber=13&amp;StartingLineNumber=261&amp;Timestamp=622966615.6799459"
+         documentLocation = "file:///Users/savinov/Desktop/Calculator!/Calculator!/MyPlayground.playground#CharacterRangeLen=54&amp;CharacterRangeLoc=8248&amp;EndingColumnNumber=17&amp;EndingLineNumber=263&amp;StartingColumnNumber=13&amp;StartingLineNumber=261&amp;Timestamp=623431470.78383"
          lockedSize = "{338, 351}"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/savinov/Desktop/Calculator!/Calculator!/MyPlayground.playground#CharacterRangeLen=50&amp;CharacterRangeLoc=8235&amp;EndingColumnNumber=0&amp;EndingLineNumber=263&amp;StartingColumnNumber=0&amp;StartingLineNumber=261&amp;Timestamp=622966615.680114"
+         documentLocation = "file:///Users/savinov/Desktop/Calculator!/Calculator!/MyPlayground.playground#CharacterRangeLen=50&amp;CharacterRangeLoc=8235&amp;EndingColumnNumber=0&amp;EndingLineNumber=263&amp;StartingColumnNumber=0&amp;StartingLineNumber=261&amp;Timestamp=623431470.783942"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/savinov/Desktop/Calculator!/Calculator!/MyPlayground.playground#CharacterRangeLen=4&amp;CharacterRangeLoc=14183&amp;EndingColumnNumber=9&amp;EndingLineNumber=434&amp;StartingColumnNumber=5&amp;StartingLineNumber=434&amp;Timestamp=623431470.7840281"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>

@@ -28,7 +28,7 @@ final class ViewController: UIViewController {
 
     /// Current expression
     private var expression = "0"
-
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var resultLabel: UILabel!
@@ -114,6 +114,7 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func equalPressed(_ sender: RoundButton) {
+        saveData()
         outputLabel.text = String(algorithm.calculate(expression)).createResult()
         resultLabel.text = ""
         expression = String(algorithm.calculate(expression))
@@ -163,12 +164,16 @@ final class ViewController: UIViewController {
 
     private func saveData() {
         defaults.set(expression, forKey: "expressionKey")
+        defaults.set(resultLabel.text, forKey: "resultKey")
+        defaults.set(NSDate(),forKey: "dateKey")
         defaults.synchronize()
     }
 
     private func loadData() {
-        if let temp = defaults.string(forKey: "expressionKey"){
-            expression = temp
+        if let exp = defaults.string(forKey: "expressionKey"),
+           let res = defaults.string(forKey: "resultKey"){
+            expression = exp
+            resultLabel.text = res
         }
     }
 }
