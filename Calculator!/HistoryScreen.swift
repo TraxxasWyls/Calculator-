@@ -11,7 +11,7 @@ import CoreData
 
 // MARK: - ViewController
 
-class HistoryScreen: UIViewController, NSFetchedResultsControllerDelegate {
+class HistoryScreen: UIViewController {
     
     // MARK: - Properties
     
@@ -85,7 +85,18 @@ class HistoryScreen: UIViewController, NSFetchedResultsControllerDelegate {
 
 // MARK: - Extensions
 
-extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
+extension HistoryScreen: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let history = fetchedResultsController.object(at: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.calcCell) as! CalcCell
+        if let expression = history.expression,
+           let result = history.result,
+           let date = history.date {
+            cell.set(exp: expression, res: result, date: date)
+        }
+        return cell
+    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -101,17 +112,6 @@ extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
                 } else {
                     return 0
                 }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let history = fetchedResultsController.object(at: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.calcCell) as! CalcCell
-        if let expression = history.expression,
-           let result = history.result,
-           let date = history.date {
-            cell.set(exp: expression, res: result, date: date)
-        }
-        return cell
     }
   
 }
