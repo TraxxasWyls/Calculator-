@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK: - ViewController
 
-class HistoryScreen: UIViewController {
+class HistoryScreen: UIViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - Properties
     
@@ -23,6 +24,8 @@ class HistoryScreen: UIViewController {
     /// SearchView intance
     let search = UISearchController(searchResultsController: nil)
     
+    var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "History", keyForSort: "date")
+    
     /// Cells struct
     struct Cells {
         static let calcCell = "CalcCell"
@@ -32,9 +35,19 @@ class HistoryScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print(error)
+        }
         configureTableView()
         setNavigationController()
         setSearchController()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        CoreDataManager.instance.saveContext()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,28 +81,39 @@ class HistoryScreen: UIViewController {
         self.navigationItem.searchController = search
     }
     
-    
 }
 
 // MARK: - Extensions
 
 extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+                let managedObject = fetchedResultsController.object(at: indexPath) as NSManagedObject
+                CoreDataManager.instance.managedObjectContext.delete(managedObject)
+                CoreDataManager.instance.saveContext()
+            }
+        }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if let sections = fetchedResultsController.sections {
+                    return sections[section].numberOfObjects
+                } else {
+                    return 0
+                }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let history = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.calcCell) as! CalcCell
-//        if let expression = defaults.string(forKey: "expressionKey"),
-//           let result = defaults.string(forKey: "resultKey"),
-//           let date = defaults.string(forKey: "dateKey"){
-//            cell.set(calc: expression.createOutput(), res: result, date: date)
-//            cell.set(calc: "22", res: "22", date: "33")
-//        }
+        if let expression = history.expression,
+           let result = history.result,
+           let date = history.date {
+            cell.set(exp: expression, res: result, date: date)
+        }
         return cell
     }
-    
+  
 }
 
 extension HistoryScreen: UISearchResultsUpdating {

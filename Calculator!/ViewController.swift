@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK: - ViewController
 
 final class ViewController: UIViewController {
-
+    
     // MARK: - Properties
-
+    
     /// UserDefaults instance
     private let defaults: UserDefaults = .standard
     
@@ -25,7 +26,7 @@ final class ViewController: UIViewController {
     
     /// Insert instance
     private let inseration = Insert()
-
+    
     /// Current expression
     private var expression = "0"
     
@@ -34,9 +35,9 @@ final class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var outputLabel: SelectableLabel!
     @IBOutlet weak var ScrollOutput: UIScrollView!
-   
+    
     // MARK: - UIViewController
-
+    
     override func viewDidLoad() {
         loadData()
         super.viewDidLoad()
@@ -46,13 +47,6 @@ final class ViewController: UIViewController {
         outputLabel.maxFontSize = 75
         outputLabel.text = expression.createOutput()
         ScrollOutput.addSubview(outputLabel)
-        
-//        if let currentFont = outputLabel.font,
-//           let currenWidth = outputLabel.text?
-//            .width(withConstrainedHeight: 96, font: currentFont) {
-//            ScrollOutput.contentSize = CGSize(width: currenWidth, height: 96)
-//        }
-        
         if expression != "0" {
             resultLabel.text = String(algorithm.calculate(expression)).createResult()
         } else {
@@ -67,13 +61,13 @@ final class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         saveData()
     }
-
+    
     // MARK: - Actions
-
+    
     @IBAction func historyPressed(_ sender: UIButton) {
         let nextScreen = HistoryScreen()
         navigationController?.pushViewController(nextScreen, animated: true)
@@ -114,7 +108,9 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func equalPressed(_ sender: RoundButton) {
-        saveData()
+        if expression != "0" {
+        saveToBase()
+        }
         outputLabel.text = String(algorithm.calculate(expression)).createResult()
         resultLabel.text = ""
         expression = String(algorithm.calculate(expression))
@@ -159,16 +155,16 @@ final class ViewController: UIViewController {
         }
         outputLabel.text = expression.createOutput()
     }
-
+    
     // MARK: - Private
-
+    
     private func saveData() {
         defaults.set(expression, forKey: "expressionKey")
         defaults.set(resultLabel.text, forKey: "resultKey")
         defaults.set(NSDate(),forKey: "dateKey")
         defaults.synchronize()
     }
-
+    
     private func loadData() {
         if let exp = defaults.string(forKey: "expressionKey"),
            let res = defaults.string(forKey: "resultKey"){
@@ -176,4 +172,15 @@ final class ViewController: UIViewController {
             resultLabel.text = res
         }
     }
+    
+    private func saveToBase() {
+        // Создание нового объекта
+        let managedObject = History()
+        // Установка значения атрибута
+        managedObject.expression = expression
+        managedObject.result = String(algorithm.calculate(expression)).createResult()
+        managedObject.date = NSDate() as Date
+        CoreDataManager.instance.saveContext()
+    }
+    
 }

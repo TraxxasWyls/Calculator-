@@ -22,9 +22,6 @@ class CalcCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        dateLabel.text = "01.02.2001  "
-        resultLabel.text = "22312"
-        expressionLabel.text = "2342+(33+666)+54344+344"
         addSubview(dateLabel)
         addSubview(resultLabel)
         addSubview(expressionLabel)
@@ -44,7 +41,7 @@ class CalcCell: UITableViewCell {
     // MARK: - Configure
     
     func configureExpressionLabel() {
-        expressionLabel.numberOfLines = 2
+        expressionLabel.numberOfLines = 3
         expressionLabel.adjustsFontSizeToFitWidth = true
         expressionLabel.fontSizeToFit()
     }
@@ -62,10 +59,12 @@ class CalcCell: UITableViewCell {
     
     // MARK: - Set
     
-    func set(calc: String, res: String, date: String) {
-        expressionLabel.text = calc
-        resultLabel.text = res
-        dateLabel.text = date
+    func set(exp: String, res: String, date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.YYYY"
+        expressionLabel.text = exp.createOutput()
+        resultLabel.text = "= " + res.createResult()
+        dateLabel.text = formatter.string(from: date as Date)
     }
     
     func setExpressionLabel() {
@@ -82,7 +81,7 @@ class CalcCell: UITableViewCell {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: topAnchor),
-            dateLabel.rightAnchor.constraint(equalTo: rightAnchor),
+            dateLabel.rightAnchor.constraint(equalTo: rightAnchor,constant: -5),
             dateLabel.heightAnchor.constraint(equalToConstant: 25)
            
         ])

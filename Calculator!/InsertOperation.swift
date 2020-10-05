@@ -168,6 +168,10 @@ final class Insert {
         using algorithm: ParserAlgorithm
     ) -> String{
         
+        if expression.last == ")" {
+            return expression
+        }
+        
         if expression.last == "." || expression.amountOfDottsInLastNum() > 0 {
             return expression
         }
@@ -182,6 +186,9 @@ final class Insert {
     }
 
     private func insertNumber(_ expression: String, _ operation: String) -> String{
-        expression == "0" ? operation : expression + operation
+        if expression.last == ")"{
+            return expression + "*" + operation
+        }
+        return expression == "0" ? operation : expression + operation
     }
 }

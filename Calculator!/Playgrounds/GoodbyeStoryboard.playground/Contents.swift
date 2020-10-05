@@ -9,15 +9,17 @@ class ViewController: UIViewController {
     var buttons: [UIButton]!
     var horizontalStackViews: [UIStackView]!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        verticalStackView = UIStackView()
+        
+       
         horizontalStackViews = [UIStackView]()
         buttons = [UIButton]()
-        view.backgroundColor = .white
+        view.backgroundColor = .green
         view.addSubview(verticalStackView)
-        creatingArrayOfButtons(count: 60000)
-        creatingArrayOfStacks(stacks: 600, buttons: 100)
+        creatingArrayOfButtons(count: 10000)
+        creatingArrayOfStacks(stacks: 100, buttons: 100)
         horizontalStackViews.forEach{stack in verticalStackView.addArrangedSubview(stack)}
         constraintsForStack()
     }
