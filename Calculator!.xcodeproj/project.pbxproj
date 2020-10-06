@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		3329862A251E76F800CB249C /* CalculationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33298629251E76F800CB249C /* CalculationAlgorithm.swift */; };
 		CB028BDE252117DC00A70A51 /* ParserAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB028BDD252117DC00A70A51 /* ParserAlgorithm.swift */; };
+		CB1DAEB3252C80DE009B3EC5 /* HistoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB7B5555252B1FBC00B9613B /* HistoryModel.xcdatamodeld */; };
+		CB1DAEE9252C89E3009B3EC5 /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1DAEE7252C89E3009B3EC5 /* History+CoreDataClass.swift */; };
+		CB1DAEEA252C89E3009B3EC5 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1DAEE8252C89E3009B3EC5 /* History+CoreDataProperties.swift */; };
 		CB5BADB02508323800AD4E0A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BADAF2508323800AD4E0A /* Stack.swift */; };
 		CB5BADB22508368100AD4E0A /* Notation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BADB12508368100AD4E0A /* Notation.swift */; };
-		CB7B5581252B37FB00B9613B /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B557F252B37FB00B9613B /* History+CoreDataClass.swift */; };
-		CB7B5582252B37FB00B9613B /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B5580252B37FB00B9613B /* History+CoreDataProperties.swift */; };
 		CB7B5588252B390800B9613B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B5587252B390800B9613B /* CoreDataManager.swift */; };
-		CB7B55B8252B657700B9613B /* HistoryModel.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = CB7B5555252B1FBC00B9613B /* HistoryModel.xcdatamodeld */; };
 		CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB966DE02517CA460095D15C /* InsertOperation.swift */; };
 		CBA99EA52503B58A008048F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EA42503B58A008048F1 /* AppDelegate.swift */; };
 		CBA99EA72503B58A008048F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EA62503B58A008048F1 /* SceneDelegate.swift */; };
@@ -54,14 +54,13 @@
 /* Begin PBXFileReference section */
 		33298629251E76F800CB249C /* CalculationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationAlgorithm.swift; sourceTree = "<group>"; };
 		CB028BDD252117DC00A70A51 /* ParserAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserAlgorithm.swift; sourceTree = "<group>"; };
+		CB1DAEE7252C89E3009B3EC5 /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CB1DAEE8252C89E3009B3EC5 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB5BADAF2508323800AD4E0A /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		CB5BADB12508368100AD4E0A /* Notation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notation.swift; sourceTree = "<group>"; };
 		CB5BADB62508D38D00AD4E0A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB7B5556252B1FBC00B9613B /* HistoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryModel.xcdatamodel; sourceTree = "<group>"; };
-		CB7B557F252B37FB00B9613B /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CB7B5580252B37FB00B9613B /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB7B5587252B390800B9613B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		CB7B55A1252B408200B9613B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CB966DE02517CA460095D15C /* InsertOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertOperation.swift; sourceTree = "<group>"; };
 		CBA99EA12503B58A008048F1 /* Calculator!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA99EA42503B58A008048F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -174,9 +173,9 @@
 		CB7B5586252B38DE00B9613B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				CB1DAEE8252C89E3009B3EC5 /* History+CoreDataProperties.swift */,
+				CB1DAEE7252C89E3009B3EC5 /* History+CoreDataClass.swift */,
 				CB7B5587252B390800B9613B /* CoreDataManager.swift */,
-				CB7B557F252B37FB00B9613B /* History+CoreDataClass.swift */,
-				CB7B5580252B37FB00B9613B /* History+CoreDataProperties.swift */,
 				CB7B5555252B1FBC00B9613B /* HistoryModel.xcdatamodeld */,
 			);
 			path = Data;
@@ -191,14 +190,6 @@
 			path = Playgrounds;
 			sourceTree = "<group>";
 		};
-		CB7B55A0252B408200B9613B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CB7B55A1252B408200B9613B /* CoreData.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		CBA99E982503B58A008048F1 = {
 			isa = PBXGroup;
 			children = (
@@ -206,7 +197,6 @@
 				CBA99EBA2503B58B008048F1 /* Calculator!Tests */,
 				CBA99EC52503B58B008048F1 /* Calculator!UITests */,
 				CBA99EA22503B58A008048F1 /* Products */,
-				CB7B55A0252B408200B9613B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,9 +213,9 @@
 		CBA99EA32503B58A008048F1 /* Calculator! */ = {
 			isa = PBXGroup;
 			children = (
-				CBBA368C25265EB900148473 /* UIView */,
 				CBE47DA22522230400BECDBE /* CoreLayer */,
 				CB45028F251FCAC200244ECF /* PresentationLayer */,
+				CBBA368C25265EB900148473 /* UIView */,
 				33298627251E76E400CB249C /* CalculationAlgorithm */,
 				CBE47DC025222D4500BECDBE /* ParserAlgrithm */,
 				CB7B5586252B38DE00B9613B /* Data */,
@@ -427,7 +417,6 @@
 			files = (
 				CBA99EAE2503B58B008048F1 /* Assets.xcassets in Resources */,
 				CBA99EAC2503B58A008048F1 /* Main.storyboard in Resources */,
-				CB7B55B8252B657700B9613B /* HistoryModel.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,20 +446,21 @@
 				CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */,
 				CBE47DBC2522269000BECDBE /* UILabel.swift in Sources */,
 				CBA99EA92503B58A008048F1 /* ViewController.swift in Sources */,
-				CB7B5582252B37FB00B9613B /* History+CoreDataProperties.swift in Sources */,
 				CBFEEA3F251CF2120007E6FD /* SelectableLabel.swift in Sources */,
 				CB028BDE252117DC00A70A51 /* ParserAlgorithm.swift in Sources */,
-				CB7B5581252B37FB00B9613B /* History+CoreDataClass.swift in Sources */,
 				3329862A251E76F800CB249C /* CalculationAlgorithm.swift in Sources */,
 				CBE47DC725222DCC00BECDBE /* Parser.swift in Sources */,
 				CB7B5588252B390800B9613B /* CoreDataManager.swift in Sources */,
 				CBA99EA52503B58A008048F1 /* AppDelegate.swift in Sources */,
 				CB5BADB22508368100AD4E0A /* Notation.swift in Sources */,
+				CB1DAEE9252C89E3009B3EC5 /* History+CoreDataClass.swift in Sources */,
 				CB5BADB02508323800AD4E0A /* Stack.swift in Sources */,
+				CB1DAEEA252C89E3009B3EC5 /* History+CoreDataProperties.swift in Sources */,
 				CBA99EA72503B58A008048F1 /* SceneDelegate.swift in Sources */,
 				CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */,
 				CBE47DB12522261800BECDBE /* FittableFontLabel.swift in Sources */,
 				CBBA368825265B7D00148473 /* HistoryScreen.swift in Sources */,
+				CB1DAEB3252C80DE009B3EC5 /* HistoryModel.xcdatamodeld in Sources */,
 				CBB8A77B250EB859005C4E9C /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

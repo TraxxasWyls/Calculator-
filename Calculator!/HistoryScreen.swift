@@ -15,15 +15,13 @@ class HistoryScreen: UIViewController {
     
     // MARK: - Properties
     
-    /// UserDefaults instance
-    private let defaults: UserDefaults = .standard
-    
     /// TableVeiw instance
     var tableView = UITableView()
     
     /// SearchView intance
     let search = UISearchController(searchResultsController: nil)
     
+    /// FetchedResultsController inctance
     var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "History", keyForSort: "date")
     
     /// Cells struct
@@ -46,10 +44,6 @@ class HistoryScreen: UIViewController {
         setSearchController()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        CoreDataManager.instance.saveContext()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -66,12 +60,12 @@ class HistoryScreen: UIViewController {
     
     // MARK: - Setting
     
-    func setTableViewDelegate(){
+    func setTableViewDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    func setNavigationController(){
+    func setNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .gray
     }
@@ -100,20 +94,21 @@ extension HistoryScreen: UITableViewDelegate, UITableViewDataSource, NSFetchedRe
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-                let managedObject = fetchedResultsController.object(at: indexPath) as NSManagedObject
-                CoreDataManager.instance.managedObjectContext.delete(managedObject)
-                CoreDataManager.instance.saveContext()
-            }
+            let managedObject = fetchedResultsController.object(at: indexPath)
+            CoreDataManager.instance.managedObjectContext.delete(managedObject)
+            CoreDataManager.instance.saveContext()
+            
         }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
-                    return sections[section].numberOfObjects
-                } else {
-                    return 0
-                }
+            return sections[section].numberOfObjects
+        } else {
+            return 0
+        }
     }
-  
+    
 }
 
 extension HistoryScreen: UISearchResultsUpdating {

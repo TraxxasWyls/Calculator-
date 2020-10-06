@@ -11,9 +11,9 @@ import Foundation
 // MARK: - Insert
 
 final class Insert {
-
+    
     // MARK: - Public
-
+    
     public func insertOperation(
         _ operation: String,
         into input: String,
@@ -41,9 +41,9 @@ final class Insert {
             return insertNumber(expression,operation)
         }
     }
-
+    
     // MARK: - Private
-
+    
     private func insertMultOrDiv(_ expression: String, _ operation: String) -> String {
         let preLast = expression.dropLast(1).last
         if expression == "0" {
@@ -72,7 +72,7 @@ final class Insert {
         }
         return expression
     }
-
+    
     private func insertPlus(_ expression: String) -> String {
         let preLast = expression.dropLast(1).last
         if expression == "0" {
@@ -96,7 +96,7 @@ final class Insert {
         }
         return expression
     }
-
+    
     private func insertMinus(_ expression: String) -> String{
         if expression == "0"{
             return "-"
@@ -120,7 +120,7 @@ final class Insert {
         }
         return expression
     }
-
+    
     private func insertOpen(_ expression: String) -> String{
         if expression == "0"{
             return "("
@@ -140,7 +140,7 @@ final class Insert {
         return expression + "("
         
     }
-
+    
     private func insertClose(
         _ expression: String,
         using algorithm: ParserAlgorithm
@@ -162,7 +162,7 @@ final class Insert {
         }
         return expression
     }
-
+    
     private func insertDott(
         _ expression: String,
         using algorithm: ParserAlgorithm
@@ -184,7 +184,7 @@ final class Insert {
         }
         return expression
     }
-
+    
     private func insertNumber(_ expression: String, _ operation: String) -> String{
         if expression.last == ")"{
             return expression + "*" + operation

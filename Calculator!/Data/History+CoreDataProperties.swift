@@ -2,7 +2,7 @@
 //  History+CoreDataProperties.swift
 //  Calculator!
 //
-//  Created by Дмитрий Савинов on 05.10.2020.
+//  Created by Дмитрий Савинов on 06.10.2020.
 //  Copyright © 2020 Дмитрий Савинов. All rights reserved.
 //
 //
@@ -17,9 +17,9 @@ extension History {
         return NSFetchRequest<History>(entityName: "History")
     }
 
+    @NSManaged public var date: Date?
     @NSManaged public var expression: String?
     @NSManaged public var result: String?
-    @NSManaged public var date: Date?
 
 }
 

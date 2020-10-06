@@ -94,8 +94,8 @@
             filePath = "Calculator!/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -199,54 +199,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1AAD05B7-814E-4243-958C-8ABCC1DF1FE6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Calculator!/HistoryScreen.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "HistoryScreen"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "1AAD05B7-814E-4243-958C-8ABCC1DF1FE6 - 50c2f587a0a61d49"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Calculator_.HistoryScreen.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Calculator_.HistoryScreen"
-                  moduleName = "Calculator!"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/savinov/Desktop/Calculator!/Calculator!/HistoryScreen.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  uuid = "1AAD05B7-814E-4243-958C-8ABCC1DF1FE6 - 244ae061519c55fa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Calculator_.HistoryScreen.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Calculator_.HistoryScreen&gt;"
-                  moduleName = "Calculator!"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/savinov/Desktop/Calculator!/Calculator!/HistoryScreen.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7A13E6F8-9247-4E99-9691-4DDC799F7E7E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -254,8 +206,8 @@
             filePath = "Calculator!/HistoryScreen.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +222,8 @@
             filePath = "Calculator!/HistoryScreen.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -279,48 +231,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "07D4920F-7027-4F30-A133-A13CBC661018"
+            uuid = "121B935B-2CA9-427A-B306-3A6659ACFA0D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Calculator!/AppDelegate.swift"
+            filePath = "Calculator!/Data/History+CoreDataClass.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "applicationWillTerminate(_:)"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CF7EFE07-4EC6-4AF2-8EFF-3060B0BEBD47"
+            uuid = "00CAC741-9DD3-46FC-A012-DE15E3BAD2E6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Calculator!/HistoryScreen.swift"
+            filePath = "Calculator!Tests/Calculator_Tests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FD1D207F-9256-4EFE-8ABC-2A397F76A9D5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Calculator!/HistoryScreen.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "testExample()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
