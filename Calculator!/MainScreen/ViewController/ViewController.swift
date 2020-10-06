@@ -58,6 +58,7 @@ final class ViewController: UIViewController {
             self.resultLabel.text = String((self.algorithm.calculate(self.expression))).createResult()
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -70,7 +71,9 @@ final class ViewController: UIViewController {
     
     @IBAction func historyPressed(_ sender: UIButton) {
         let nextScreen = HistoryScreen()
-        navigationController?.pushViewController(nextScreen, animated: true)
+            nextScreen.delegate = self
+//        navigationController?.pushViewController(nextScreen, animated: true)
+        present(nextScreen, animated: true)
     }
     
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
@@ -183,4 +186,13 @@ final class ViewController: UIViewController {
         CoreDataManager.instance.saveContext()
     }
     
+}
+extension ViewController: FirstViewControllerDelegate {
+    
+    func update(expression: String) {
+        self.expression = expression
+        outputLabel.text = expression.createOutput()
+        resultLabel.text = String(algorithm.calculate(expression)).createResult()
+    }
+   
 }

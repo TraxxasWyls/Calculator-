@@ -15,6 +15,8 @@ class HistoryScreen: UIViewController {
     
     // MARK: - Properties
     
+    weak var delegate: FirstViewControllerDelegate?
+    
     /// TableVeiw instance
     var tableView = UITableView()
     
@@ -44,9 +46,9 @@ class HistoryScreen: UIViewController {
         setSearchController()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        navigationController?.setNavigationBarHidden(false, animated: true)
+//    }
     
     func configureTableView(){
         view.addSubview(tableView)
@@ -108,6 +110,16 @@ extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
             return 0
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let history = fetchedResultsController.object(at: indexPath)
+        if let expression = history.expression {
+            delegate?.update(expression: expression)
+            self.dismiss(animated:true)
+        }
+    }
+    
 }
 extension HistoryScreen: NSFetchedResultsControllerDelegate {
    
