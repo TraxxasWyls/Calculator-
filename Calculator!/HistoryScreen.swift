@@ -79,7 +79,7 @@ class HistoryScreen: UIViewController {
 
 // MARK: - Extensions
 
-extension HistoryScreen: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let history = fetchedResultsController.object(at: indexPath)
@@ -108,7 +108,23 @@ extension HistoryScreen: UITableViewDelegate, UITableViewDataSource, NSFetchedRe
             return 0
         }
     }
+}
+extension HistoryScreen: NSFetchedResultsControllerDelegate {
+   
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        if let indexPath = indexPath,
+           type == .delete {
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
 }
 
 extension HistoryScreen: UISearchResultsUpdating {
