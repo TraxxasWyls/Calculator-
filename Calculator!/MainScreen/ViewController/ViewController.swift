@@ -72,8 +72,9 @@ final class ViewController: UIViewController {
     @IBAction func historyPressed(_ sender: UIButton) {
         let nextScreen = HistoryScreen()
             nextScreen.delegate = self
+        let navigationController = UINavigationController(rootViewController: nextScreen)
 //        navigationController?.pushViewController(nextScreen, animated: true)
-        present(nextScreen, animated: true)
+        present(navigationController, animated: true)
     }
     
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
