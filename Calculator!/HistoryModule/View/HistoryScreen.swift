@@ -15,6 +15,8 @@ class HistoryScreen: UIViewController {
     
     // MARK: - Properties
     
+    var presenter: HistoryPresenterProtocol!
+    
     weak var delegate: FirstViewControllerDelegate?
     
     /// TableVeiw instance
@@ -136,6 +138,12 @@ extension HistoryScreen: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+}
+
+extension HistoryScreen: HistoryViewProtocol {
+    func setElementOfHistory(expression: String, result: String, date: Date) {
+        print("set")
     }
 }
 
