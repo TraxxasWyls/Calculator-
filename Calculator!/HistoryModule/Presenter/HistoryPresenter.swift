@@ -9,33 +9,37 @@
 import Foundation
 
 protocol HistoryViewProtocol: class {
-    func setElementOfHistory(expression: String, result: String, date: Date)
+    func success()
+//    func delete()
 }
 
 protocol HistoryPresenterProtocol: class {
-    init (view: HistoryViewProtocol, model: HistoryModel)
-    func deleteElementOfHistory()
-    func showCalculator()
+    init (view: HistoryViewProtocol, dataService: DataServiceProtocol)
+//    func deleteElementOfHistory()
+    func getHistoryModels()
+    var historyModels: [HistoryModel]? { get set }
 }
 
 class HistoryPresenter: HistoryPresenterProtocol {
-    let view: HistoryViewProtocol
-    let model: HistoryModel
+    weak var view: HistoryViewProtocol?
+    let dataService: DataServiceProtocol!
+    var historyModels: [HistoryModel]?
     
-    required init(view: HistoryViewProtocol, model: HistoryModel) {
+    required init(view: HistoryViewProtocol, dataService: DataServiceProtocol) {
         self.view = view
-        self.model = model
+        self.dataService = dataService
+        getHistoryModels()
     }
     
-    func deleteElementOfHistory() {
-        print("delete")
+    func getHistoryModels() {
+        historyModels = dataService.getHistory()
+        view?.success()
+    
     }
     
-    func showCalculator() {
-        print("show")
-    }
-    
-   
-    
+//    func deleteElementOfHistory() {
+//        <#code#>
+//    }
     
 }
+

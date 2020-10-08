@@ -258,7 +258,7 @@
 			path = FittableFontLabel;
 			sourceTree = "<group>";
 		};
-		CB7B5586252B38DE00B9613B /* Data */ = {
+		CB7B5586252B38DE00B9613B /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
 				CB1DAEE8252C89E3009B3EC5 /* History+CoreDataProperties.swift */,
@@ -266,7 +266,7 @@
 				CB7B5587252B390800B9613B /* CoreDataManager.swift */,
 				CB7B5555252B1FBC00B9613B /* HistoryModel.xcdatamodeld */,
 			);
-			path = Data;
+			path = DataLayer;
 			sourceTree = "<group>";
 		};
 		CB7B558D252B39A200B9613B /* Playgrounds */ = {
@@ -307,7 +307,7 @@
 				CBBA368C25265EB900148473 /* UIView */,
 				33298627251E76E400CB249C /* CalculationAlgorithm */,
 				CBE47DC025222D4500BECDBE /* ParserAlgrithm */,
-				CB7B5586252B38DE00B9613B /* Data */,
+				CB7B5586252B38DE00B9613B /* DataLayer */,
 				CB1DAEF1252CB9C5009B3EC5 /* MainScreen */,
 				CB1DAEFB252CBAC1009B3EC5 /* HistoryModule */,
 				CBA99EA42503B58A008048F1 /* AppDelegate.swift */,

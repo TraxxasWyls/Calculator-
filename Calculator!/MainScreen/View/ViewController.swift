@@ -15,6 +15,8 @@ final class ViewController: UIViewController {
     
     // MARK: - Properties
     
+    let builder: Builder = ModuleBuilder()
+    
     /// UserDefaults instance
     private let defaults: UserDefaults = .standard
     
@@ -70,10 +72,9 @@ final class ViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func historyPressed(_ sender: UIButton) {
-        let nextScreen = HistoryScreen()
+        let nextScreen = builder.createHistoryScreen() as! HistoryScreen
             nextScreen.delegate = self
         let navigationController = UINavigationController(rootViewController: nextScreen)
-//        navigationController?.pushViewController(nextScreen, animated: true)
         present(navigationController, animated: true)
     }
     

@@ -38,19 +38,10 @@ class HistoryScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchedResultsController.delegate = self
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print(error)
-        }
         configureTableView()
         setNavigationController()
         setSearchController()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        navigationController?.setNavigationBarHidden(false, animated: true)
-//    }
     
     func configureTableView(){
         view.addSubview(tableView)
@@ -86,14 +77,32 @@ class HistoryScreen: UIViewController {
 extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let history = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.calcCell) as! CalcCell
-        if let expression = history.expression,
-           let result = history.result,
-           let date = history.date {
+        let history = presenter.historyModels?[indexPath.row]
+        if let expression = history?.expression,
+           let result = history?.result,
+           let date = history?.date {
             cell.set(exp: expression, res: result, date: date)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.historyModels?.count ?? 0
+//        if let sections = fetchedResultsController.sections {
+//                    return sections[section].numberOfObjects
+//                } else {
+//                    return 0
+//                }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let history = presenter.historyModels?[indexPath.row]
+        if let expression = history?.expression {
+            delegate?.update(expression: expression)
+            self.dismiss(animated:true)
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -102,23 +111,6 @@ extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
             CoreDataManager.instance.managedObjectContext.delete(managedObject)
             CoreDataManager.instance.saveContext()
             
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController.sections {
-            return sections[section].numberOfObjects
-        } else {
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let history = fetchedResultsController.object(at: indexPath)
-        if let expression = history.expression {
-            delegate?.update(expression: expression)
-            self.dismiss(animated:true)
         }
     }
     
@@ -142,8 +134,8 @@ extension HistoryScreen: NSFetchedResultsControllerDelegate {
 }
 
 extension HistoryScreen: HistoryViewProtocol {
-    func setElementOfHistory(expression: String, result: String, date: Date) {
-        print("set")
+    func success() {
+        tableView.reloadData()
     }
 }
 

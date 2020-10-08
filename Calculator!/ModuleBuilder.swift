@@ -13,11 +13,11 @@ protocol Builder {
     func createHistoryScreen() -> UIViewController
 }
 
-class ModelBuilder: Builder {
+class ModuleBuilder: Builder {
     func createHistoryScreen() -> UIViewController {
-        let model = HistoryModel(expression: "", result: "", date: NSDate() as Date)
         let view = HistoryScreen()
-        let presenter = HistoryPresenter(view: view, model: model)
+        let dataService = History()
+        let presenter = HistoryPresenter(view: view, dataService: dataService)
         view.presenter = presenter
         return view
     }
