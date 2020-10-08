@@ -8,24 +8,24 @@
 
 import Foundation
 
-protocol HistoryViewProtocol: class {
+protocol HistoryViewInputProtocol: class {
     func success()
-//    func delete()
+    func delete(indexPath: IndexPath)
 }
 
-protocol HistoryPresenterProtocol: class {
-    init (view: HistoryViewProtocol, dataService: DataServiceProtocol)
-//    func deleteElementOfHistory()
+protocol HistoryViewOutputProtocol: class {
+    init (view: HistoryViewInputProtocol, dataService: DataServiceProtocol)
+    func deleteElementOfHistory(indexPath: IndexPath)
     func getHistoryModels()
     var historyModels: [HistoryModel]? { get set }
 }
 
-class HistoryPresenter: HistoryPresenterProtocol {
-    weak var view: HistoryViewProtocol?
+class HistoryPresenter: HistoryViewOutputProtocol {
+    weak var view: HistoryViewInputProtocol?
     let dataService: DataServiceProtocol!
     var historyModels: [HistoryModel]?
     
-    required init(view: HistoryViewProtocol, dataService: DataServiceProtocol) {
+    required init(view: HistoryViewInputProtocol, dataService: DataServiceProtocol) {
         self.view = view
         self.dataService = dataService
         getHistoryModels()
@@ -34,12 +34,12 @@ class HistoryPresenter: HistoryPresenterProtocol {
     func getHistoryModels() {
         historyModels = dataService.getHistory()
         view?.success()
-    
     }
     
-//    func deleteElementOfHistory() {
-//        <#code#>
-//    }
-    
+    func deleteElementOfHistory(indexPath: IndexPath) {
+        dataService.deleteElement(at: indexPath)
+        historyModels = dataService.getHistory()
+        view?.delete(indexPath: indexPath)
+    }
 }
 

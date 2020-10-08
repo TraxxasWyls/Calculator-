@@ -472,4 +472,7 @@ class B {
 let a = A()
 a.prepeare(segue: "")
 
+var measurements: [Double] = [1.1, 1.5, 2.9, 1.2, 1.5, 1.3, 1.2]
+     let removed = measurements.remove(at: 2)
+   print(measurements)
 

@@ -31,7 +31,7 @@
 		CBBA36A625267DA800148473 /* CalcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBA36A525267DA800148473 /* CalcCell.swift */; };
 		CBCC911E252E068000C2ABBD /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC911D252E068000C2ABBD /* HistoryModel.swift */; };
 		CBCC9123252E075300C2ABBD /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC9122252E075300C2ABBD /* HistoryPresenter.swift */; };
-		CBCC9137252E46B200C2ABBD /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC9136252E46B200C2ABBD /* ModuleBuilder.swift */; };
+		CBCC9137252E46B200C2ABBD /* ModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC9136252E46B200C2ABBD /* ModuleAssembly.swift */; };
 		CBE47DB12522261800BECDBE /* FittableFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DB02522261800BECDBE /* FittableFontLabel.swift */; };
 		CBE47DBC2522269000BECDBE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DBB2522269000BECDBE /* UILabel.swift */; };
 		CBE47DC725222DCC00BECDBE /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DC625222DCC00BECDBE /* Parser.swift */; };
@@ -89,7 +89,7 @@
 		CBCC9119252E01CB00C2ABBD /* MVP.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MVP.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CBCC911D252E068000C2ABBD /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		CBCC9122252E075300C2ABBD /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
-		CBCC9136252E46B200C2ABBD /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		CBCC9136252E46B200C2ABBD /* ModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAssembly.swift; sourceTree = "<group>"; };
 		CBE47DB02522261800BECDBE /* FittableFontLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittableFontLabel.swift; sourceTree = "<group>"; };
 		CBE47DBB2522269000BECDBE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		CBE47DC625222DCC00BECDBE /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
@@ -261,8 +261,8 @@
 		CB7B5586252B38DE00B9613B /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				CBDB399F252FB0CD009E29EE /* DataService */,
 				CB1DAEE8252C89E3009B3EC5 /* History+CoreDataProperties.swift */,
-				CB1DAEE7252C89E3009B3EC5 /* History+CoreDataClass.swift */,
 				CB7B5587252B390800B9613B /* CoreDataManager.swift */,
 				CB7B5555252B1FBC00B9613B /* HistoryModel.xcdatamodeld */,
 			);
@@ -311,7 +311,7 @@
 				CB1DAEF1252CB9C5009B3EC5 /* MainScreen */,
 				CB1DAEFB252CBAC1009B3EC5 /* HistoryModule */,
 				CBA99EA42503B58A008048F1 /* AppDelegate.swift */,
-				CBCC9136252E46B200C2ABBD /* ModuleBuilder.swift */,
+				CBCC9136252E46B200C2ABBD /* ModuleAssembly.swift */,
 				CBA99EA62503B58A008048F1 /* SceneDelegate.swift */,
 				CBA99EB22503B58B008048F1 /* Info.plist */,
 				CBA99EAD2503B58B008048F1 /* Assets.xcassets */,
@@ -377,6 +377,14 @@
 				CBCC9122252E075300C2ABBD /* HistoryPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CBDB399F252FB0CD009E29EE /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+				CB1DAEE7252C89E3009B3EC5 /* History+CoreDataClass.swift */,
+			);
+			path = DataService;
 			sourceTree = "<group>";
 		};
 		CBE47DA22522230400BECDBE /* CoreLayer */ = {
@@ -554,7 +562,7 @@
 				CBBA36A625267DA800148473 /* CalcCell.swift in Sources */,
 				CBBA368F25265F1E00148473 /* UIView.swift in Sources */,
 				CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */,
-				CBCC9137252E46B200C2ABBD /* ModuleBuilder.swift in Sources */,
+				CBCC9137252E46B200C2ABBD /* ModuleAssembly.swift in Sources */,
 				CBE47DBC2522269000BECDBE /* UILabel.swift in Sources */,
 				CBA99EA92503B58A008048F1 /* ViewController.swift in Sources */,
 				CBFEEA3F251CF2120007E6FD /* SelectableLabel.swift in Sources */,

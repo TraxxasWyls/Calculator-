@@ -15,8 +15,7 @@ class HistoryScreen: UIViewController {
     
     // MARK: - Properties
     
-    var presenter: HistoryPresenterProtocol!
-    
+    var presenter: HistoryViewOutputProtocol!
     weak var delegate: FirstViewControllerDelegate?
     
     /// TableVeiw instance
@@ -24,9 +23,6 @@ class HistoryScreen: UIViewController {
     
     /// SearchView intance
     let search = UISearchController(searchResultsController: nil)
-    
-    /// FetchedResultsController inctance
-    var fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "History", keyForSort: "date")
     
     /// Cells struct
     struct Cells {
@@ -37,7 +33,6 @@ class HistoryScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchedResultsController.delegate = self
         configureTableView()
         setNavigationController()
         setSearchController()
@@ -74,8 +69,7 @@ class HistoryScreen: UIViewController {
 
 // MARK: - Extensions
 
-extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
-    
+extension HistoryScreen: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.calcCell) as! CalcCell
         let history = presenter.historyModels?[indexPath.row]
@@ -89,13 +83,17 @@ extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.historyModels?.count ?? 0
-//        if let sections = fetchedResultsController.sections {
-//                    return sections[section].numberOfObjects
-//                } else {
-//                    return 0
-//                }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            presenter.deleteElementOfHistory(indexPath: indexPath)
+        }
+    }
+}
+
+extension HistoryScreen: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let history = presenter.historyModels?[indexPath.row]
@@ -104,45 +102,21 @@ extension HistoryScreen: UITableViewDelegate, UITableViewDataSource {
             self.dismiss(animated:true)
         }
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let managedObject = fetchedResultsController.object(at: indexPath)
-            CoreDataManager.instance.managedObjectContext.delete(managedObject)
-            CoreDataManager.instance.saveContext()
-            
-        }
-    }
-    
 }
-extension HistoryScreen: NSFetchedResultsControllerDelegate {
-   
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
+
+extension HistoryScreen: HistoryViewInputProtocol {
+    func success() {
+        tableView.reloadData()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        if let indexPath = indexPath,
-           type == .delete {
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func delete(indexPath: IndexPath) {
+        tableView.deleteRows(at: [indexPath], with: .automatic)
         tableView.endUpdates()
     }
 }
 
-extension HistoryScreen: HistoryViewProtocol {
-    func success() {
-        tableView.reloadData()
-    }
-}
-
 extension HistoryScreen: UISearchResultsUpdating {
-    
     func updateSearchResults(for searchController: UISearchController) {
         print("")
     }
-    
 }

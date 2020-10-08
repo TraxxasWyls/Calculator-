@@ -9,18 +9,16 @@
 import Foundation
 import UIKit
 
-protocol Builder {
-    func createHistoryScreen() -> UIViewController
+protocol Assembly {
+    func createHistoryScreen() -> HistoryScreen
 }
 
-class ModuleBuilder: Builder {
-    func createHistoryScreen() -> UIViewController {
+class ModuleAssembly: Assembly {
+    func createHistoryScreen() -> HistoryScreen {
         let view = HistoryScreen()
         let dataService = History()
         let presenter = HistoryPresenter(view: view, dataService: dataService)
         view.presenter = presenter
         return view
     }
-    
-    
 }

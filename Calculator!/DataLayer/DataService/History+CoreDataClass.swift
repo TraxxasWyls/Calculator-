@@ -12,6 +12,7 @@ import CoreData
 
 protocol DataServiceProtocol {
     func getHistory() -> [HistoryModel]?
+    func deleteElement(at: IndexPath)
 }
 
 @objc(History)
@@ -28,15 +29,12 @@ extension History: DataServiceProtocol {
     func getHistory() -> [HistoryModel]? {
         /// FetchedResultsController inctance
         let fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "History", keyForSort: "date")
-        
         var HistoryModelArray: [HistoryModel]! = [HistoryModel]()
-    
         do {
             try fetchedResultsController.performFetch()
         } catch {
             print(error)
         }
-        
         if let history = fetchedResultsController.fetchedObjects{
             for element in history {
                 if let expression = element.expression,
@@ -48,5 +46,18 @@ extension History: DataServiceProtocol {
             }
         }
         return HistoryModelArray
+    }
+    
+    func deleteElement(at: IndexPath) {
+        /// FetchedResultsController inctance
+        let fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "History", keyForSort: "date")
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print(error)
+        }
+        let managedObject = fetchedResultsController.object(at: at)
+        CoreDataManager.instance.managedObjectContext.delete(managedObject)
+        CoreDataManager.instance.saveContext()
     }
 }

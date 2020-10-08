@@ -77,7 +77,7 @@ extension UIColor {
            return UIColor(red: .random, green: .random, blue: .random, alpha: 1.0)
     }
 }
-PlaygroundPage.current.liveView = ViewController()
+//PlaygroundPage.current.liveView = ViewController()
 
 //private func makeABCbtns(){
 //
@@ -180,3 +180,6 @@ PlaygroundPage.current.liveView = ViewController()
 //  }
 //}
 // Present the view controller in the Live View window
+var measurements: [Double] = [1.1, 1.5, 2.9, 1.2, 1.5, 1.3, 1.2]
+let removed = measurements.remove(at: 2)
+     print(measurements)
