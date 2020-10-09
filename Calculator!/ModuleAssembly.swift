@@ -16,7 +16,7 @@ protocol Assembly {
 class ModuleAssembly: Assembly {
     func createHistoryScreen() -> HistoryScreen {
         let view = HistoryScreen()
-        let dataService = History()
+        let dataService = HistoryModelObject()
         let presenter = HistoryPresenter(view: view, dataService: dataService)
         view.presenter = presenter
         return view

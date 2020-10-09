@@ -1,5 +1,5 @@
 //
-//  Parser.swift
+//  ParserProtocol.swift
 //  Calculator!
 //
 //  Created by Дмитрий Савинов on 27.09.2020.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK: - Parser
+// MARK: - ParserProtocol
 
-protocol ParserAlgorithm {
+protocol ParserProtocol {
     
     /// Checks if the given string is an operation
     /// - Parameter input: target string
@@ -21,11 +21,9 @@ protocol ParserAlgorithm {
     func parse(_ input: String) -> [String]
 }
 
-// Default Implementation
+// MARK: - Default
 
-extension ParserAlgorithm {
-    
-    // MARK: - Useful
+extension ParserProtocol {
     
     func isOperation(_ input: String) -> Bool {
         ["+", "-", "*", "/", "(", ")"].contains(input)

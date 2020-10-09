@@ -21,10 +21,10 @@ final class ViewController: UIViewController {
     private let defaults: UserDefaults = .standard
     
     /// ParserAlgorithm  instance
-    private let parser: ParserAlgorithm = Parser()
+    private let parser: ParserProtocol = MathExpressionParser()
     
     /// CalculationAlgorithm instance
-    private lazy var algorithm: CalculationAlgorithm = Notation(basedOn: parser)
+    private lazy var algorithm: CalculationAlgorithm = Notation(parser: parser)
     
     /// Insert instance
     private let inseration = Insert()
@@ -180,7 +180,7 @@ final class ViewController: UIViewController {
     
     private func saveToBase() {
         // Создание нового объекта
-        let managedObject = History()
+        let managedObject = HistoryModelObject()
         // Установка значения атрибута
         managedObject.expression = expression
         managedObject.result = String(algorithm.calculate(expression)).createResult()

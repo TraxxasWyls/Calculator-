@@ -1,5 +1,5 @@
 //
-//  HistoryModel.swift
+//  HistoryPlainObject.swift
 //  Calculator!
 //
 //  Created by Дмитрий Савинов on 07.10.2020.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct HistoryModel {
-    var expression: String
-    var result: String
-    var date: Date
+struct HistoryPlainObject { 
+    let expression: String
+    let result: String
+    let date: Date
 }

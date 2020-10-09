@@ -15,5 +15,4 @@ protocol CalculationAlgorithm {
     /// Calculates some math expression
     /// - Parameter expression: target expression
     func calculate(_ expression: String) -> Double
-
 }

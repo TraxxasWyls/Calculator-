@@ -22,8 +22,8 @@ class CoreDataManager {
     }
     
     // Fetched Results Controller for Entity Name
-    func fetchedResultsController(entityName: String, keyForSort: String) -> NSFetchedResultsController<History> {
-        let fetchRequest = NSFetchRequest<History> (entityName: entityName)
+    func fetchedResultsController(entityName: String, keyForSort: String) -> NSFetchedResultsController<HistoryModelObject> {
+        let fetchRequest = NSFetchRequest<HistoryModelObject> (entityName: entityName)
         let sortDescriptor = NSSortDescriptor(key: keyForSort, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)

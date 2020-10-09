@@ -1,5 +1,5 @@
 //
-//  Parser.swift
+//  MathExpressionParser.swift
 //  Calculator!
 //
 //  Created by Дмитрий Савинов on 28.09.2020.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK: - Parser
+// MARK: - MathExpressionParser
 
-final class Parser: ParserAlgorithm{
+final class MathExpressionParser: ParserProtocol {
     
     // MARK: - Private
     
@@ -38,7 +38,7 @@ final class Parser: ParserAlgorithm{
         return expression
     }
 
-    // Useful
+    // MARK: - Useful
     
     func parse(_ input: String) -> [String] {
         var expression: [String] = [""]

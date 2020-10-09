@@ -14,18 +14,18 @@ protocol HistoryViewInputProtocol: class {
 }
 
 protocol HistoryViewOutputProtocol: class {
-    init (view: HistoryViewInputProtocol, dataService: DataServiceProtocol)
+    init (view: HistoryViewInputProtocol, dataService: HistoryService)
     func deleteElementOfHistory(indexPath: IndexPath)
     func getHistoryModels()
-    var historyModels: [HistoryModel]? { get set }
+    var historyModels: [HistoryPlainObject]? { get set }
 }
 
 class HistoryPresenter: HistoryViewOutputProtocol {
     weak var view: HistoryViewInputProtocol?
-    let dataService: DataServiceProtocol!
-    var historyModels: [HistoryModel]?
+    let dataService: HistoryService!
+    var historyModels: [HistoryPlainObject]?
     
-    required init(view: HistoryViewInputProtocol, dataService: DataServiceProtocol) {
+    required init(view: HistoryViewInputProtocol, dataService: HistoryService) {
         self.view = view
         self.dataService = dataService
         getHistoryModels()

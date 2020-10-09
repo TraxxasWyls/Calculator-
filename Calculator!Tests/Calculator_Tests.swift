@@ -20,8 +20,8 @@ class Calculator_Tests: XCTestCase {
     }
 
     func testExample() throws {
-        let parser = Parser()
-        let notation = Notation(basedOn: parser)
+        let parser = MathExpressionParser()
+        let notation = Notation(parser: parser)
         let expressions = [
             ("(2-1*2)+-(2*5)+(-10.12+10)", -10.12),
             ("-(15.11-6/2*-(1+2))/-1*(2-6*2)", -241.1),

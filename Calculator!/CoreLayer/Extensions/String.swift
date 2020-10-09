@@ -8,7 +8,11 @@
 
 import Foundation
 
+// MARK: - Extension
+
 extension String {
+    
+    // MARK: - Private
 
    private func separatedNumber() -> String {
         guard let itIsANumber = Double(self) as NSNumber? else { return "error" }
@@ -50,6 +54,8 @@ extension String {
         }
         return result
     }
+    
+    // MARK: - Useful
 
     func createOutput() -> String{
         formateNum(tokinize()).formateOperationSymbols()

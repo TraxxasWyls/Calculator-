@@ -8,8 +8,11 @@
 
 import UIKit
 
+// MARK: - Extension
+
 extension UIView {
     
+    /// Binds the current UIView to his superUIView with zero padding
     func pin(to superView: UIView, x: CGFloat, y: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

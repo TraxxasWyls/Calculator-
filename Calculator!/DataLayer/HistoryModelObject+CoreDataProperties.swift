@@ -1,5 +1,5 @@
 //
-//  History+CoreDataProperties.swift
+//  HistoryModelObject+CoreDataProperties.swift
 //  Calculator!
 //
 //  Created by Дмитрий Савинов on 06.10.2020.
@@ -11,10 +11,10 @@ import Foundation
 import CoreData
 
 
-extension History {
+extension HistoryModelObject {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<History> {
-        return NSFetchRequest<History>(entityName: "History")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<HistoryModelObject> {
+        return NSFetchRequest<HistoryModelObject>(entityName: "HistoryModelObject")
     }
 
     @NSManaged public var date: Date?
@@ -23,6 +23,6 @@ extension History {
 
 }
 
-extension History : Identifiable {
+extension HistoryModelObject : Identifiable {
 
 }
