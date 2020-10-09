@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Calculator!
 //
 //  Created by Дмитрий Савинов on 05.09.2020.
@@ -9,13 +9,11 @@
 import UIKit
 import CoreData
 
-// MARK: - ViewController
+// MARK: - MainViewController
 
-final class ViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     // MARK: - Properties
-    
-    let builder: Assembly = ModuleAssembly()
     
     /// UserDefaults instance
     private let defaults: UserDefaults = .standard
@@ -72,7 +70,7 @@ final class ViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func historyPressed(_ sender: UIButton) {
-        let nextScreen = builder.createHistoryScreen()
+        let nextScreen = HistoryAssembly().createHistoryScreen()
             nextScreen.delegate = self
         let navigationController = UINavigationController(rootViewController: nextScreen)
         present(navigationController, animated: true)
@@ -189,7 +187,7 @@ final class ViewController: UIViewController {
     }
     
 }
-extension ViewController: FirstViewControllerDelegate {
+extension MainViewController: MainViewControllerDelegate {
     
     func update(expression: String) {
         self.expression = expression

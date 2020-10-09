@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol FirstViewControllerDelegate: class {
+protocol MainViewControllerDelegate: class {
     
     /// Updating the current state
     func update(expression: String)

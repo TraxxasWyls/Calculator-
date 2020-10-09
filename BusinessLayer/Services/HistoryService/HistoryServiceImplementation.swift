@@ -28,12 +28,12 @@ extension HistoryModelObject: HistoryService {
     
     // MARK: - Useful
     
-    func getHistory() -> [HistoryPlainObject]? {
+    func getHistory() -> [HistoryPlainObject] {
         /// FetchedResultsController inctance
         let fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "HistoryModelObject", keyForSort: "date")
         
         /// HistoryModelArray instance
-        var HistoryModelArray: [HistoryPlainObject]! = [HistoryPlainObject]()
+        var historyModelArray: [HistoryPlainObject] = [HistoryPlainObject]()
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -45,11 +45,11 @@ extension HistoryModelObject: HistoryService {
                    let result = element.result,
                    let date = element.date {
                     let HistoryModelElement = HistoryPlainObject(expression: expression, result: result, date: date)
-                    HistoryModelArray.append(HistoryModelElement)
+                    historyModelArray.append(HistoryModelElement)
                 }
             }
         }
-        return HistoryModelArray
+        return historyModelArray
     }
     
     func deleteElement(at: IndexPath) {
@@ -66,3 +66,19 @@ extension HistoryModelObject: HistoryService {
         CoreDataManager.instance.saveContext()
     }
 }
+
+extension HistoryModelObject {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<HistoryModelObject> {
+        return NSFetchRequest<HistoryModelObject>(entityName: "HistoryModelObject")
+    }
+
+    @NSManaged public var date: Date?
+    @NSManaged public var expression: String?
+    @NSManaged public var result: String?
+}
+
+extension HistoryModelObject : Identifiable {
+
+}
+

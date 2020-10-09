@@ -10,13 +10,13 @@ import UIKit
 
 // MARK: - TableViewCell
 
-class CalcCell: UITableViewCell {
+final class CalcCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var expressionLabel = SelectableLabel()
-    var resultLabel = SelectableLabel()
-    var dateLabel = UILabel()
+    let expressionLabel = SelectableLabel()
+    let resultLabel = SelectableLabel()
+    let dateLabel = UILabel()
     
     // MARK: - Init
     
@@ -28,9 +28,9 @@ class CalcCell: UITableViewCell {
         configureDateLabel()
         configureResultLabel()
         configureExpressionLabel()
-        setDateLabel()
-        setResultLabel()
-        setExpressionLabel()
+        setupDateLabel()
+        setupResultLabel()
+        setupExpressionLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -40,18 +40,18 @@ class CalcCell: UITableViewCell {
     
     // MARK: - Configure
     
-    func configureExpressionLabel() {
+    private func configureExpressionLabel() {
         expressionLabel.numberOfLines = 3
         expressionLabel.adjustsFontSizeToFitWidth = true
         expressionLabel.fontSizeToFit()
     }
     
-    func configureDateLabel() {
+    private func configureDateLabel() {
         dateLabel.numberOfLines = 1
         dateLabel.font = dateLabel.font.withSize(15)
     }
     
-    func configureResultLabel() {
+    private func configureResultLabel() {
         resultLabel.numberOfLines = 1
         resultLabel.adjustsFontSizeToFitWidth = true
         resultLabel.fontSizeToFit()
@@ -59,7 +59,7 @@ class CalcCell: UITableViewCell {
     
     // MARK: - Set
     
-    func set(exp: String, res: String, date: Date) {
+    func update(exp: String, res: String, date: Date) {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YYYY"
         expressionLabel.text = exp.createOutput()
@@ -67,7 +67,7 @@ class CalcCell: UITableViewCell {
         dateLabel.text = formatter.string(from: date as Date)
     }
     
-    func setExpressionLabel() {
+    private func setupExpressionLabel() {
         expressionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             expressionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -77,17 +77,16 @@ class CalcCell: UITableViewCell {
         ])
     }
     
-    func setDateLabel() {
+    private func setupDateLabel() {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: topAnchor),
             dateLabel.rightAnchor.constraint(equalTo: rightAnchor,constant: -5),
             dateLabel.heightAnchor.constraint(equalToConstant: 25)
-           
         ])
     }
     
-    func setResultLabel() {
+    private func setupResultLabel() {
         resultLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             resultLabel.centerYAnchor.constraint(equalTo: centerYAnchor),

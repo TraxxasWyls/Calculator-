@@ -1,5 +1,5 @@
 //
-//  HistoryScreen.swift
+//  HistoryViewController.swift
 //  Calculator!
 //
 //  Created by Дмитрий Савинов on 01.10.2020.
@@ -11,31 +11,29 @@ import CoreData
 
 // MARK: - ViewController
 
-class HistoryScreen: UIViewController {
+final class HistoryViewController: UIViewController {
     
     // MARK: - Properties
     
-    var presenter: HistoryViewOutputProtocol!
-    weak var delegate: FirstViewControllerDelegate?
+    var output: HistoryViewOutput?
+    weak var delegate: MainViewControllerDelegate?
     
     /// TableVeiw instance
-    var tableView = UITableView()
+    let tableView = UITableView()
+    
+    private var history = [HistoryPlainObject]()
     
     /// SearchView intance
     let search = UISearchController(searchResultsController: nil)
-    
-    /// Cells struct
-    struct Cells {
-        static let calcCell = "CalcCell"
-    }
     
     // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        output?.didTriggerViewReadyEvent()
         configureTableView()
-        setNavigationController()
-        setSearchController()
+        setupNavigationController()
+        setupSearchController()
     }
     
     func configureTableView(){
@@ -43,8 +41,8 @@ class HistoryScreen: UIViewController {
         title = "History"
         tableView.separatorColor = .gray
         setTableViewDelegate()
-        tableView.rowHeight = 100
-        tableView.register(CalcCell.self, forCellReuseIdentifier: Cells.calcCell)
+        tableView.rowHeight = Constants.tableViewHeight
+        tableView.register(CalcCell.self, forCellReuseIdentifier: Constants.calcCell)
         tableView.pin(to: view, x: 0, y: 0) 
     }
     
@@ -55,68 +53,78 @@ class HistoryScreen: UIViewController {
         tableView.dataSource = self
     }
     
-    func setNavigationController() {
+    func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .gray
     }
     
-    func setSearchController() {
+    func setupSearchController() {
         search.searchResultsUpdater = self
-        self.navigationItem.searchController = search
+        navigationItem.searchController = search
     }
     
 }
 
 // MARK: - Extensions
 
-extension HistoryScreen: UITableViewDataSource {
+extension HistoryViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.calcCell) as! CalcCell
-        let history = presenter.historyModels?[indexPath.row]
-        if let expression = history?.expression,
-           let result = history?.result,
-           let date = history?.date {
-            cell.set(exp: expression, res: result, date: date)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.calcCell) as! CalcCell
+        let expression = history[indexPath.row].expression
+        let result =  history[indexPath.row].result
+        let date =  history[indexPath.row].date
+        cell.update(exp: expression, res: result, date: date)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.historyModels?.count ?? 0
+        history.count
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            presenter.deleteElementOfHistory(indexPath: indexPath)
+            output?.didTriggerDeleteElement(indexPath: indexPath)
         }
     }
 }
 
-extension HistoryScreen: UITableViewDelegate {
+extension HistoryViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let history = presenter.historyModels?[indexPath.row]
-        if let expression = history?.expression {
-            delegate?.update(expression: expression)
-            self.dismiss(animated:true)
-        }
+        let expression = history[indexPath.row].expression
+        delegate?.update(expression: expression)
+        self.dismiss(animated: true)
     }
 }
 
-extension HistoryScreen: HistoryViewInputProtocol {
-    func success() {
-        tableView.reloadData()
+
+extension HistoryViewController: HistoryViewInput {
+    func reloadData(historyModels: [HistoryPlainObject]) {
+        history = historyModels
     }
     
-    func delete(indexPath: IndexPath) {
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+    func delete(at index: Int) {
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0 )], with: .automatic)
         tableView.endUpdates()
     }
 }
 
-extension HistoryScreen: UISearchResultsUpdating {
+extension HistoryViewController: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
         print("")
     }
+}
+
+extension HistoryViewController {
+    
+    /// Enumeration of constants
+    enum Constants {
+        static let calcCell = "CalcCell"
+        static let tableViewHeight: CGFloat = 100
+    }
+    
 }

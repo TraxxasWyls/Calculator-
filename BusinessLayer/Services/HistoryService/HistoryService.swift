@@ -13,7 +13,7 @@ import Foundation
 protocol HistoryService {
     
     /// Returns ready to use Array of HIstory models
-    func getHistory() -> [HistoryPlainObject]?
+    func getHistory() -> [HistoryPlainObject]
     
     /// Removes an item from the CoreData
     /// - Parameter at: target object
