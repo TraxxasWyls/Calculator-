@@ -359,7 +359,6 @@
 				CBA99EC52503B58B008048F1 /* Calculator!UITests */,
 				CBA99EA22503B58A008048F1 /* Products */,
 				CB7B558D252B39A200B9613B /* Playgrounds */,
-				CBA99EB22503B58B008048F1 /* Info.plist */,
 				CBA99EAD2503B58B008048F1 /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
@@ -377,6 +376,7 @@
 		CBA99EA32503B58A008048F1 /* Calculator! */ = {
 			isa = PBXGroup;
 			children = (
+				CBA99EB22503B58B008048F1 /* Info.plist */,
 				CB1DAEF1252CB9C5009B3EC5 /* MainModule */,
 			);
 			path = "Calculator!";
