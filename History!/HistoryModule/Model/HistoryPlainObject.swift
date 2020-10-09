@@ -12,4 +12,5 @@ struct HistoryPlainObject {
     let expression: String
     let result: String
     let date: Date
+    var id: Int
 }

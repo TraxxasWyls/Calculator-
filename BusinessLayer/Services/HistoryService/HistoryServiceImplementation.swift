@@ -20,11 +20,14 @@ public final class HistoryModelObject: NSManagedObject {
         // Creating a new managedObject
         self.init(entity: CoreDataManager.instance.entityForName(entityName: "HistoryModelObject"), insertInto: CoreDataManager.instance.managedObjectContext)
     }
+    
 }
 
 // MARK: - Extension
 
 extension HistoryModelObject: HistoryService {
+    
+    
     
     // MARK: - Useful
     
@@ -44,7 +47,8 @@ extension HistoryModelObject: HistoryService {
                 if let expression = element.expression,
                    let result = element.result,
                    let date = element.date {
-                    let HistoryModelElement = HistoryPlainObject(expression: expression, result: result, date: date)
+                    let id = Int(element.id)
+                    let HistoryModelElement = HistoryPlainObject(expression: expression, result: result, date: date, id: id)
                     historyModelArray.append(HistoryModelElement)
                 }
             }
@@ -52,33 +56,37 @@ extension HistoryModelObject: HistoryService {
         return historyModelArray
     }
     
-    func deleteElement(at: IndexPath) {
-        /// FetchedResultsController inctance
-        let fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "HistoryModelObject", keyForSort: "date")
+    func deleteElement(element: HistoryPlainObject) {
+        let context = CoreDataManager.instance.managedObjectContext
         do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print(error)
+            let fetchRequest : NSFetchRequest<HistoryModelObject> = HistoryModelObject.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "date == %@", element.date as NSDate)
+            let fetchedResults = try context.fetch(fetchRequest)
+            if let elementToDelete = fetchedResults.first {
+                
+                CoreDataManager.instance.managedObjectContext.delete(elementToDelete)
+                CoreDataManager.instance.saveContext()
+            }
         }
-        /// ManagedObject instance
-        let managedObject = fetchedResultsController.object(at: at)
-        CoreDataManager.instance.managedObjectContext.delete(managedObject)
-        CoreDataManager.instance.saveContext()
+        catch {
+            print ("fetch task failed", error)
+        }
     }
 }
 
 extension HistoryModelObject {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<HistoryModelObject> {
         return NSFetchRequest<HistoryModelObject>(entityName: "HistoryModelObject")
     }
-
+    
     @NSManaged public var date: Date?
     @NSManaged public var expression: String?
     @NSManaged public var result: String?
+    @NSManaged public var id: Int32
 }
 
 extension HistoryModelObject : Identifiable {
-
+    
 }
 

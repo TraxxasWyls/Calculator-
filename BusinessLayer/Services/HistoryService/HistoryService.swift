@@ -17,5 +17,5 @@ protocol HistoryService {
     
     /// Removes an item from the CoreData
     /// - Parameter at: target object
-    func deleteElement(at: IndexPath)
+    func deleteElement(element: HistoryPlainObject)
 }

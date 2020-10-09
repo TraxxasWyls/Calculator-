@@ -26,10 +26,10 @@ final class HistoryPresenter: HistoryViewOutput {
         getHistoryModels()
     }
     
-    func didTriggerDeleteElement(indexPath: IndexPath) {
-        dataService?.deleteElement(at: indexPath)
+    func didTriggerDeleteElement(element: HistoryPlainObject, index: Int) {
+        dataService?.deleteElement(element: element)
         getHistoryModels()
-        view?.delete(at: indexPath.row)
+        view?.delete(at: index)
     }
 }
 

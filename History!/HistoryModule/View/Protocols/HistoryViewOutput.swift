@@ -9,7 +9,7 @@
 import Foundation
 
 protocol HistoryViewOutput: class {
-    func didTriggerDeleteElement(indexPath: IndexPath)
+    func didTriggerDeleteElement(element: HistoryPlainObject, index: Int)
     func didTriggerViewReadyEvent()
     func getHistoryModels()
 }

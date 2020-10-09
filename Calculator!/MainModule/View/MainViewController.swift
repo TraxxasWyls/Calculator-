@@ -183,6 +183,7 @@ final class MainViewController: UIViewController {
         managedObject.expression = expression
         managedObject.result = String(algorithm.calculate(expression)).createResult()
         managedObject.date = NSDate() as Date
+        managedObject.id = Int32(managedObject.date?.timeIntervalSince1970 ?? -1)
         CoreDataManager.instance.saveContext()
     }
     

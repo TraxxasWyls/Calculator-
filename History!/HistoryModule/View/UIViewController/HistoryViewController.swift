@@ -85,7 +85,7 @@ extension HistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            output?.didTriggerDeleteElement(indexPath: indexPath)
+            output?.didTriggerDeleteElement(element: history[indexPath.row], index: indexPath.row)
         }
     }
 }
@@ -102,6 +102,7 @@ extension HistoryViewController: UITableViewDelegate {
 
 
 extension HistoryViewController: HistoryViewInput {
+    
     func reloadData(historyModels: [HistoryPlainObject]) {
         history = historyModels
     }
