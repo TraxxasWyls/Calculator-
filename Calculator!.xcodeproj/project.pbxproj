@@ -19,7 +19,6 @@
 		CB41798E25309D8C00702775 /* HistoryViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB41798D25309D8C00702775 /* HistoryViewInput.swift */; };
 		CB5BADB02508323800AD4E0A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BADAF2508323800AD4E0A /* Stack.swift */; };
 		CB5BADB22508368100AD4E0A /* Notation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5BADB12508368100AD4E0A /* Notation.swift */; };
-		CB7B5588252B390800B9613B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B5587252B390800B9613B /* CoreDataManager.swift */; };
 		CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB966DE02517CA460095D15C /* InsertOperation.swift */; };
 		CBA99EA52503B58A008048F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EA42503B58A008048F1 /* AppDelegate.swift */; };
 		CBA99EA72503B58A008048F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EA62503B58A008048F1 /* SceneDelegate.swift */; };
@@ -78,7 +77,6 @@
 		CB5BADB12508368100AD4E0A /* Notation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notation.swift; sourceTree = "<group>"; };
 		CB5BADB62508D38D00AD4E0A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB7B5556252B1FBC00B9613B /* HistoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryModel.xcdatamodel; sourceTree = "<group>"; };
-		CB7B5587252B390800B9613B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CB966DE02517CA460095D15C /* InsertOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertOperation.swift; sourceTree = "<group>"; };
 		CBA99EA12503B58A008048F1 /* Calculator!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA99EA42503B58A008048F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -359,7 +357,6 @@
 			isa = PBXGroup;
 			children = (
 				CB41795425304C0B00702775 /* HistoryModelObject.swift */,
-				CB7B5587252B390800B9613B /* CoreDataManager.swift */,
 				CB7B5555252B1FBC00B9613B /* HistoryModel.xcdatamodeld */,
 			);
 			path = DataLayer;
@@ -784,7 +781,6 @@
 				3329862A251E76F800CB249C /* CalculationAlgorithm.swift in Sources */,
 				CBC47F062538D3040086324F /* HistoryServiceImplementation.swift in Sources */,
 				CBE47DC725222DCC00BECDBE /* MathExpressionParser.swift in Sources */,
-				CB7B5588252B390800B9613B /* CoreDataManager.swift in Sources */,
 				CBA99EA52503B58A008048F1 /* AppDelegate.swift in Sources */,
 				CB5BADB22508368100AD4E0A /* Notation.swift in Sources */,
 				CB41795025304A2D00702775 /* HistoryService.swift in Sources */,

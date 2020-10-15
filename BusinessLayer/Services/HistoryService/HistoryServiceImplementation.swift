@@ -14,49 +14,55 @@ import Monreau
 
 public final class HistoryServiceImplementation: HistoryService {
     
-    static let storage = try? CoreStorage(configuration: CoreStorageConfig(containerName: "HistoryModel"), model: HistoryModelObject.self)
+    /// CoreStorage instance
+    let storage = try? CoreStorage(configuration: CoreStorageConfig(containerName: "HistoryModel"), model: HistoryModelObject.self)
     
     // MARK: - Useful
     
-    func getHistory() -> [HistoryPlainObject] {
-        /// FetchedResultsController inctance
-        let fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "HistoryModelObject", keyForSort: "date")
-        
-        /// HistoryModelArray instance
-        var historyModelArray: [HistoryPlainObject] = [HistoryPlainObject]()
+    func saveHistory(expression: String, result: String) {
         do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print(error)
+            try storage?.create { element in
+                element.expression = expression
+                element.result = result
+                element.date = NSDate() as Date
+                element.id = Int32(element.date?.timeIntervalSince1970 ?? -1)
+            }
         }
-        if let history = fetchedResultsController.fetchedObjects {
+        catch {
+            print("Error while saving to storage")
+        }
+    }
+    
+    func getHistory() -> [HistoryPlainObject] {
+        var historyPlainObjectArray: [HistoryPlainObject] = [HistoryPlainObject]()
+        var historyModelArray: [HistoryModelObject]?
+        do {
+            historyModelArray = try storage?.read(orderedBy: "date", ascending: false)
+        }
+        catch {
+            print("Error while getting the storage")
+        }
+        if let history = historyModelArray {
             for element in history {
                 if let expression = element.expression,
                    let result = element.result,
                    let date = element.date {
                     let id = Int(element.id)
-                    let HistoryModelElement = HistoryPlainObject(expression: expression, result: result, date: date, id: id)
-                    historyModelArray.append(HistoryModelElement)
+                    let historyPlainObjectElement = HistoryPlainObject(expression: expression, result: result, date: date, id: id)
+                    historyPlainObjectArray.append(historyPlainObjectElement)
                 }
             }
         }
-        return historyModelArray
+        return historyPlainObjectArray
     }
     
-    func deleteElement(element: HistoryPlainObject) {
-        let context = CoreDataManager.instance.managedObjectContext
+    func deleteHistoryObject(element: HistoryPlainObject) {
+        let predicateByDate = NSPredicate(format: "date == %@", element.date as NSDate)
         do {
-            let fetchRequest : NSFetchRequest<HistoryModelObject> = HistoryModelObject.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "date == %@", element.date as NSDate)
-            let fetchedResults = try context.fetch(fetchRequest)
-            if let elementToDelete = fetchedResults.first {
-                
-                CoreDataManager.instance.managedObjectContext.delete(elementToDelete)
-                CoreDataManager.instance.saveContext()
-            }
+            try storage?.erase(predicatedBy: predicateByDate)
         }
         catch {
-            print ("fetch task failed", error)
+            print("Error while deleting the element")
         }
     }
 }

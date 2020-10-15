@@ -24,6 +24,9 @@ final class MainViewController: UIViewController {
     /// CalculationAlgorithm instance
     private lazy var algorithm: CalculationAlgorithm = Notation(parser: parser)
     
+    /// HistoryServiceImplementation inctance
+    private let historyService = HistoryServiceImplementation()
+    
     /// Insert instance
     private let inseration = Insert()
     
@@ -108,7 +111,8 @@ final class MainViewController: UIViewController {
     
     @IBAction func equalPressed(_ sender: RoundButton) {
         if expression != "0" {
-            saveToBase()
+            let result = String(algorithm.calculate(expression)).createResult()
+            historyService.saveHistory(expression: expression, result: result)
         }
         outputLabel.text = String(algorithm.calculate(expression)).createResult()
         resultLabel.text = ""
@@ -169,31 +173,6 @@ final class MainViewController: UIViewController {
            let res = defaults.string(forKey: "resultKey"){
             expression = exp
             resultLabel.text = res
-        }
-    }
-    
-    //    private func saveToBase() {
-    //        // Creating a new managedObject
-    //        let managedObject = HistoryModelObject()
-    //        // Setting the attribute value
-    //        managedObject.expression = expression
-    //        managedObject.result = String(algorithm.calculate(expression)).createResult()
-    //        managedObject.date = NSDate() as Date
-    //        managedObject.id = Int32(managedObject.date?.timeIntervalSince1970 ?? -1)
-    //        CoreDataManager.instance.saveContext()
-    //    }
-    
-    private func saveToBase() {
-        do {
-            try HistoryServiceImplementation.storage?.create { element in
-                element.expression = expression
-                element.result = String(algorithm.calculate(expression)).createResult()
-                element.date = NSDate() as Date
-                element.id = Int32(element.date?.timeIntervalSince1970 ?? -1)
-            }
-        }
-        catch {
-            print("Error while saving to Base")
         }
     }
 }

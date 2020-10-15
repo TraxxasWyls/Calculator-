@@ -15,10 +15,6 @@ import Monreau
 @objc(HistoryModelObject)
 public final class HistoryModelObject: NSManagedObject, Storable {
     
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<HistoryModelObject> {
-        return NSFetchRequest<HistoryModelObject>(entityName: "HistoryModelObject")
-    }
-    
     public typealias PrimaryType = Int32
     
     @NSManaged public var date: Date?
@@ -27,9 +23,4 @@ public final class HistoryModelObject: NSManagedObject, Storable {
     @NSManaged public var id: Int32
 }
 
-// MARK: - Extension
-
-extension HistoryModelObject : Identifiable {
-    
-}
 

@@ -17,5 +17,11 @@ protocol HistoryService {
     
     /// Removes an item from the CoreData
     /// - Parameter at: target object
-    func deleteElement(element: HistoryPlainObject)
+    func deleteHistoryObject(element: HistoryPlainObject)
+    
+    /// Saves data to database
+    /// - Parameters:
+    ///   - expression: target HistoryModel expression
+    ///   - result: target HistoryModel result
+    func saveHistory(expression: String, result: String)
 }
