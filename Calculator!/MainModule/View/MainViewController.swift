@@ -172,15 +172,29 @@ final class MainViewController: UIViewController {
         }
     }
     
+    //    private func saveToBase() {
+    //        // Creating a new managedObject
+    //        let managedObject = HistoryModelObject()
+    //        // Setting the attribute value
+    //        managedObject.expression = expression
+    //        managedObject.result = String(algorithm.calculate(expression)).createResult()
+    //        managedObject.date = NSDate() as Date
+    //        managedObject.id = Int32(managedObject.date?.timeIntervalSince1970 ?? -1)
+    //        CoreDataManager.instance.saveContext()
+    //    }
+    
     private func saveToBase() {
-        // Creating a new managedObject
-        let managedObject = HistoryModelObject()
-        // Setting the attribute value
-        managedObject.expression = expression
-        managedObject.result = String(algorithm.calculate(expression)).createResult()
-        managedObject.date = NSDate() as Date
-        managedObject.id = Int32(managedObject.date?.timeIntervalSince1970 ?? -1)
-        CoreDataManager.instance.saveContext()
+        do {
+            try HistoryModelObject.storage?.create { element in
+                element.expression = expression
+                element.result = String(algorithm.calculate(expression)).createResult()
+                element.date = NSDate() as Date
+                element.id = Int32(element.date?.timeIntervalSince1970 ?? -1)
+            }
+        }
+        catch {
+            print("Error while saving to Base")
+        }
     }
 }
 

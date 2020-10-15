@@ -8,18 +8,21 @@
 
 import Foundation
 import CoreData
+import Monreau
 
 // MARK: - HistoryModelObject
 
 @objc(HistoryModelObject)
-public final class HistoryModelObject: NSManagedObject {
+public final class HistoryModelObject: NSManagedObject, Storable {
+    
+    static let storage = try? CoreStorage(configuration: CoreStorageConfig(containerName: "HistoryModel"), model: HistoryModelObject.self)
     
     // MARK: - Initializers
-    
-    convenience init() {
-        // Creating a new managedObject
-        self.init(entity: CoreDataManager.instance.entityForName(entityName: "HistoryModelObject"), insertInto: CoreDataManager.instance.managedObjectContext)
-    }
+
+//    convenience init() {
+//        // Creating a new managedObject
+//        self.init(entity: CoreDataManager.instance.entityForName(entityName: "HistoryModelObject"), insertInto: CoreDataManager.instance.managedObjectContext)
+//    }
     
 }
 
@@ -61,7 +64,7 @@ extension HistoryModelObject: HistoryService {
             fetchRequest.predicate = NSPredicate(format: "date == %@", element.date as NSDate)
             let fetchedResults = try context.fetch(fetchRequest)
             if let elementToDelete = fetchedResults.first {
-                
+
                 CoreDataManager.instance.managedObjectContext.delete(elementToDelete)
                 CoreDataManager.instance.saveContext()
             }
@@ -78,10 +81,14 @@ extension HistoryModelObject {
         return NSFetchRequest<HistoryModelObject>(entityName: "HistoryModelObject")
     }
     
+    public typealias PrimaryType = Int32
+    
     @NSManaged public var date: Date?
     @NSManaged public var expression: String?
     @NSManaged public var result: String?
     @NSManaged public var id: Int32
+    
+    
 }
 
 extension HistoryModelObject : Identifiable {

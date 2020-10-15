@@ -15,10 +15,10 @@ final class CalcCell: UITableViewCell {
     // MARK: - Properties
     
     /// Label which contains mathematical expression
-    let expressionLabel = UILabel()
+    let expressionLabel = SelectableLabel()
     
     /// Label which contains result of the mathematical expression
-    let resultLabel = UILabel()
+    let resultLabel = SelectableLabel()
     
     /// Label which contains date when calculation was
     let dateLabel = UILabel()

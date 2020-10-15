@@ -1,0 +1,26 @@
+PODS:
+  - Monreau (2.1.0):
+    - RealmSwift
+  - Realm (5.5.0):
+    - Realm/Headers (= 5.5.0)
+  - Realm/Headers (5.5.0)
+  - RealmSwift (5.5.0):
+    - Realm (= 5.5.0)
+
+DEPENDENCIES:
+  - Monreau
+
+SPEC REPOS:
+  trunk:
+    - Monreau
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  Monreau: a326633da2d40b9cc28092cf6d38376a877b3dea
+  Realm: fb399d76f44042e5cdfc630f33828fdb4d077345
+  RealmSwift: 3b7e62356207ef16d34de4e55d475163bd2062bb
+
+PODFILE CHECKSUM: b4ac600d5d543539f0786082aff296bf20803bd1
+
+COCOAPODS: 1.9.3
