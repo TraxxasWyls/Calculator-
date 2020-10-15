@@ -17,7 +17,7 @@ final class HistoryAssembly {
     /// - Returns: the HistoryViewController instance
     func createHistoryScreen() -> HistoryViewController {
         let view = HistoryViewController()
-        let dataService = HistoryModelObject()
+        let dataService = HistoryServiceImplementation()
         let presenter = HistoryPresenter(dataService: dataService)
         presenter.view = view
         view.output = presenter

@@ -2,7 +2,7 @@
 //  HistoryServiceImplementation.swift
 //  Calculator!
 //
-//  Created by Дмитрий Савинов on 09.10.2020.
+//  Created by Дмитрий Савинов on 15.10.2020.
 //  Copyright © 2020 Дмитрий Савинов. All rights reserved.
 //
 
@@ -10,25 +10,11 @@ import Foundation
 import CoreData
 import Monreau
 
-// MARK: - HistoryModelObject
+// MARK: - HistoryServiceImplementation
 
-@objc(HistoryModelObject)
-public final class HistoryModelObject: NSManagedObject, Storable {
+public final class HistoryServiceImplementation: HistoryService {
     
     static let storage = try? CoreStorage(configuration: CoreStorageConfig(containerName: "HistoryModel"), model: HistoryModelObject.self)
-    
-    // MARK: - Initializers
-
-//    convenience init() {
-//        // Creating a new managedObject
-//        self.init(entity: CoreDataManager.instance.entityForName(entityName: "HistoryModelObject"), insertInto: CoreDataManager.instance.managedObjectContext)
-//    }
-    
-}
-
-// MARK: - Extension
-
-extension HistoryModelObject: HistoryService {
     
     // MARK: - Useful
     
@@ -64,7 +50,7 @@ extension HistoryModelObject: HistoryService {
             fetchRequest.predicate = NSPredicate(format: "date == %@", element.date as NSDate)
             let fetchedResults = try context.fetch(fetchRequest)
             if let elementToDelete = fetchedResults.first {
-
+                
                 CoreDataManager.instance.managedObjectContext.delete(elementToDelete)
                 CoreDataManager.instance.saveContext()
             }
@@ -74,24 +60,3 @@ extension HistoryModelObject: HistoryService {
         }
     }
 }
-
-extension HistoryModelObject {
-    
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<HistoryModelObject> {
-        return NSFetchRequest<HistoryModelObject>(entityName: "HistoryModelObject")
-    }
-    
-    public typealias PrimaryType = Int32
-    
-    @NSManaged public var date: Date?
-    @NSManaged public var expression: String?
-    @NSManaged public var result: String?
-    @NSManaged public var id: Int32
-    
-    
-}
-
-extension HistoryModelObject : Identifiable {
-    
-}
-

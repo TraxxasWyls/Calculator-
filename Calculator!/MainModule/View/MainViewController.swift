@@ -185,7 +185,7 @@ final class MainViewController: UIViewController {
     
     private func saveToBase() {
         do {
-            try HistoryModelObject.storage?.create { element in
+            try HistoryServiceImplementation.storage?.create { element in
                 element.expression = expression
                 element.result = String(algorithm.calculate(expression)).createResult()
                 element.date = NSDate() as Date
