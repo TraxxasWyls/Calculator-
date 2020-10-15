@@ -9,7 +9,12 @@
 import Foundation
 import UIKit
 
+// MARK: - HistoryAssembly
+
 final class HistoryAssembly {
+    
+    /// Assembling the history module
+    /// - Returns: the HistoryViewController instance
     func createHistoryScreen() -> HistoryViewController {
         let view = HistoryViewController()
         let dataService = HistoryModelObject()

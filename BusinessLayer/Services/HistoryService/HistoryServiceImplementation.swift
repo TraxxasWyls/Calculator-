@@ -27,8 +27,6 @@ public final class HistoryModelObject: NSManagedObject {
 
 extension HistoryModelObject: HistoryService {
     
-    
-    
     // MARK: - Useful
     
     func getHistory() -> [HistoryPlainObject] {

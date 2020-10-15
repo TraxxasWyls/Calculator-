@@ -8,10 +8,18 @@
 
 import Foundation
 
+// MARK: - HistoryPresenter
+
 final class HistoryPresenter: HistoryViewOutput {
+    
+    /// HistoryViewInput that presenter is using
     weak var view: HistoryViewInput?
+    
+    /// HistoryService that presenter is using
     let dataService: HistoryService?
     
+    /// Initialize the HistoryPresenter with the required dataService
+    /// - Parameter dataService: target dataService
     required init(dataService: HistoryService) {
         self.dataService = dataService
     }

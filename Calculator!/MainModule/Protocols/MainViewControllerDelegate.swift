@@ -8,8 +8,11 @@
 
 import Foundation
 
+// MARK: - MainViewControllerDelegate
+
 protocol MainViewControllerDelegate: class {
     
-    /// Updating the current state
+    /// Updating the current expression
+    /// - Parameter expression: target expression
     func update(expression: String)
 }

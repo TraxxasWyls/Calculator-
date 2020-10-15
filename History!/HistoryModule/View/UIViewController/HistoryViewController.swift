@@ -15,12 +15,16 @@ final class HistoryViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// HistoryViewOutput that HistoryViewController is using
     var output: HistoryViewOutput?
+    
+    /// Delegate of the MainViewController
     weak var delegate: MainViewControllerDelegate?
     
     /// TableVeiw instance
     let tableView = UITableView()
     
+    /// [HistoryPlainObject] inctance which is the storage
     private var history = [HistoryPlainObject]()
     
     /// SearchView intance
@@ -48,17 +52,17 @@ final class HistoryViewController: UIViewController {
     
     // MARK: - Setting
     
-    func setTableViewDelegate() {
+    private func setTableViewDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    func setupNavigationController() {
+    private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .gray
     }
     
-    func setupSearchController() {
+    private func setupSearchController() {
         search.searchResultsUpdater = self
         navigationItem.searchController = search
     }
@@ -67,6 +71,8 @@ final class HistoryViewController: UIViewController {
 
 // MARK: - Extensions
 
+// MARK: - UITableViewDataSource
+
 extension HistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,7 +80,7 @@ extension HistoryViewController: UITableViewDataSource {
         let expression = history[indexPath.row].expression
         let result =  history[indexPath.row].result
         let date =  history[indexPath.row].date
-        cell.update(exp: expression, res: result, date: date)
+        cell.setupCell(exp: expression, res: result, date: date)
         return cell
     }
     
@@ -90,6 +96,8 @@ extension HistoryViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension HistoryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -100,6 +108,7 @@ extension HistoryViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - HistoryViewInput
 
 extension HistoryViewController: HistoryViewInput {
     
@@ -113,6 +122,8 @@ extension HistoryViewController: HistoryViewInput {
     }
 }
 
+// MARK: - UISearchResultsUpdating
+
 extension HistoryViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -120,10 +131,12 @@ extension HistoryViewController: UISearchResultsUpdating {
     }
 }
 
+// MARK: - Constants
+
 extension HistoryViewController {
     
     /// Enumeration of constants
-    enum Constants {
+   private enum Constants {
         static let calcCell = "CalcCell"
         static let tableViewHeight: CGFloat = 100
     }

@@ -59,10 +59,6 @@ final class MainViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         saveData()
     }
@@ -71,7 +67,7 @@ final class MainViewController: UIViewController {
     
     @IBAction func historyPressed(_ sender: UIButton) {
         let nextScreen = HistoryAssembly().createHistoryScreen()
-            nextScreen.delegate = self
+        nextScreen.delegate = self
         let navigationController = UINavigationController(rootViewController: nextScreen)
         present(navigationController, animated: true)
     }
@@ -112,7 +108,7 @@ final class MainViewController: UIViewController {
     
     @IBAction func equalPressed(_ sender: RoundButton) {
         if expression != "0" {
-        saveToBase()
+            saveToBase()
         }
         outputLabel.text = String(algorithm.calculate(expression)).createResult()
         resultLabel.text = ""
@@ -177,23 +173,21 @@ final class MainViewController: UIViewController {
     }
     
     private func saveToBase() {
-        // Создание нового объекта
+        // Creating a new managedObject
         let managedObject = HistoryModelObject()
-        // Установка значения атрибута
+        // Setting the attribute value
         managedObject.expression = expression
         managedObject.result = String(algorithm.calculate(expression)).createResult()
         managedObject.date = NSDate() as Date
         managedObject.id = Int32(managedObject.date?.timeIntervalSince1970 ?? -1)
         CoreDataManager.instance.saveContext()
     }
-    
 }
+
 extension MainViewController: MainViewControllerDelegate {
-    
     func update(expression: String) {
         self.expression = expression
         outputLabel.text = expression.createOutput()
         resultLabel.text = String(algorithm.calculate(expression)).createResult()
     }
-   
 }

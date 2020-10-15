@@ -13,6 +13,10 @@ import UIKit
 extension UIView {
     
     /// Binds the current UIView to his superUIView with zero padding
+    /// - Parameters:
+    ///   - superView: the UIView that the current UIView is attached to
+    ///   - x: offset by the x - axis
+    ///   - y: offset by the y - axis
     func pin(to superView: UIView, x: CGFloat, y: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -23,3 +27,4 @@ extension UIView {
         ])
     }
 }
+

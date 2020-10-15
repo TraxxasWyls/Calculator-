@@ -14,8 +14,13 @@ final class CalcCell: UITableViewCell {
     
     // MARK: - Properties
     
-    let expressionLabel = SelectableLabel()
-    let resultLabel = SelectableLabel()
+    /// Label which contains mathematical expression
+    let expressionLabel = UILabel()
+    
+    /// Label which contains result of the mathematical expression
+    let resultLabel = UILabel()
+    
+    /// Label which contains date when calculation was
     let dateLabel = UILabel()
     
     // MARK: - Init
@@ -35,7 +40,6 @@ final class CalcCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        
     }
     
     // MARK: - Configure
@@ -57,9 +61,14 @@ final class CalcCell: UITableViewCell {
         resultLabel.fontSizeToFit()
     }
     
-    // MARK: - Set
+    // MARK: - Setup
     
-    func update(exp: String, res: String, date: Date) {
+    /// Setup cell with data from parameters
+    /// - Parameters:
+    ///   - exp: target expressionLabel.text
+    ///   - res: target resultLabel.text
+    ///   - date: target dateLabel.text
+    func setupCell(exp: String, res: String, date: Date) {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YYYY"
         expressionLabel.text = exp.createOutput()
@@ -67,6 +76,7 @@ final class CalcCell: UITableViewCell {
         dateLabel.text = formatter.string(from: date as Date)
     }
     
+    /// Setup expressionLabel in the cell
     private func setupExpressionLabel() {
         expressionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -77,6 +87,7 @@ final class CalcCell: UITableViewCell {
         ])
     }
     
+    /// Setup dateLabel in the cell
     private func setupDateLabel() {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -86,6 +97,7 @@ final class CalcCell: UITableViewCell {
         ])
     }
     
+    /// Setup resultLabel in the cell
     private func setupResultLabel() {
         resultLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

@@ -8,7 +8,15 @@
 
 import Foundation
 
+// MARK: - HistoryViewInput
+
 protocol HistoryViewInput: class {
+    
+    /// Reloading data of the HistoryView
+    /// - Parameter historyModels: target history
     func reloadData(historyModels: [HistoryPlainObject])
+    
+    /// Deleting the HistoryPlainObject at index in the array
+    /// - Parameter index: of the concrete HistoryPlainObject in the array
     func delete(at index: Int)
 }
