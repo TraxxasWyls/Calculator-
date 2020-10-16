@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "02B5959F-0556-40C6-B0BC-391BF0524A20"
+            uuid = "444E25BF-4118-49A1-BB35-E6B25BFBAB51"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Calculator!/MainModule/View/MainViewController.swift"
+            filePath = "BusinessLayer/Services/HistoryService/HistoryTranlator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "equalPressed(_:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "translate(from:to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7EFCBBB2-47A1-480B-988F-F5B4264A038D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BusinessLayer/Services/HistoryService/HistoryServiceImplementation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "deleteHistoryObject(element:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,20 +7,18 @@
 //
 
 import Foundation
-import CoreData
 import Monreau
+import SwiftyDAO
 
 // MARK: - HistoryModelObject
 
 @objc(HistoryModelObject)
-public final class HistoryModelObject: NSManagedObject, Storable {
-    
-    public typealias PrimaryType = Int32
-    
+public final class HistoryModelObject: ManagedModel {
+        
     @NSManaged public var date: Date?
     @NSManaged public var expression: String?
     @NSManaged public var result: String?
-    @NSManaged public var id: Int32
+    @NSManaged public var id: Int64
 }
 
 

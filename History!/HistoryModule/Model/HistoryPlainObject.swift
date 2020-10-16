@@ -7,11 +7,20 @@
 //
 
 import Foundation
+import SwiftyDAO
 
 // MARK: - HistoryPlainObject
 
 /// Plain object with that HistoryModule is working
-struct HistoryPlainObject {
+struct HistoryPlainObject: Plain {
+    
+    // MARK: - Plain
+    
+    var uniqueId: UniqueID {
+        return UniqueID(value: id)
+    }
+    
+    // MARK: - Properties
     
     /// Mathematical expression
     let expression: String

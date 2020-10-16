@@ -19,9 +19,8 @@ protocol HistoryService {
     /// - Parameter at: target object
     func deleteHistoryObject(element: HistoryPlainObject)
     
+    
     /// Saves data to database
-    /// - Parameters:
-    ///   - expression: target HistoryModel expression
-    ///   - result: target HistoryModel result
-    func saveHistory(expression: String, result: String)
+    /// - Parameter object: an instance of the structure that will be saved to the base
+    func saveHistory(object: HistoryPlainObject)
 }

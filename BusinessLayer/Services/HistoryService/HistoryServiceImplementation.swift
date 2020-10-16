@@ -7,62 +7,58 @@
 //
 
 import Foundation
-import CoreData
 import Monreau
+import SwiftyDAO
 
 // MARK: - HistoryServiceImplementation
 
 public final class HistoryServiceImplementation: HistoryService {
     
-    /// CoreStorage instance
-    let storage = try? CoreStorage(configuration: CoreStorageConfig(containerName: "HistoryModel"), model: HistoryModelObject.self)
+    /// DAO
+    let dao: DAO<CoreStorage<HistoryModelObject>, HistoryTranslator>
+    
+    // MARK: - Initialize
+    
+    init(dao: DAO<CoreStorage<HistoryModelObject>, HistoryTranslator>) {
+        self.dao = dao
+    }
     
     // MARK: - Useful
     
-    func saveHistory(expression: String, result: String) {
-        do {
-            try storage?.create { element in
-                element.expression = expression
-                element.result = result
-                element.date = NSDate() as Date
-                element.id = Int32(element.date?.timeIntervalSince1970 ?? -1)
+    func saveHistory(object: HistoryPlainObject) {
+        if getLastExpression() != object.expression {
+            do {
+                try dao.create(object)
+            } catch {
+                print("Error while saving to storage")
             }
-        }
-        catch {
-            print("Error while saving to storage")
         }
     }
     
     func getHistory() -> [HistoryPlainObject] {
-        var historyPlainObjectArray: [HistoryPlainObject] = [HistoryPlainObject]()
-        var historyModelArray: [HistoryModelObject]?
+        var historyPlainObjectArray: [HistoryPlainObject]?
         do {
-            historyModelArray = try storage?.read(orderedBy: "date", ascending: false)
-        }
-        catch {
+             historyPlainObjectArray = try dao.read(orderedBy: "date", asceding: false)
+        } catch {
             print("Error while getting the storage")
         }
-        if let history = historyModelArray {
-            for element in history {
-                if let expression = element.expression,
-                   let result = element.result,
-                   let date = element.date {
-                    let id = Int(element.id)
-                    let historyPlainObjectElement = HistoryPlainObject(expression: expression, result: result, date: date, id: id)
-                    historyPlainObjectArray.append(historyPlainObjectElement)
-                }
-            }
-        }
-        return historyPlainObjectArray
+        return historyPlainObjectArray ?? [HistoryPlainObject]()
     }
     
     func deleteHistoryObject(element: HistoryPlainObject) {
-        let predicateByDate = NSPredicate(format: "date == %@", element.date as NSDate)
         do {
-            try storage?.erase(predicatedBy: predicateByDate)
-        }
-        catch {
+            try dao.erase(byPrimaryKey: element.uniqueId)
+        } catch {
             print("Error while deleting the element")
         }
+    }
+    
+    private func getLastExpression() -> String {
+        do {
+            return try dao.read().last?.expression ?? ""
+        } catch {
+            print("Error while getting first element")
+        }
+        return ""
     }
 }

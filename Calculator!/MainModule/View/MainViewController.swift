@@ -25,13 +25,16 @@ final class MainViewController: UIViewController {
     private lazy var algorithm: CalculationAlgorithm = Notation(parser: parser)
     
     /// HistoryServiceImplementation inctance
-    private let historyService = HistoryServiceImplementation()
+    private let historyService = HistoryAssembly().createHistoryService()
     
     /// Insert instance
     private let inseration = Insert()
     
     /// Current expression
     private var expression = "0"
+    
+    /// Sampler inctance
+    let sampler = Sampler(delay: 0.1)
     
     // MARK: - IBOutlets
     
@@ -111,8 +114,10 @@ final class MainViewController: UIViewController {
     
     @IBAction func equalPressed(_ sender: RoundButton) {
         if expression != "0" {
-            let result = String(algorithm.calculate(expression)).createResult()
-            historyService.saveHistory(expression: expression, result: result)
+            let historyObject = createHistoryPlainObject()
+            sampler.sample {
+                self.historyService.saveHistory(object: historyObject)
+            }
         }
         outputLabel.text = String(algorithm.calculate(expression)).createResult()
         resultLabel.text = ""
@@ -174,6 +179,20 @@ final class MainViewController: UIViewController {
             expression = exp
             resultLabel.text = res
         }
+    }
+    
+    private func createHistoryPlainObject() -> HistoryPlainObject {
+        let result = String(algorithm.calculate(expression)).createResult()
+        let date = NSDate() as Date
+        let leftOffset = Int.min
+        let rightOffset = Int.max - Int(date.timeIntervalSince1970)
+        let id = Int(date.timeIntervalSince1970) + Int.random(in: leftOffset..<rightOffset)
+        return HistoryPlainObject(
+            expression: expression,
+            result: result,
+            date: date,
+            id: id
+        )
     }
 }
 

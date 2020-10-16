@@ -6,21 +6,25 @@ PODS:
   - Realm/Headers (5.5.0)
   - RealmSwift (5.5.0):
     - Realm (= 5.5.0)
+  - SwiftyDAO (2.2.2):
+    - Monreau
 
 DEPENDENCIES:
-  - Monreau
+  - SwiftyDAO
 
 SPEC REPOS:
   trunk:
     - Monreau
     - Realm
     - RealmSwift
+    - SwiftyDAO
 
 SPEC CHECKSUMS:
   Monreau: a326633da2d40b9cc28092cf6d38376a877b3dea
   Realm: fb399d76f44042e5cdfc630f33828fdb4d077345
   RealmSwift: 3b7e62356207ef16d34de4e55d475163bd2062bb
+  SwiftyDAO: 1ebe0b301c4fba939cc2e9725cf1d942fcbd73f5
 
-PODFILE CHECKSUM: b4ac600d5d543539f0786082aff296bf20803bd1
+PODFILE CHECKSUM: cfe24584abdd40bfe54c81a38ff79e5e8ef9aeee
 
 COCOAPODS: 1.9.3

@@ -3,7 +3,7 @@
 
 use_frameworks!
 target 'Calculator!' do
-  pod "Monreau"
+  pod "SwiftyDAO"
 end
 post_install do |installer|
   # This removes the warning about swift conversion, hopefuly forever!
