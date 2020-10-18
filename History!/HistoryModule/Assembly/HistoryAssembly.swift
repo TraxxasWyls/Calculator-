@@ -8,35 +8,40 @@
 
 import Foundation
 import UIKit
-import Monreau
-import SwiftyDAO
+import Swinject
 
 // MARK: - HistoryAssembly
 
 final class HistoryAssembly {
     
+    let container: Container
+
+    init(historyService: HistoryService) {
+        container = Container()
+        container.register(HistoryViewController.self) { _ in
+            HistoryViewController()
+        }
+        container.register(HistoryPresenter.self) { r in
+            let presenter = HistoryPresenter(dataService: historyService)
+            presenter.view = r.resolve(HistoryViewController.self)!
+            return presenter
+        }
+//        container.register(HistoryViewController.self) { r in
+//            let view = r.resolve(HistoryViewController.self).unwrap()
+//            view.output = r.resolve(HistoryPresenter.self).unwrap()
+//            return view
+//        }
+    }
+    
     /// Assembling the history module
     /// - Returns: the HistoryViewController instance
     func createHistoryScreen() -> HistoryViewController {
-        let view = HistoryViewController()
-        let dataService = createHistoryService()
-        let presenter = HistoryPresenter(dataService: dataService)
-        presenter.view = view
-        view.output = presenter
-        return view
+        let view = container.resolve(HistoryViewController.self)
+        view?.output = container.resolve(HistoryPresenter.self)
+        return view.unwrap()
     }
     
-    /// Assemling the history service
-    /// - Returns: the HistoryService inctance
-    func createHistoryService() -> HistoryService {
-        let dao: DAO<CoreStorage<HistoryModelObject>, HistoryTranslator>
-        let config = CoreStorageConfig(containerName: "HistoryModel")
-        do {
-            let storage = try CoreStorage(configuration: config, model: HistoryModelObject.self)
-            dao = DAO(storage: storage, translator: HistoryTranslator())
-            return HistoryServiceImplementation(dao: dao)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
+    
+    
+    
 }

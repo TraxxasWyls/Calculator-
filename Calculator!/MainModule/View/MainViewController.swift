@@ -25,7 +25,7 @@ final class MainViewController: UIViewController {
     private lazy var algorithm: CalculationAlgorithm = Notation(parser: parser)
     
     /// HistoryServiceImplementation inctance
-    private let historyService = HistoryAssembly().createHistoryService()
+    private let historyService = HistoryServiceAssembly().createHistoryService()
     
     /// Insert instance
     private let inseration = Insert()
@@ -72,7 +72,7 @@ final class MainViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func historyPressed(_ sender: UIButton) {
-        let nextScreen = HistoryAssembly().createHistoryScreen()
+        let nextScreen = HistoryAssembly(historyService: historyService).createHistoryScreen()
         nextScreen.delegate = self
         let navigationController = UINavigationController(rootViewController: nextScreen)
         present(navigationController, animated: true)
