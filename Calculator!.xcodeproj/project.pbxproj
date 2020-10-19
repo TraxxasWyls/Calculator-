@@ -20,10 +20,6 @@
 		CB7A6361253CBE3000F262BC /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A6360253CBE3000F262BC /* Optional.swift */; };
 		CB7A6366253CC45000F262BC /* HistoryServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A6365253CC45000F262BC /* HistoryServiceAssembly.swift */; };
 		CB7A63CB253CD54200F262BC /* Pods_Calculator_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7EC4A84E157AACF4CB1A61 /* Pods_Calculator_.framework */; };
-		CB7A63DA253D7A8F00F262BC /* AssembliesCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A63D9253D7A8F00F262BC /* AssembliesCollector.swift */; };
-		CB7A63DF253D7A9D00F262BC /* ApplicationAssembliesCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A63DE253D7A9D00F262BC /* ApplicationAssembliesCollector.swift */; };
-		CB7A63E4253D7AA400F262BC /* CollectableAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A63E3253D7AA400F262BC /* CollectableAssembly.swift */; };
-		CB7A63E9253D7AAA00F262BC /* AssembliesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A63E8253D7AAA00F262BC /* AssembliesHolder.swift */; };
 		CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB966DE02517CA460095D15C /* InsertOperation.swift */; };
 		CBA99EA52503B58A008048F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EA42503B58A008048F1 /* AppDelegate.swift */; };
 		CBA99EA72503B58A008048F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA99EA62503B58A008048F1 /* SceneDelegate.swift */; };
@@ -46,6 +42,10 @@
 		CBE47DB12522261800BECDBE /* FittableFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DB02522261800BECDBE /* FittableFontLabel.swift */; };
 		CBE47DBC2522269000BECDBE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DBB2522269000BECDBE /* UILabel.swift */; };
 		CBE47DC725222DCC00BECDBE /* MathExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE47DC625222DCC00BECDBE /* MathExpressionParser.swift */; };
+		CBEB95B6253DD60200E5C43D /* AssembliesCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB95B2253DD60000E5C43D /* AssembliesCollector.swift */; };
+		CBEB95B7253DD60200E5C43D /* ApplicationAssembliesCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB95B3253DD60100E5C43D /* ApplicationAssembliesCollector.swift */; };
+		CBEB95B8253DD60200E5C43D /* CollectableAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB95B4253DD60100E5C43D /* CollectableAssembly.swift */; };
+		CBEB95B9253DD60200E5C43D /* AssembliesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB95B5253DD60200E5C43D /* AssembliesHolder.swift */; };
 		CBFEEA3F251CF2120007E6FD /* SelectableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFEEA3E251CF2120007E6FD /* SelectableLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,10 +80,6 @@
 		CB5BADB62508D38D00AD4E0A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB7A6360253CBE3000F262BC /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Optional.swift; path = ../../../../Downloads/Optional.swift; sourceTree = "<group>"; };
 		CB7A6365253CC45000F262BC /* HistoryServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryServiceAssembly.swift; sourceTree = "<group>"; };
-		CB7A63D9253D7A8F00F262BC /* AssembliesCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssembliesCollector.swift; path = ../../../Downloads/AssembliesCollector.swift; sourceTree = "<group>"; };
-		CB7A63DE253D7A9D00F262BC /* ApplicationAssembliesCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationAssembliesCollector.swift; path = ../../../Downloads/ApplicationAssembliesCollector.swift; sourceTree = "<group>"; };
-		CB7A63E3253D7AA400F262BC /* CollectableAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectableAssembly.swift; path = ../../../Downloads/CollectableAssembly.swift; sourceTree = "<group>"; };
-		CB7A63E8253D7AAA00F262BC /* AssembliesHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssembliesHolder.swift; path = ../../../Downloads/AssembliesHolder.swift; sourceTree = "<group>"; };
 		CB7B5556252B1FBC00B9613B /* HistoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryModel.xcdatamodel; sourceTree = "<group>"; };
 		CB966DE02517CA460095D15C /* InsertOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertOperation.swift; sourceTree = "<group>"; };
 		CBA99EA12503B58A008048F1 /* Calculator!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,10 +91,8 @@
 		CBA99EB22503B58B008048F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA99EB72503B58B008048F1 /* Calculator!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculator!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA99EBB2503B58B008048F1 /* Calculator_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator_Tests.swift; sourceTree = "<group>"; };
-		CBA99EBD2503B58B008048F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA99EC22503B58B008048F1 /* Calculator!UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculator!UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA99EC62503B58B008048F1 /* Calculator_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator_UITests.swift; sourceTree = "<group>"; };
-		CBA99EC82503B58B008048F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA99ED42503C98F008048F1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		CBB8A77A250EB859005C4E9C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		CBBA368725265B7D00148473 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +109,10 @@
 		CBE47DB02522261800BECDBE /* FittableFontLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittableFontLabel.swift; sourceTree = "<group>"; };
 		CBE47DBB2522269000BECDBE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		CBE47DC625222DCC00BECDBE /* MathExpressionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExpressionParser.swift; sourceTree = "<group>"; };
+		CBEB95B2253DD60000E5C43D /* AssembliesCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssembliesCollector.swift; sourceTree = "<group>"; };
+		CBEB95B3253DD60100E5C43D /* ApplicationAssembliesCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAssembliesCollector.swift; sourceTree = "<group>"; };
+		CBEB95B4253DD60100E5C43D /* CollectableAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectableAssembly.swift; sourceTree = "<group>"; };
+		CBEB95B5253DD60200E5C43D /* AssembliesHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssembliesHolder.swift; sourceTree = "<group>"; };
 		CBFEEA3E251CF2120007E6FD /* SelectableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableLabel.swift; sourceTree = "<group>"; };
 		D47C41896152902CB5A3875C /* Pods-Calculator!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator!.debug.xcconfig"; path = "Target Support Files/Pods-Calculator!/Pods-Calculator!.debug.xcconfig"; sourceTree = "<group>"; };
 		D8584CE8CB61EC8E4E018257 /* Pods-Calculator!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator!.release.xcconfig"; path = "Target Support Files/Pods-Calculator!/Pods-Calculator!.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,12 +178,12 @@
 			path = Concrete;
 			sourceTree = "<group>";
 		};
-		CB11BA692530C36200FFBE86 /* History! */ = {
+		CB11BA692530C36200FFBE86 /* History */ = {
 			isa = PBXGroup;
 			children = (
 				CB1DAEFB252CBAC1009B3EC5 /* HistoryModule */,
 			);
-			path = "History!";
+			path = History;
 			sourceTree = "<group>";
 		};
 		CB11BA6A2530C39000FFBE86 /* AlgorithmsForCalculator */ = {
@@ -369,10 +367,10 @@
 		CB7A63D8253D7A7100F262BC /* Collector */ = {
 			isa = PBXGroup;
 			children = (
-				CB7A63E3253D7AA400F262BC /* CollectableAssembly.swift */,
-				CB7A63E8253D7AAA00F262BC /* AssembliesHolder.swift */,
-				CB7A63DE253D7A9D00F262BC /* ApplicationAssembliesCollector.swift */,
-				CB7A63D9253D7A8F00F262BC /* AssembliesCollector.swift */,
+				CBEB95B3253DD60100E5C43D /* ApplicationAssembliesCollector.swift */,
+				CBEB95B2253DD60000E5C43D /* AssembliesCollector.swift */,
+				CBEB95B5253DD60200E5C43D /* AssembliesHolder.swift */,
+				CBEB95B4253DD60100E5C43D /* CollectableAssembly.swift */,
 			);
 			path = Collector;
 			sourceTree = "<group>";
@@ -407,7 +405,7 @@
 				CB45028F251FCAC200244ECF /* PresentationLayer */,
 				CB7B5586252B38DE00B9613B /* DataLayer */,
 				CBA99EA32503B58A008048F1 /* Calculator! */,
-				CB11BA692530C36200FFBE86 /* History! */,
+				CB11BA692530C36200FFBE86 /* History */,
 				CBA99EBA2503B58B008048F1 /* Calculator!Tests */,
 				CBA99EC52503B58B008048F1 /* Calculator!UITests */,
 				CBA99EA22503B58A008048F1 /* Products */,
@@ -441,7 +439,6 @@
 			isa = PBXGroup;
 			children = (
 				CBA99EBB2503B58B008048F1 /* Calculator_Tests.swift */,
-				CBA99EBD2503B58B008048F1 /* Info.plist */,
 			);
 			path = "Calculator!Tests";
 			sourceTree = "<group>";
@@ -450,7 +447,6 @@
 			isa = PBXGroup;
 			children = (
 				CBA99EC62503B58B008048F1 /* Calculator_UITests.swift */,
-				CBA99EC82503B58B008048F1 /* Info.plist */,
 			);
 			path = "Calculator!UITests";
 			sourceTree = "<group>";
@@ -732,8 +728,8 @@
 				CB7A6366253CC45000F262BC /* HistoryServiceAssembly.swift in Sources */,
 				CBBA36A625267DA800148473 /* CalcCell.swift in Sources */,
 				CBBA368F25265F1E00148473 /* UIView.swift in Sources */,
-				CB7A63DA253D7A8F00F262BC /* AssembliesCollector.swift in Sources */,
-				CB7A63DF253D7A9D00F262BC /* ApplicationAssembliesCollector.swift in Sources */,
+				CBEB95B6253DD60200E5C43D /* AssembliesCollector.swift in Sources */,
+				CBEB95B7253DD60200E5C43D /* ApplicationAssembliesCollector.swift in Sources */,
 				CBC47F1B2539B9490086324F /* HistoryTranlator.swift in Sources */,
 				CBA99ED52503C98F008048F1 /* RoundButton.swift in Sources */,
 				CBCC9137252E46B200C2ABBD /* HistoryAssembly.swift in Sources */,
@@ -753,7 +749,7 @@
 				CBCC911E252E068000C2ABBD /* HistoryPlainObject.swift in Sources */,
 				CBA99EA72503B58A008048F1 /* SceneDelegate.swift in Sources */,
 				CB41798E25309D8C00702775 /* HistoryViewInput.swift in Sources */,
-				CB7A63E4253D7AA400F262BC /* CollectableAssembly.swift in Sources */,
+				CBEB95B8253DD60200E5C43D /* CollectableAssembly.swift in Sources */,
 				CB966DE12517CA460095D15C /* InsertOperation.swift in Sources */,
 				CBE47DB12522261800BECDBE /* FittableFontLabel.swift in Sources */,
 				CBC47F20253A15710086324F /* Sampler.swift in Sources */,
@@ -763,7 +759,7 @@
 				CB1DAEB3252C80DE009B3EC5 /* HistoryModel.xcdatamodeld in Sources */,
 				CBB8A77B250EB859005C4E9C /* String.swift in Sources */,
 				CB1DAF00252CBC37009B3EC5 /* MainViewControllerDelegate.swift in Sources */,
-				CB7A63E9253D7AAA00F262BC /* AssembliesHolder.swift in Sources */,
+				CBEB95B9253DD60200E5C43D /* AssembliesHolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
