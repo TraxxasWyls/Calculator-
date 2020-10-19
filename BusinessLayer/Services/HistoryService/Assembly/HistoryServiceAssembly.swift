@@ -11,35 +11,42 @@ import Monreau
 import SwiftyDAO
 import Swinject
 
-final class HistoryServiceAssembly {
+final class HistoryServiceAssembly: CollectableAssembly {
     
-   let container = Container()
-    
-    init() {
-        createDAO()
+    func assemble(inContainer container: Container) {
+        assembleDAO()
+        assembleHistoryService()
     }
+    
     /// Assemling DAO
-    private func createDAO() {
+    private func assembleDAO() {
         container.register(CoreStorageConfig.self) { _ in
             CoreStorageConfig(containerName: "HistoryModel")
         }
-        container.register(CoreStorage.self) { r in
-            try! CoreStorage(configuration: r.resolve(CoreStorageConfig.self).unwrap(), model:HistoryModelObject.self)
+        container.register(CoreStorage.self) { resolver in
+            try! CoreStorage(configuration: resolver.resolve(CoreStorageConfig.self).unwrap(), model: HistoryModelObject.self)
         }
         container.register(HistoryTranslator.self) { _ in
             HistoryTranslator()
         }
-        container.register(DAO.self) { r in
-            DAO(storage: r.resolve(CoreStorage.self).unwrap(), translator: r.resolve(HistoryTranslator.self).unwrap())
+        container.register(DAO.self) { resolver in
+            DAO(storage: resolver.resolve(CoreStorage.self).unwrap(), translator: resolver.resolve(HistoryTranslator.self).unwrap())
         }
     }
     
     /// Assemling the history service
     /// - Returns: the HistoryService inctance
-    func createHistoryService() -> HistoryService {
-        container.register(HistoryService.self) { r in
-            HistoryServiceImplementation(dao: r.resolve(DAO.self)!)
+    private func assembleHistoryService() {
+        container.register(HistoryService.self) { resolver in
+            HistoryServiceImplementation(dao: resolver.resolve(DAO.self)!)
         }
-        return container.resolve(HistoryService.self).unwrap()
     }
+    
+    /// Returns HistoryService instance from container
+    /// - Returns: HistoryService
+    func getHistoryService() -> HistoryService {
+        let historyService = container.resolve(HistoryService.self)
+        return historyService.unwrap()
+    }
+    
 }

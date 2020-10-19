@@ -12,33 +12,28 @@ import Swinject
 
 // MARK: - HistoryAssembly
 
-final class HistoryAssembly {
+final class HistoryAssembly: CollectableAssembly {
     
-    let container: Container
-
-    init(historyService: HistoryService) {
-        container = Container()
-        container.register(HistoryViewController.self) { _ in
-            HistoryViewController()
+    func assemble(inContainer container: Container) {
+        container.register(HistoryViewInput.self) { resolver in
+            let controller = HistoryViewController()
+            controller.output = resolver.resolve(HistoryViewOutput.self).unwrap()
+            return controller
         }
-        container.register(HistoryPresenter.self) { r in
-            let presenter = HistoryPresenter(dataService: historyService)
-            presenter.view = r.resolve(HistoryViewController.self)!
-            return presenter
+        
+        container.register(HistoryViewOutput.self) { resolver in
+            HistoryPresenter(dataService: resolver.resolve(HistoryService.self).unwrap())
+        }.initCompleted { resolver, c in
+            let presenter = c as! HistoryPresenter
+            presenter.view = resolver.resolve(HistoryViewInput.self)
         }
-//        container.register(HistoryViewController.self) { r in
-//            let view = r.resolve(HistoryViewController.self).unwrap()
-//            view.output = r.resolve(HistoryPresenter.self).unwrap()
-//            return view
-//        }
     }
     
-    /// Assembling the history module
+    /// Returns HistoryViewController  instance from container
     /// - Returns: the HistoryViewController instance
-    func createHistoryScreen() -> HistoryViewController {
-        let view = container.resolve(HistoryViewController.self)
-        view?.output = container.resolve(HistoryPresenter.self)
-        return view.unwrap()
+    func getHistoryScreen() -> HistoryViewController {
+        let view = container.resolve(HistoryViewInput.self).unwrap(as: HistoryViewController.self)
+        return view
     }
     
     
