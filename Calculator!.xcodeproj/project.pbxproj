@@ -404,7 +404,7 @@
 				CB41794C2530494700702775 /* BusinessLayer */,
 				CB45028F251FCAC200244ECF /* PresentationLayer */,
 				CB7B5586252B38DE00B9613B /* DataLayer */,
-				CBA99EA32503B58A008048F1 /* Calculator! */,
+				CBA99EA32503B58A008048F1 /* Calculator */,
 				CB11BA692530C36200FFBE86 /* History */,
 				CBA99EBA2503B58B008048F1 /* Calculator!Tests */,
 				CBA99EC52503B58B008048F1 /* Calculator!UITests */,
@@ -426,13 +426,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CBA99EA32503B58A008048F1 /* Calculator! */ = {
+		CBA99EA32503B58A008048F1 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				CBA99EB22503B58B008048F1 /* Info.plist */,
 				CB1DAEF1252CB9C5009B3EC5 /* MainModule */,
 			);
-			path = "Calculator!";
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		CBA99EBA2503B58B008048F1 /* Calculator!Tests */ = {
@@ -929,7 +929,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HFD95R9VP2;
-				INFOPLIST_FILE = "Calculator!/Info.plist";
+				INFOPLIST_FILE = Calculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -949,7 +949,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HFD95R9VP2;
-				INFOPLIST_FILE = "Calculator!/Info.plist";
+				INFOPLIST_FILE = Calculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
